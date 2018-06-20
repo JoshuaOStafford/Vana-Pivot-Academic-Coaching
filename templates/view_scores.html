@@ -20,12 +20,14 @@
         Score
     </th>
     </tr>
-    {% for report in reports %}
+    {% for metric in reports %}
+        {% for report in metric %}
     <tr>
        <td>{{ report.metric.name }}</td>
         <td>{{ report.teacher.name }}</td>
-        <td>{{ report.score }}</td>
+        <td>{% if report.NA %} N/A {% elif report.score == 0 %} No {% elif report.score == 1 %} Yes {% endif %}</td>
     </tr>
+    {% endfor %}
     {% endfor %}
 </table>
 </body>

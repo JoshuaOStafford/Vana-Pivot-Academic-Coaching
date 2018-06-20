@@ -61,6 +61,13 @@ def quick_log(request):
 
 def view_scores(request):
     student = Student.objects.get(name='Max')
-    metric = Metric.objects.get(student=student, name='Attentive')
-    reports = Score.objects.filter(metric=metric)
+    attentive_metric = Metric.objects.get(student=student, name='Attentive')
+    organized_metric = Metric.objects.get(student=student, name='Organization')
+    behaved_metric = Metric.objects.get(student=student, name='Well behaved')
+    hw_metric = Metric.objects.get(student=student, name='HW Completed')
+    attentive = Score.objects.filter(metric=attentive_metric)
+    organized = Score.objects.filter(metric=organized_metric)
+    well_behaved = Score.objects.filter(metric=behaved_metric)
+    hw = Score.objects.filter(metric=hw_metric)
+    reports = [attentive, organized, well_behaved, hw]
     return render(request, 'view_scores.html', {'reports': reports})
