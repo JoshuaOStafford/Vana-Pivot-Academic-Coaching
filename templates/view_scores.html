@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reports</title>
+</head>
+<body>
+<table>
+    <tr>
+    <th>
+        Metric
+    </th>
+    <th>
+        Teacher
+    </th>
+    <th>
+        Score
+    </th>
+    </tr>
+    {% for report in reports %}
+    <tr>
+       <td>{{ report.metric.name }}</td>
+        <td>{{ report.teacher.name }}</td>
+        <td>{{ report.score }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}

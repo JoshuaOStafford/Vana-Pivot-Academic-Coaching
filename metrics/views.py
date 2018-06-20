@@ -57,3 +57,12 @@ def quick_log(request):
         score4.save()
         return render(request, 'quick_log.html', {'teacher': teacher, 'attentive': attentive_score, 'organized': organized, 'behaved': behaved, 'hw': hw, 'success': True})
     return render(request, 'quick_log.html', context=None)
+
+
+def view_scores(request):
+    student = Student.objects.get(name='Max')
+    metrics = student.metric_set
+    reports = []
+    for metric in metrics:
+        reports += Score.objects.filter(metric=metric)
+    return render(request, 'view_scores.html', {'reports': reports})
