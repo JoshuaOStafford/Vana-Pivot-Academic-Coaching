@@ -61,8 +61,6 @@ def quick_log(request):
 
 def view_scores(request):
     student = Student.objects.get(name='Max')
-    metrics = student.metric_set
-    reports = []
-    for metric in metrics:
-        reports += Score.objects.filter(metric=metric)
+    metric = Metric.objects.get(student=student, name='Attentive')
+    reports = Score.objects.filter(metric=metric)
     return render(request, 'view_scores.html', {'reports': reports})

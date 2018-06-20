@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e8858b7-20ff-4605-b818-24cdab845f71" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/view_scores.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vana18/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Vana18/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metrics/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/metrics/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metrics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/metrics/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +28,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/metrics/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="541">
+              <caret line="64" column="13" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -147,10 +143,10 @@
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/metrics/models.py" />
         <option value="$PROJECT_DIR$/Vana18/settings.py" />
-        <option value="$PROJECT_DIR$/metrics/views.py" />
         <option value="$PROJECT_DIR$/templates/view_scores.html" />
         <option value="$PROJECT_DIR$/Vana18/urls.py" />
         <option value="$PROJECT_DIR$/metrics/urls.py" />
+        <option value="$PROJECT_DIR$/metrics/views.py" />
       </list>
     </option>
   </component>
@@ -725,8 +721,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/metrics/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="541">
+          <caret line="64" column="13" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
