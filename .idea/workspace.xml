@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e8858b7-20ff-4605-b818-24cdab845f71" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/view_scores.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/view_scores.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/quick_log.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quick_log.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,14 +37,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view_scores.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="view_scores.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/view_scores.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+            <state relative-caret-position="135">
+              <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
               <folding>
                 <element signature="e#195#213#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="quick_log.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/quick_log.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -142,7 +151,6 @@
         <option value="$PROJECT_DIR$/core/models.py" />
         <option value="$PROJECT_DIR$/Coach/models.py" />
         <option value="$PROJECT_DIR$/student/models.py" />
-        <option value="$PROJECT_DIR$/templates/quick_log.html" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/metrics/models.py" />
         <option value="$PROJECT_DIR$/Vana18/settings.py" />
@@ -150,6 +158,7 @@
         <option value="$PROJECT_DIR$/metrics/urls.py" />
         <option value="$PROJECT_DIR$/metrics/views.py" />
         <option value="$PROJECT_DIR$/templates/view_scores.html" />
+        <option value="$PROJECT_DIR$/templates/quick_log.html" />
       </list>
     </option>
   </component>
@@ -184,6 +193,11 @@
               <item name="Vana18" type="b2602c69:ProjectViewProjectNode" />
               <item name="Vana18" type="462c0819:PsiDirectoryNode" />
               <item name="metrics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vana18" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vana18" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Vana18" type="b2602c69:ProjectViewProjectNode" />
@@ -321,7 +335,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="777" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -596,35 +610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/quick_log.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="151" selection-start-line="19" selection-start-column="151" selection-end-line="19" selection-end-column="151" />
-          <folding>
-            <element signature="e#221#240#0#HTML" expanded="true" />
-            <element signature="e#1455#1461#0#HTML" expanded="true" />
-            <element signature="e#1461#1467#0#HTML" expanded="true" />
-            <element signature="e#1467#1473#0#HTML" expanded="true" />
-            <element signature="e#1694#1700#0#HTML" expanded="true" />
-            <element signature="e#1700#1706#0#HTML" expanded="true" />
-            <element signature="e#1706#1712#0#HTML" expanded="true" />
-            <element signature="e#1936#1942#0#HTML" expanded="true" />
-            <element signature="e#1942#1948#0#HTML" expanded="true" />
-            <element signature="e#1948#1954#0#HTML" expanded="true" />
-            <element signature="e#2182#2188#0#HTML" expanded="true" />
-            <element signature="e#2188#2194#0#HTML" expanded="true" />
-            <element signature="e#2194#2200#0#HTML" expanded="true" />
-            <marker date="1529520440992" expanded="true" signature="562:747" ph="..." />
-            <marker date="1529520440992" expanded="true" signature="651:736" ph="..." />
-            <marker date="1529520440992" expanded="true" signature="1378:2553" ph="..." />
-            <marker date="1529520440992" expanded="true" signature="1420:1606" ph="..." />
-            <marker date="1529520440992" expanded="true" signature="1660:1845" ph="..." />
-            <marker date="1529520440992" expanded="true" signature="1899:2090" ph="..." />
-            <marker date="1529520440992" expanded="true" signature="2145:2544" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -727,11 +712,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/view_scores.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+        <state relative-caret-position="135">
+          <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
           <folding>
             <element signature="e#195#213#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/quick_log.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
         </state>
       </provider>
     </entry>
