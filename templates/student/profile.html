@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Profile</title>
+</head>
+<style>
+
+#info-title{
+    font-size: 125%;
+    margin-bottom: 1px;
+}
+
+</style>
+
+
+<body>
+<div class="row" style="margin-top: 7%">
+    <div class="col s12 m6 l5 left">
+        <div class = "card" style="margin-left: 8%">
+               <div class = "card-content">
+                  <span class = "card-title"><h4>Adam Knox</h4></span>
+                   <p id="info-title"><b>Parents:</b> Linda and Thomas Knox</p>
+                   <p id="info-title"><b>Phone #:</b> 315-715-6927</p>
+                   <p id="info-title"><b>Mom's #:</b> 315-241-2461</p>
+                   <p id="info-title"><b>Dad's #:</b> 315-241-3416</p>
+                   <p id="info-title"><b>Birthday:</b> 7/12/2002</p>
+                   <p id="info-title"><b>School Name:</b>   <a href="https://www.bullis.org">Bullis School</a> &nbsp;&nbsp;&nbsp; <a href="https://www.bullis.org/page.cfm?p=845"><i class="fa fa-calendar fa-1x" aria-hidden="true"></i></a></p>
+                   <p id="info-title"><b>Grade Tracking:</b> <a href="https://www.powerschool.com">Power School</a></p>
+
+               </div>
+
+               <div class = "card-action">
+                  <button class = "btn waves-effect waves-light blue lighten-2">
+                     <i class = "material-icons">mail</i></button>
+                  <a class = "right blue-grey-text" href = "/student/pre_session">
+                     Pre-session</a>
+               </div>
+            </div>
+
+    </div>
+
+    <div class="col s12 m6 l6 right">
+        <div class = "card right" style="margin-right: 8%; padding-left:3%">
+            <div class = "card-content">
+                  <span class = "card-title text-center"><h4>Contact History</h4></span></div>
+            <p id="info-title"><b>June 6th, 2018:</b> Initial meeting with both parents.</p>
+            <p id="info-title"><b>June 13th, 2018:</b> Met with Adam and discussed price with parents.</p>
+            <p id="info-title"><b>July 15th, 2018:</b> First session with Adam</p>
+            <br>
+            <div class = "card-action text-center">
+                  <button class = "btn-floating btn-large waves-effect waves-light red lighten-1">
+                     <i class = "material-icons">add</i></button>
+            </div>
+            </div>
+    </div>
+    </div>
+
+    <div style="clear: both"></div>
+
+
+</body>
+
+</html>{% endblock %}

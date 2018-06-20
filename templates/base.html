@@ -1,0 +1,81 @@
+<head>
+
+    {% load static %}
+<link rel="icon" href="{% static "favicon.png" %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=EB Garamond" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+
+
+
+</head>
+<!-- styling -->
+<style>
+
+</style>
+<!-- nav bar -->
+<nav class="navbar navbar-custom navbar-fixed-top" id="bar">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            {% load static %}
+            <a class="navbar-brand" onclick="window.location.href='/marci/home'">  <img src="{% static "vanalogo.png" %}" height="48px" width="auto"/></a>
+        </div>
+        <div class="collapse navbar-collapse" id="topNavBar">
+
+            {% if hidden %}
+            <ul class="nav navbar-nav navbar-right">
+
+                    <li><a onclick="window.location.href='/logout'"><span class="glyphicon glyphicon-log-out"></span> Logout&nbsp;&nbsp;</a></li>
+            </ul>
+
+            {% else %}
+            <ul class="nav navbar-nav navbar-left">
+
+                            <li><a onclick="window.location.href='/student/profile'">Info</a></li>
+                            <li><a onclick="window.location.href='/student/schedule'">Schedule</a></li>
+                            <li><a onclick="window.location.href='/student/pre_session'">Pre-session</a></li>
+                            <li><a onclick="window.location.href='/student/track_grades'">Track Grades</a></li>
+                            <li><a onclick="window.location.href='/student/track_habits'">Track Habits</a></li>
+                            <li><a onclick="window.location.href='/student/visualizations'">Visualize</a></li>
+
+
+
+
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a onclick="window.location.href='/student/profile'">Adam</a></li>
+                <li><a onclick="window.location.href='/student/profile'">Change Student</a></li>
+                    <li><a onclick="window.location.href='/logout'"><span class="glyphicon glyphicon-log-out"></span> Logout&nbsp;&nbsp;</a></li>
+            </ul>
+
+            {% endif %}
+
+        </div>
+
+</nav>
+
+{% block body %}
+{% endblock %}

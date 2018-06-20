@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pre Session</title>
+</head>
+<body>
+<div class="row" style="margin-top: 7%">
+
+  <ul class="collapsible expandable left" style="width: 42%; margin-left: 5%" id="collapsible-1">
+    <li class="active">
+      <div class="collapsible-header"><b>Date</b></div>
+      <div class="collapsible-body"><span>June 6th, 2018</span></div>
+    </li>
+    <li class="active">
+      <div class="collapsible-header"><b>Celebrations</b></div>
+      <div class="collapsible-body"><span>He got an A on  his Drama test!</span></div>
+    </li>
+    <li  class="active">
+      <div class="collapsible-header"><b>Upcoming Due Dates</b></div>
+      <div class="collapsible-body"><span>Math test on Tuesday.</span></div>
+    </li>
+  </ul>
+
+    <ul class="collapsible expandable right" style="width: 42%; margin-right: 5%" id="collapsible-2">
+    <li class="active">
+      <div class="collapsible-header"><b>Missing Work</b></div>
+      <div class="collapsible-body"><span>June 6th, 2018</span></div>
+    </li>
+    <li class="active">
+      <div class="collapsible-header"><b>Student's Commitments</b></div>
+      <div class="collapsible-body"><span>Study for math test 45 minutes per night</span></div>
+    </li>
+    <li class="active">
+      <div class="collapsible-header"><b>Coach's Followup Actions</b></div>
+      <div class="collapsible-body"><span>Email parents 504.</span></div>
+    </li>
+  </ul>
+    <div style="clear: both"></div>
+
+    <ul class="collapsible expandable" style="width: 90%; margin-left: 5%; margin-right: 5%" id="collapsible-2">
+    <li class="active">
+      <div class="collapsible-header"><b>Notes</b></div>
+      <div class="collapsible-body"><span>Adam and I talked about his C in math. The teacher hasn't entered his missing work yet. He is struggling with his seating in this class. He did ask the teacher to move him, but he said he said no. We discussed 504's and whether to mention it to parents. He gave me permission to do so. He rated his stress level as high this week because of the hurricane. He isn't certain how it will impact upcoming work.</span></div>
+    </li>
+    <li class="active">
+      <div class="collapsible-header"><b>Questions for Session</b></div>
+      <div class="collapsible-body"><span>What are Adam's plans for scheduling for his math test? Has he been writing in his planner?</span></div>
+    </li>
+  </ul>
+
+</div>
+
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible-1');
+    var instances = M.Collapsible.init(elems, options);
+  });
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible-2');
+    var instances = M.Collapsible.init(elems, options);
+  });
+    var elem = document.querySelector('.collapsible.expandable');
+var instance = M.Collapsible.init(elem, {
+  accordion: false
+});
+</script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quick Log</title>
+</head>
+<body>
+<br><br>
+<div id="page-title">Log Old Reports for Max</div>
+
+<div style="width: 100%" align="center">
+<form action="/log/" method="post">
+                {% csrf_token %}
+    <div class="row">
+    <div class="col m12 l12">
+        <br><br>
+        {% if success %} Teacher: {{ teacher.name }} Attentive: {{ attentive }} Organized: {{ organized }} Behaved: {{ behaved }} HW: {{ hw }} {% endif %}
+        <div>
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date"
+               value="2017-12-04"
+               min="2017-10-01" max="2018-05-31" />
+    </div>
+        <h5>Teacher</h5>
+        <label>
+        <input name="teacher" type="radio" value="teacher1" checked />
+        <span>Michael Chellman</span>
+      </label>
+         <br>
+<label>
+        <input name="teacher" type="radio" value="teacher2" checked />
+        <span>Chelsea Henry</span>
+  </label>
+        <br>
+<label>
+        <input name="teacher" type="radio" value="teacher3" checked />
+        <span>Claire Holman</span>
+      </label>
+        <br>
+<label>
+        <input name="teacher" type="radio" value="teacher4" checked />
+        <span>Lele Horich</span>
+      </label>
+    </div>
+
+        <div class="col m12 l4">
+<br><br>
+            <div class="switch">
+                <b>Attentive</b> &nbsp;&nbsp;&nbsp;
+    <label>
+      No
+      <input type="checkbox" name="attentive">
+      <span class="lever"></span>
+      Yes
+    </label>
+  </div>
+            <br><br>
+            <div class="switch">
+                <b>Organized</b>&nbsp;&nbsp;&nbsp;
+    <label>
+      No
+      <input type="checkbox" name="organized">
+      <span class="lever"></span>
+      Yes
+    </label>
+  </div>
+            <br><br>
+            <div class="switch">
+                <b>Well behaved</b>&nbsp;&nbsp;&nbsp;
+    <label>
+      No
+      <input type="checkbox" name="well-behaved">
+      <span class="lever"></span>
+      Yes
+    </label>
+  </div>
+            <br><br>
+
+            <div class="switch">
+                <b>HW Completed</b>&nbsp;&nbsp;&nbsp;
+    <label>
+        <input name="hw" type="radio" value="na" />
+        <span>N/A</span>
+      </label>
+                <label>
+        <input name="hw" type="radio" value="no" />
+        <span>No</span>
+      </label>
+                <label>
+        <input name="hw" type="radio" value="yes" />
+        <span>Yes</span>
+      </label>
+  </div>
+
+
+</div>
+
+</div>
+
+    <button class="btn waves-effect waves-light blue lighten-2" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button>
+</form>
+</div>
+
+
+
+
+</body>
+
+</html>
+{% endblock %}

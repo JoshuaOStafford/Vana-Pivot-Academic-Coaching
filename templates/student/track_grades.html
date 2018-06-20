@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Track Grades</title>
+</head>
+
+<body>
+<div align="center">
+<div id="page-title">Adam's Grades</div>
+
+<div id="grades-block">
+    <table id="grades-table" class="striped">
+        <tr>
+            <th>Subject</th>
+            <th>Week 1</th>
+            <th>Week 2</th>
+            <th>Week 3</th>
+            <th>Week 4</th>
+            <th>Week 5</th>
+            <th>Week 6</th>
+        </tr>
+
+        <tr>
+            <td id="col1">American History</td>
+            <td>{{ amhistgrade.0 }}</td>
+            <td>{{ amhistgrade.1 }}</td>
+            <td>{{ amhistgrade.2 }}</td>
+            <td>{{ amhistgrade.3 }}</td>
+            <td>{{ amhistgrade.4 }}</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>Chemistry</td>
+            <td>{{ chemgrade.0 }}</td>
+            <td>{{ chemgrade.1 }}</td>
+            <td>{{ chemgrade.2 }}</td>
+            <td>{{ chemgrade.3 }}</td>
+            <td>{{ chemgrade.4 }}</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>English 10</td>
+            <td>{{ engrade.0 }}</td>
+            <td>{{ engrade.1 }}</td>
+            <td>{{ engrade.2 }}</td>
+            <td>{{ engrade.3 }}</td>
+            <td>{{ engrade.4 }}</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>French I</td>
+            <td>{{ frengrade.0 }}</td>
+            <td>{{ frengrade.1 }}</td>
+            <td>{{ frengrade.2 }}</td>
+            <td>{{ frengrade.3 }}</td>
+            <td>{{ frengrade.4 }}</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>Hope</td>
+            <td>{{ hopegrade.0 }}</td>
+            <td>{{ hopegrade.1 }}</td>
+            <td>{{ hopegrade.2 }}</td>
+            <td>{{ hopegrade.3 }}</td>
+            <td>{{ hopegrade.4 }}</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>Calc</td>
+            <td>{{ calcgrade.0 }}</td>
+            <td>{{ calcgrade.1 }}</td>
+            <td>{{ calcgrade.2 }}</td>
+            <td>{{ calcgrade.3 }}</td>
+            <td>{{ calcgrade.4 }}</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>Dram II</td>
+            <td>{{ dramgrade.0 }}</td>
+            <td>{{ dramgrade.1 }}</td>
+            <td>{{ dramgrade.2 }}</td>
+            <td>{{ dramgrade.3 }}</td>
+            <td>{{ dramgrade.4 }}</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>Intensive Reading</td>
+            <td>{{ irgrade.0 }}</td>
+            <td>{{ irgrade.1 }}</td>
+            <td>{{ irgrade.2 }}</td>
+            <td>{{ irgrade.3 }}</td>
+            <td>{{ irgrade.4 }}</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+    </table>
+</div>
+
+<div id="time-spent-block">
+    <div id="no-margin-page-title">Time Spent on Subject</div>
+    <table id="time-spent-table">
+        <tr>
+            <th >Subject</th>
+            <th>Week 1</th>
+            <th>Week 2</th>
+            <th>Week 3</th>
+            <th>Week 4</th>
+            <th>Week 5</th>
+            <th>Week 6</th>
+        </tr>
+
+        <tr>
+            <td>American History</td>
+            <td>45</td>
+            <td>55</td>
+            <td>60</td>
+            <td>60</td>
+            <td>45</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>Chemistry</td>
+            <td>45</td>
+            <td>50</td>
+            <td>50</td>
+            <td>60</td>
+            <td>60</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>English 10</td>
+            <td>45</td>
+            <td>50</td>
+            <td>60</td>
+            <td>40</td>
+            <td>85</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>French I</td>
+            <td>45</td>
+            <td>35</td>
+            <td>40</td>
+            <td>45</td>
+            <td>60</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>Hope</td>
+            <td>35</td>
+            <td>40</td>
+            <td>10</td>
+            <td>20</td>
+            <td>10</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>Calc</td>
+            <td>45</td>
+            <td>50</td>
+            <td>65</td>
+            <td>60</td>
+            <td>60</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>Dram II</td>
+            <td>10</td>
+            <td>30</td>
+            <td>20</td>
+            <td>25</td>
+            <td>30</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+
+        <tr>
+            <td>Intensive Reading</td>
+            <td>20</td>
+            <td>30</td>
+            <td>25</td>
+            <td>40</td>
+            <td>50</td>
+            <td><input title='grade' type="text"/>   </td>
+        </tr>
+    </table>
+</div>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}
