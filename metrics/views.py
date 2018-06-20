@@ -64,7 +64,7 @@ def view_scores(request):
     attentive_metric = Metric.objects.get(student=student, name='Attentive')
     organized_metric = Metric.objects.get(student=student, name='Organization')
     behaved_metric = Metric.objects.get(student=student, name='Well behaved')
-    hw_metric = Metric.objects.get(student=student, name='HW Completed')
+    hw_metric = Metric.objects.get(student=student, name='HW Complete')
     attentive = Score.objects.filter(metric=attentive_metric)
     organized = Score.objects.filter(metric=organized_metric)
     well_behaved = Score.objects.filter(metric=behaved_metric)
