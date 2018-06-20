@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e8858b7-20ff-4605-b818-24cdab845f71" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/metrics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/metrics/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/quick_log.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quick_log.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/templates/quick_log.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="292">
-              <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+              <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -724,7 +723,7 @@
     <entry file="file://$PROJECT_DIR$/templates/quick_log.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
-          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
         </state>
       </provider>
     </entry>
