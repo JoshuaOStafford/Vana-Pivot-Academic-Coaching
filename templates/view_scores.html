@@ -9,8 +9,12 @@
 </head>
 <body>
 <div id="page-title">Reports</div>
-<table>
+<div align="center">
+<table style="width: 80%">
     <tr>
+    <th>
+        Date
+    </th>
     <th>
         Metric
     </th>
@@ -24,6 +28,7 @@
     {% for metric in reports %}
         {% for report in metric %}
     <tr>
+        <td>{{ report.date }}</td>
        <td>{{ report.metric.name }}</td>
         <td>{{ report.teacher.name }}</td>
         <td>{% if report.NA %} N/A {% elif report.score == 0 %} No {% elif report.score == 1 %} Yes {% endif %}</td>
@@ -31,6 +36,7 @@
     {% endfor %}
     {% endfor %}
 </table>
+</div>
 </body>
 </html>
 {% endblock %}
