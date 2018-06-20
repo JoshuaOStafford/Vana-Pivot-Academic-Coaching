@@ -55,7 +55,7 @@ def quick_log(request):
         hw_metric = Metric.objects.get(name='HW Complete', student=student)
         score4 = Score(metric=hw_metric, teacher=teacher, score=hw, date=date, NA=na)
         score4.save()
-        return render(request, 'quick_log.html', {'teacher': teacher, 'attentive': attentive_score, 'organized': organized, 'behaved': behaved, 'hw': hw, 'success': True})
+        return render(request, 'quick_log.html', {'success': True})
     return render(request, 'quick_log.html', context=None)
 
 

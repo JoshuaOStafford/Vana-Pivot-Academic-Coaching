@@ -17,7 +17,9 @@
     <div class="row">
     <div class="col m12 l12">
         <br><br>
-        {% if success %} Teacher: {{ teacher.name }} Attentive: {{ attentive }} Organized: {{ organized }} Behaved: {{ behaved }} HW: {{ hw }} {% endif %}
+        {% if success %}
+            <div class="green">Success</div>
+        {% endif %}
         <div>
         <label for="date">Date</label>
         <input type="date" id="date" name="date"
