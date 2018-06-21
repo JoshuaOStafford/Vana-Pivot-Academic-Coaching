@@ -77,7 +77,7 @@ def analysis(request, student_name):
     student = Student.objects.get(name__icontains=student_name)
     attentive_metric_max = Metric.objects.get(student=student, name__icontains='Attentive')
     all_scores = Score.objects.filter(metric=attentive_metric_max)
-    week5_score = get_week_score_average(start_week=1, duration=1, all_scores=all_scores)
+    week5_score = get_week_score_average(start_week=5, duration=1, all_scores=all_scores)
 
     return render(request, 'analysis.html', {'student': student_name, 'week5': week5_score})
 
