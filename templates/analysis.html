@@ -19,7 +19,7 @@
                    <p id="info-title"><b>Metric:</b></p>
                    <form action="/reports/analytics/{{ student.name }}">
                        {% for metric in metric_names %}
-                      <label>
+                      <label style="height: 5%">
                         <input name="metric" type="radio"  />
                         <span>{{ metric }}</span>
                       </label>
@@ -28,9 +28,18 @@
                        Start Week Period 1:
                    <input name="start_period1" type="number" id="start_period1"/>
                        </label>
-                   <p id="info-title"><b>End Week Period 1:</b></p>
-                   <p id="info-title"><b>Start Week Period 2:</b></p>
-                   <p id="info-title"><b>End Week Period 2:</b></p>
+                   <label>
+                       End Week Period 1:
+                   <input name="end_period1" type="number" id="end_period1"/>
+                       </label>
+                   <label>
+                       Start Week Period 2:
+                   <input name="start_period2" type="number" id="start_period2"/>
+                       </label>
+                   <label>
+                       End Week Period 2:
+                   <input name="end_period2" type="number" id="end_period2"/>
+                       </label>
                    </form>
 
                </div>
