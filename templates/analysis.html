@@ -18,10 +18,10 @@
                    <p id="info-title"><b>Student:</b> Max</p>
                    <p id="info-title"><b>Metric:</b></p>
                    <form action="/reports/analytics/{{ student.name }}">
-                       {% for metric in student.metric_set %}
+                       {% for metric in metric_names %}
                       <label>
                         <input name="metric" type="radio"  />
-                        <span>{{ metric.name }}</span>
+                        <span>{{ metric }}</span>
                       </label>
                        {% endfor %}
                    <label>

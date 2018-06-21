@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e8858b7-20ff-4605-b818-24cdab845f71" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vana18env/bin/django-admin" beforeDir="false" afterPath="$PROJECT_DIR$/Vana18env/bin/django-admin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vana18env/bin/django-admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Vana18env/bin/django-admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vana18env/bin/gunicorn" beforeDir="false" afterPath="$PROJECT_DIR$/Vana18env/bin/gunicorn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vana18env/bin/gunicorn_paster" beforeDir="false" afterPath="$PROJECT_DIR$/Vana18env/bin/gunicorn_paster" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vana18env/lib/python3.6/site-packages/Django-2.0.6.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/Vana18env/lib/python3.6/site-packages/Django-2.0.6.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vana18env/lib/python3.6/site-packages/gunicorn-19.8.1.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/Vana18env/lib/python3.6/site-packages/gunicorn-19.8.1.dist-info/RECORD" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metrics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/metrics/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/analysis.html" afterDir="false" />
     </list>
@@ -27,8 +20,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/metrics/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="82" column="56" selection-start-line="82" selection-start-column="56" selection-end-line="82" selection-end-column="56" />
+            <state relative-caret-position="581">
+              <caret line="85" column="93" selection-start-line="85" selection-start-column="93" selection-end-line="85" selection-end-column="93" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -48,8 +41,8 @@
       <file leaf-file-name="analysis.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/analysis.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+            <state relative-caret-position="131">
+              <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -667,6 +660,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/metrics/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="56" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/student/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -677,17 +677,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metrics/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="56" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/metrics/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="82" column="56" selection-start-line="82" selection-start-column="56" selection-end-line="82" selection-end-column="56" />
+        <state relative-caret-position="581">
+          <caret line="85" column="93" selection-start-line="85" selection-start-column="93" selection-end-line="85" selection-end-column="93" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -696,8 +689,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/analysis.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+        <state relative-caret-position="131">
+          <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
         </state>
       </provider>
     </entry>

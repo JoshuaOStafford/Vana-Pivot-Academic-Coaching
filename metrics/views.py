@@ -75,10 +75,13 @@ def view_scores(request):
 
 def analysis(request, student_name):
     student = Student.objects.get(name__icontains=student_name)
+    metric_names = []
+    for metric in Metric.objects.filter(student=student):
+        metric_names.append(metric.name)
     if request.method == 'POST':
         attentive_metric_max = Metric.objects.get(student=student, name__icontains='Attentive')
         all_scores = Score.objects.filter(metric=attentive_metric_max)
         week5_score = get_week_score_average(start_week=5, duration=1, all_scores=all_scores)
         return render(request, 'analysis.html', {'student': student_name, 'week5': week5_score})
-    return render(request, 'analysis.html', {'student': student})
+    return render(request, 'analysis.html', {'student': student, 'metric_names': metric_names})
 
