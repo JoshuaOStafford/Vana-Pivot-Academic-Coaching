@@ -40,13 +40,19 @@
       <file leaf-file-name="analysis.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/analysis.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+            <state relative-caret-position="566">
+              <caret line="48" column="77" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
               <folding>
+                <element signature="e#457#480#0#HTML" expanded="true" />
+                <element signature="e#518#541#0#HTML" expanded="true" />
                 <element signature="e#901#919#0#HTML" expanded="true" />
+                <element signature="e#991#1009#0#HTML" expanded="true" />
                 <element signature="e#1105#1123#0#HTML" expanded="true" />
+                <element signature="e#1197#1215#0#HTML" expanded="true" />
                 <element signature="e#1303#1321#0#HTML" expanded="true" />
+                <element signature="e#1401#1419#0#HTML" expanded="true" />
                 <element signature="e#1507#1525#0#HTML" expanded="true" />
+                <element signature="e#1608#1626#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -694,13 +700,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/analysis.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+        <state relative-caret-position="566">
+          <caret line="48" column="77" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
           <folding>
+            <element signature="e#457#480#0#HTML" expanded="true" />
+            <element signature="e#518#541#0#HTML" expanded="true" />
             <element signature="e#901#919#0#HTML" expanded="true" />
+            <element signature="e#991#1009#0#HTML" expanded="true" />
             <element signature="e#1105#1123#0#HTML" expanded="true" />
+            <element signature="e#1197#1215#0#HTML" expanded="true" />
             <element signature="e#1303#1321#0#HTML" expanded="true" />
+            <element signature="e#1401#1419#0#HTML" expanded="true" />
             <element signature="e#1507#1525#0#HTML" expanded="true" />
+            <element signature="e#1608#1626#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
