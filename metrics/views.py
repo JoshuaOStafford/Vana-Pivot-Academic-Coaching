@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from student.models import Student, Teacher
 from .models import Metric, Score
-
+from .helpers import get_week_score_average
 
 def quick_log(request):
     if request.method == 'POST':
@@ -71,3 +71,14 @@ def view_scores(request):
     hw = Score.objects.filter(metric=hw_metric)
     reports = [attentive, organized, well_behaved, hw]
     return render(request, 'view_scores.html', {'reports': reports})
+
+
+def analysis(request, student_name):
+    student = Student.objects.get(name__icontains=student_name)
+    attentive_metric_max = Metric.objects.get(student=student, name__icontains='Attentive')
+    all_scores = Score.objects.filter(metric=attentive_metric_max)
+    week5_score = get_week_score_average(start_week=1, duration=1, all_scores=all_scores)
+
+    return render(request, 'analysis.html', {'student': student_name, 'week5': week5_score})
+
+
