@@ -15,31 +15,31 @@
             <div class = "card" style="margin-left: 8%">
                <div class = "card-content">
                   <span class = "card-title"><h4>Over Time Analysis</h4></span>
-                   <p id="info-title"><b>Student:</b> Max</p>
-                   <p id="info-title"><b>Metric:</b></p>
+                   <p><b>Student:</b> {{ student.name }}</p>
+                   <p><b>Metric:</b></p>
                    <form action="/reports/analytics/{{ student.name }}">
                        {% for metric in metric_names %}
-                      <label style="height: 5%">
+                      <label>
                         <input name="metric" type="radio"  />
                         <span>{{ metric }}</span>
                       </label>
                        {% endfor %}
-                   <label>
+                   <label style="height: 5%">
                        Start Week Period 1:
                    <input name="start_period1" type="number" id="start_period1"/>
-                       </label>
-                   <label>
+                       </label><br>
+                   <label style="height: 5%">
                        End Week Period 1:
                    <input name="end_period1" type="number" id="end_period1"/>
-                       </label>
-                   <label>
+                       </label><br>
+                   <label style="height: 5%">
                        Start Week Period 2:
                    <input name="start_period2" type="number" id="start_period2"/>
-                       </label>
-                   <label>
+                       </label><br>
+                   <label style="height: 5%">
                        End Week Period 2:
                    <input name="end_period2" type="number" id="end_period2"/>
-                       </label>
+                       </label><br>
                    </form>
 
                </div>
