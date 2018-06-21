@@ -7,7 +7,7 @@ def get_week_score_average(start_week, duration, all_scores):
     for report in reports:
         cumulative_score += report.score * 100
     weighted_score = cumulative_score / len(reports)
-    return weighted_score
+    return str(weighted_score) + ' out of ' + str(len(reports)) + ' reports'
 
 
 def get_week_range(week_number, duration, all_scores):
