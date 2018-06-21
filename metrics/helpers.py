@@ -4,10 +4,12 @@ from datetime import datetime, timedelta, date
 def get_week_score_average(start_week, duration, all_scores):
     reports = get_week_range(start_week, duration, all_scores)
     cumulative_score = 0
+    date_string = ""
     for report in reports:
         cumulative_score += report.score * 100
+        date_string += report.date + ' '
     weighted_score = cumulative_score / len(reports)
-    return str(weighted_score) + ' out of ' + str(len(reports)) + ' reports'
+    return str(weighted_score) + ' out of ' + str(len(reports)) + ' reports on ' + date_string
 
 
 def get_week_range(week_number, duration, all_scores):
