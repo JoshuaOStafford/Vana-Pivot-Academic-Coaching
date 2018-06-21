@@ -9,10 +9,42 @@
 </head>
 
 <body>
-    <div id="page-title">Anayltics for {{ student }}</div>
-    <br>
-    <br>
-Week 5 Attentiveness: {{ week5 }}
+    <div id="page-title">Anayltics</div>
+    <div class="row">
+        <div class="col s12 m6 l4">
+            <div class = "card" style="margin-left: 8%">
+               <div class = "card-content">
+                  <span class = "card-title"><h4>Over Time Analysis</h4></span>
+                   <p id="info-title"><b>Student:</b> Max</p>
+                   <p id="info-title"><b>Metric:</b></p>
+                   <form action="/reports/analytics/{{ student.name }}">
+                       {% for metric in student.metric_set %}
+                      <label>
+                        <input name="metric" type="radio"  />
+                        <span>{{ metric.name }}</span>
+                      </label>
+                       {% endfor %}
+                   <label>
+                       Start Week Period 1:
+                   <input name="start_period1" type="number" id="start_period1"/>
+                       </label>
+                   <p id="info-title"><b>End Week Period 1:</b></p>
+                   <p id="info-title"><b>Start Week Period 2:</b></p>
+                   <p id="info-title"><b>End Week Period 2:</b></p>
+                   </form>
+
+               </div>
+
+               <div class = "card-action">
+                  <button class = "btn waves-effect waves-light blue lighten-2">
+                     <i class = "material-icons">mail</i></button>
+                  <a class = "right blue-grey-text" href = "/student/pre_session">
+                     Pre-session</a>
+               </div>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>
 {% endblock %}
