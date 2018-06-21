@@ -19,7 +19,6 @@ def get_week_range(week_number, duration, all_scores):
     end_date = start_date + timedelta(days=duration*7)
     reports = []
     for report in all_scores:
-
         if start_date <= report.date <= end_date:
             reports.append(report)
     return reports
