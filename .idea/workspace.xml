@@ -40,13 +40,13 @@
       <file leaf-file-name="analysis.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/analysis.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+            <state relative-caret-position="461">
+              <caret line="41" column="31" lean-forward="true" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
               <folding>
                 <element signature="e#457#480#0#HTML" expanded="true" />
                 <element signature="e#518#541#0#HTML" expanded="true" />
+                <element signature="e#901#919#0#HTML" expanded="true" />
                 <element signature="e#991#1009#0#HTML" expanded="true" />
-                <element signature="e#1105#1123#0#HTML" expanded="true" />
                 <element signature="e#1197#1215#0#HTML" expanded="true" />
                 <element signature="e#1303#1321#0#HTML" expanded="true" />
                 <element signature="e#1401#1419#0#HTML" expanded="true" />
@@ -699,13 +699,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/analysis.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+        <state relative-caret-position="461">
+          <caret line="41" column="31" lean-forward="true" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
           <folding>
             <element signature="e#457#480#0#HTML" expanded="true" />
             <element signature="e#518#541#0#HTML" expanded="true" />
+            <element signature="e#901#919#0#HTML" expanded="true" />
             <element signature="e#991#1009#0#HTML" expanded="true" />
-            <element signature="e#1105#1123#0#HTML" expanded="true" />
             <element signature="e#1197#1215#0#HTML" expanded="true" />
             <element signature="e#1303#1321#0#HTML" expanded="true" />
             <element signature="e#1401#1419#0#HTML" expanded="true" />
