@@ -65,9 +65,15 @@
 
 
             </ul>
+
+            <ul id="dropdown" class="dropdown-content">
+              <li><a href="#">Beau</a></li>
+              <li><a href="#">Emma</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Mike</a></li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a onclick="window.location.href='/student/profile'">Adam</a></li>
-                <li><a onclick="window.location.href='/student/profile'">Change Student</a></li>
+                <li><a class="dropdown-trigger" href="#" data-target="dropdown">Adam<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li><a onclick="window.location.href='/logout'"><span class="glyphicon glyphicon-log-out"></span> Logout&nbsp;&nbsp;</a></li>
             </ul>
 
