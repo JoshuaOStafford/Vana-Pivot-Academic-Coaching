@@ -12,8 +12,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
-<link href="https://fonts.googleapis.com/css?family=EB Garamond" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
@@ -66,14 +64,20 @@
 
             </ul>
 
-            <ul id="dropdown" class="dropdown-content">
-              <li><a href="#">Beau</a></li>
-              <li><a href="#">Emma</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Mike</a></li>
-            </ul>
+
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="dropdown-trigger" href="#" data-target="dropdown">Adam<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li class="dropdown">
+                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  &nbsp;Adam<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+
+                                <li><a onclick="window.location.href='/'">Adam</a></li>
+                                <li role="separator" class="divider"></li>
+                                     <li><a onclick="window.location.href='/'">Beau</a></li>
+                                <li role="separator" class="divider"></li>
+                                     <li><a onclick="window.location.href='/'">Emma</a></li>
+                                <li role="separator" class="divider"></li>
+                        </ul>
+                        </li>
                     <li><a onclick="window.location.href='/logout'"><span class="glyphicon glyphicon-log-out"></span> Logout&nbsp;&nbsp;</a></li>
             </ul>
 

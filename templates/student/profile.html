@@ -9,6 +9,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Student Profile</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
 </head>
 <style>
 
@@ -26,7 +28,7 @@
         <div class = "card" style="margin-left: 8%">
                <div class = "card-content">
                   <span class = "card-title"><h4>Adam Knox</h4></span>
-                   <p id="info-title"><b>Parents:</b> Linda and Thomas Knox</p>
+                   <p id="info-title"><b>Parents:</b> Chloe and Thomas Knox</p>
                    <p id="info-title"><b>Phone #:</b> 315-715-6927</p>
                    <p id="info-title"><b>Mom's #:</b> 315-241-2461</p>
                    <p id="info-title"><b>Dad's #:</b> 315-241-3416</p>
@@ -37,14 +39,47 @@
                </div>
 
                <div class = "card-action">
-                  <button class = "btn waves-effect waves-light blue lighten-2">
-                     <i class = "material-icons">mail</i></button>
+                    <a class="waves-effect waves-light btn view blue" onclick="$('#modal1').modal('open');">Email<i class="material-icons right">mail</i></a>
+
                   <a class = "right blue-grey-text" href = "/student/pre_session">
                      Pre-session</a>
                </div>
             </div>
 
     </div>
+
+    <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Email</h4>
+         <ul class="collection">
+            <li class="collection-item avatar">
+              <i class="material-icons circle blue"></i>
+              <span class="title">Adam</span>
+              <p>Adam Knox <br>
+                 adamknox@bullis.org
+              </p>
+
+            </li>
+
+            <li class="collection-item avatar">
+              <i class="material-icons circle green"></i>
+              <span class="title">Mom</span>
+              <p>Chloe Knox <br>
+                 chloeknox@gmail.com
+              </p>
+            </li>
+
+            <li class="collection-item avatar">
+              <i class="material-icons circle red"></i>
+              <span class="title">Dad</span>
+              <p>Thomas Knox <br>
+                 thomas-know@yahoo.com
+              </p>
+            </li>
+  </ul>
+    </div>
+  </div>
+
 
     <div class="col s12 m6 l6 right">
         <div class = "card right" style="margin-right: 8%; padding-left:3%">
@@ -63,8 +98,12 @@
     </div>
 
     <div style="clear: both"></div>
-
-
+<script>
+  $(document).ready(function() {
+    $('#modal1').modal();
+});
+</script>
 </body>
+
 
 </html>{% endblock %}
