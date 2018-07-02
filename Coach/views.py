@@ -24,6 +24,6 @@ def setup_view(request):
 def all_student_view(request):
     academic_coach = AcademicCoach.objects.get(username='marni')
     names = []
-    for student in academic_coach.student_set:
+    for student in Student.objects.filter(academic_coach=academic_coach):
         names.append(student.name)
     return render(request, 'coach/homepage.html', {'students': names, 'hidden': False})
