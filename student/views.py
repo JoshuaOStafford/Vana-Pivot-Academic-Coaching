@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from student.models import Student, AcademicCoach, School, Parent
 
 
-def profile_view(request):
-    student = 'Adam'
+def profile_view(request, username):
+    student = Student.objects.get(username=username)
     return render(request, 'student/profile.html', {'student': student})
 
 

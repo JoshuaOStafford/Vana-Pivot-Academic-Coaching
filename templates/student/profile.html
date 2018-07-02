@@ -27,14 +27,14 @@
     <div class="col s12 m6 l5 left">
         <div class = "card" style="margin-left: 8%">
                <div class = "card-content">
-                  <span class = "card-title"><h4>Adam Knox</h4></span>
+                  <span class = "card-title"><h4>{{ student.name }}</h4></span>
                    <p id="info-title"><b>Parents:</b> Chloe and Thomas Knox</p>
-                   <p id="info-title"><b>Phone #:</b> 315-715-6927</p>
+                   <p id="info-title"><b>Phone #:</b> {{ student.phone_number }}</p>
                    <p id="info-title"><b>Mom's #:</b> 315-241-2461</p>
                    <p id="info-title"><b>Dad's #:</b> 315-241-3416</p>
-                   <p id="info-title"><b>Birthday:</b> 7/12/2002</p>
-                   <p id="info-title"><b>School Name:</b>   <a href="https://www.bullis.org">Bullis School</a> &nbsp;&nbsp;&nbsp; <a href="https://www.bullis.org/page.cfm?p=845"><i class="fa fa-calendar fa-1x" aria-hidden="true"></i></a></p>
-                   <p id="info-title"><b>Grade Tracking:</b> <a href="https://www.powerschool.com">Power School</a></p>
+                   <p id="info-title"><b>Birthday:</b> {{ student.birthday }}</p>
+                   <p id="info-title"><b>School Name:</b>   <a href={{ student.school.website_link }}>{{ student.school.name }}</a> &nbsp;&nbsp;&nbsp; <a href={{ student.school.calendar_link }}><i class="fa fa-calendar fa-1x" aria-hidden="true"></i></a></p>
+                   <p id="info-title"><b>Grade Tracking:</b> <a href={{ student.grades_link }}></a>{{ student.grades_link }}</p>
 
                </div>
 
