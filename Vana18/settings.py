@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'Coach.apps.CoachConfig',
     'student.apps.StudentConfig',
     'core.apps.CoreConfig',
-    'metrics.apps.MetricsConfig'
 ]
 
 MIDDLEWARE = [
