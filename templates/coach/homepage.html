@@ -24,13 +24,13 @@
       <img class="activator" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8GxYgAAb0jQ/cAAAAASUVORK5CYII=" height="120">
     </div>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">{{ student }}<i class="material-icons right">more_vert</i></span>
+      <span class="card-title activator grey-text text-darken-4">{{ student.0 }}<i class="material-icons right">more_vert</i></span>
       <p><a href="#">Profile</a></p>
     </div>
     <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">{{ student }}<i class="material-icons right">close</i></span>
+      <span class="card-title grey-text text-darken-4">{{ student.0 }}<i class="material-icons right">close</i></span>
         <br>
-        <a class="waves-effect waves-light btn blue left" href="/student/profile" style="width: 49%; padding:0">Profile</a>
+        <a class="waves-effect waves-light btn blue left" href="/student/{{ student.1 }}/profile" style="width: 49%; padding:0">Profile</a>
           <a class="waves-effect waves-light btn red right" href="/student/schedule" style="width: 49%; padding:0">Schedule</a>
             <div style="clear: both; margin-bottom: 4%"></div>
             <a class="waves-effect waves-light btn green left" href="/student/pre_session" style="width: 49%; padding:0">Pre-session</a>
