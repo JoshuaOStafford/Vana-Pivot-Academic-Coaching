@@ -21,8 +21,8 @@ def setup_view(request):
         return redirect('/marni/home')
 
 
-def all_student_view(request, user_username):
-    academic_coach = AcademicCoach.objects.get(username=user_username)
+def all_student_view(request):
+    academic_coach = AcademicCoach.objects.get(username='marni')
     names = []
     for student in academic_coach.student_set:
         names.append(student.name)
