@@ -28,14 +28,14 @@
         <div class = "card" style="margin-left: 8%">
                <div class = "card-content">
                   <span class = "card-title"><h4>{{ student.name }}</h4></span>
-                   <p id="info-title"><b>Parents:</b> Chloe and Thomas Knox</p>
+                   <p id="info-title"><b>Parents:</b> {% for parent in student.parent_set.all %} {{ parent.name }} &nbsp;{% endfor %}</p>
                    <p id="info-title"><b>Phone #:</b> {{ student.phone_number }}</p>
                    <p id="info-title"><b>Mom's #:</b> 315-241-2461</p>
                    <p id="info-title"><b>Dad's #:</b> 315-241-3416</p>
                    <p id="info-title"><b>Birthday:</b> {{ student.birthday }}</p>
                    <p id="info-title"><b>School Name:</b>   <a href={{ student.school.website_link }}>{{ student.school.name }}</a> &nbsp;&nbsp;&nbsp; <a href={{ student.school.calendar_link }}><i class="fa fa-calendar fa-1x" aria-hidden="true"></i></a></p>
                    <p id="info-title"><b>Grade Tracking:</b> <a href={{ student.grades_link }}>{{ student.grades_link }}</a></p>
-
+                   <p id="info-title"><b>Zoom link:</b> <a href={{ student.zoom_link }}>{{ student.zoom_link }}</a></p>
                </div>
 
                <div class = "card-action">
@@ -54,28 +54,21 @@
          <ul class="collection">
             <li class="collection-item avatar">
               <i class="material-icons circle blue"></i>
-              <span class="title">Adam</span>
-              <p>Adam Knox <br>
-                 adamknox@bullis.org
+              <span class="title">{{ student.name }}</span>
+              <p>{{ student.email }}<br>
               </p>
 
             </li>
 
-            <li class="collection-item avatar">
-              <i class="material-icons circle green"></i>
-              <span class="title">Mom</span>
-              <p>Chloe Knox <br>
-                 chloeknox@gmail.com
+            {% for parent in student.parent_set.all %}
+             <li class="collection-item avatar">
+              <i class="material-icons circle blue"></i>
+              <span class="title">{{ parent.name }}</span>
+              <p>{{ parent.email }}
               </p>
-            </li>
 
-            <li class="collection-item avatar">
-              <i class="material-icons circle red"></i>
-              <span class="title">Dad</span>
-              <p>Thomas Knox <br>
-                 thomas-knox@yahoo.com
-              </p>
             </li>
+             {% endfor %}
   </ul>
     </div>
   </div>
@@ -85,9 +78,9 @@
         <div class = "card right" style="margin-right: 8%; padding-left:3%">
             <div class = "card-content">
                   <span class = "card-title text-center"><h4>Contact History</h4></span></div>
-            <p id="info-title"><b>June 6th, 2018:</b> Initial meeting with both parents.</p>
-            <p id="info-title"><b>June 13th, 2018:</b> Met with Adam and discussed price with parents.</p>
-            <p id="info-title"><b>July 15th, 2018:</b> First session with Adam</p>
+            {% for contact in contacts %}
+            <p id="info-title"><b>{{ contact.date }}</b> {{ contact.message }}</p>
+            {% endfor %}
             <br>
             <div class = "card-action text-center">
                   <button class = "btn-floating btn-large waves-effect waves-light red lighten-1">
