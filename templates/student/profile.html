@@ -30,8 +30,9 @@
                   <span class = "card-title"><h4>{{ student.name }}</h4></span>
                    <p id="info-title"><b>Parents:</b> {% for parent in student.parent_set.all %} {{ parent.name }} &nbsp;{% endfor %}</p>
                    <p id="info-title"><b>Phone #:</b> {{ student.phone_number }}</p>
-                   <p id="info-title"><b>Mom's #:</b> 315-241-2461</p>
-                   <p id="info-title"><b>Dad's #:</b> 315-241-3416</p>
+                   {% for parent in student.parent_set.all %}
+                   <p id="info-title"><b>{{ parent.name }}'s #</b> {{ parent.phone_number }}</p>
+                    {% endfor %}
                    <p id="info-title"><b>Birthday:</b> {{ student.birthday }}</p>
                    <p id="info-title"><b>School Name:</b>   <a href={{ student.school.website_link }}>{{ student.school.name }}</a> &nbsp;&nbsp;&nbsp; <a href={{ student.school.calendar_link }}><i class="fa fa-calendar fa-1x" aria-hidden="true"></i></a></p>
                    <p id="info-title"><b>Grade Tracking:</b> <a href={{ student.grades_link }}>{{ student.grades_link }}</a></p>

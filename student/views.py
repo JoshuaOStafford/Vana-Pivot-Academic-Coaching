@@ -7,14 +7,15 @@ def profile_view(request, username):
     parents = []
     for parent in student.parent_set.all():
         parents.append(parent)
-    # contacts = Contact.objects.filter(student=student)
+    contacts = Contact.objects.filter(student=student)
+
+    # still need to add form of some sort.
     if request.method == 'POST':    # academic coach adding to CRM
         date = request.POST['date']
         msg = request.POST['msg']
         contact = Contact(student=student, date=date, message=msg)
         contact.save()
-        # still need to add form of some sort.
-    return render(request, 'student/profile.html', {'student': student, 'contacts': None, 'parents': parents})
+    return render(request, 'student/profile.html', {'student': student, 'contacts': contacts, 'parents': parents})
 
 
 def track_grades_view(request):

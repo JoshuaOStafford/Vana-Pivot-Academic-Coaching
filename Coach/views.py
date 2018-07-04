@@ -6,21 +6,21 @@ from datetime import date
 def setup_view(request):
     ready = True
     if ready:
-        rob = Student.objects.get(username='robtrone')
-        rob_dad = Parent(student=rob, name='David Trone', username='davidtrone',
-                         email='david.trone@gmail.com', phone_number='301-521-6146')
-        rob_dad.save()
+        rob_mom = Parent(student=Student.objects.get(username='robtrone'), name='June Trone', username='junetrone',
+                         email='june.trone@gmail.com', phone_number='301-771-2451')
+        rob_mom.save()
         return redirect('/marni/home')
     else:
         return redirect('/marni/home')
 
 
 def all_student_view(request):
+    nav_bar_hidden = True
     academic_coach = AcademicCoach.objects.get(username='marni')
     names = []
     for student in Student.objects.filter(academic_coach=academic_coach):
         names.append((student.name, student.username))
-    return render(request, 'coach/homepage.html', {'students': names, 'hidden': False})
+    return render(request, 'coach/homepage.html', {'students': names, 'nav_bar_hidden': nav_bar_hidden})
 
 
 def add_student_view(request):
