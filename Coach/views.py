@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
-from student.models import AcademicCoach, Student, School, Parent
+from student.models import AcademicCoach, Student, School, Parent, Contact
 from datetime import date
 
 
 def setup_view(request):
     ready = True
     if ready:
-        rob_mom = Parent(student=Student.objects.get(username='robtrone'), name='June Trone', username='junetrone',
-                         email='june.trone@gmail.com', phone_number='301-771-2451')
-        rob_mom.save()
+        # insert setup code here
+        rob = Student.objects.get(username='robtrone')
+        contact = Contact(student=rob, date=date.today(), message='Met with Rob and his parents to discuss program.')
+        contact.save()
         return redirect('/marni/home')
     else:
         return redirect('/marni/home')
