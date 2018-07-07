@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from student.models import AcademicCoach, Student, School, Parent, Contact
 from datetime import date
+from Vana18.forms import SignUpForm
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
 
 
 def setup_view(request):
@@ -31,7 +35,13 @@ def add_student_view(request):
                               birthday=date.today(), school=School.objects.get(name='No School Entered'),
                               email=student_email)
         new_student.save()
-        # copy over code to email a student
+        subject = "Invitation from " + academic_coach.name + ' to join Vana Learning'
+        message = new_student.name + ',\n\n' + academic_coach.name + ' has invited you to make an account on Vana Learning. ' \
+                                                                     'Your username is ' + new_student.username + '.\n\nPlease create your account' \
+                                                                                                               'by following this link: https://vana18.herokuapp.com/signup/' + new_student.username + '\n\nBest,\nThe Vana Learning Team'
+        sender_email = 'jstafford@vanalearning.com'
+        recipient_email = new_student.email
+        send_mail(subject, message, sender_email, [recipient_email])
     return render(request, 'coach/add_student.html', context=None)
 
 
@@ -42,7 +52,7 @@ def create_student_account_view(request, username):
         return redirect("https://www.vana-learning.com")
     if request.method == 'POST':
         phone_number = request.POST['phone_number']
-        # birthday = request.POST['birthday']
+        birthday = request.POST['birthday']
         grades_link = request.POST['grades_link']
         zoom_link = request.POST['zoom_link']
 
@@ -66,10 +76,29 @@ def create_student_account_view(request, username):
             parent2 = Parent(student=student, name=parent2_name, email=parent2_email, phone_number=parent2_phone)
             parent2.save()
         student.phone_number = phone_number
-        # student.birthday = birthday
+        student.birthday = birthday
         student.zoom_link = zoom_link
         student.grades_link = grades_link
         student.school = school
         student.save()
-
     return render(request, 'coach/create_student_account.html', {'student': student})
+
+
+def signup_view(request, username):
+    if Student.objects.filter(username=username).exists():
+        student = Student.objects.get(username=username)
+        if User.objects.filter(username=username).exists():
+            return redirect('/' + student.academic_coach.username + '/new_student/' + student.username)
+    else:
+        return redirect('https://www.vana-learning.com')
+    form = SignUpForm()
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = authenticate(username=request.POST['username'], password=request.POST['password1'])
+            login(request, user)
+            return redirect('/' + student.academic_coach.username + '/new_student/' + student.username)
+        else:
+            form = SignUpForm()
+    return render(request, 'registration/signup.html', {'form': form, 'student': student})

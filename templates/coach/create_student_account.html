@@ -11,15 +11,15 @@ body{
     background-color: whitesmoke;
 }
 </style>
-    <div align="center">
-    <h5>{{ student.name }}, please finish your account!</h5>
+
+    <h5 class="center-align">{{ student.name }}, please finish your account!</h5>
 
     <div class="row">
         <form action="/marni/new_student/{{ student.username }}" method="post">
                 {% csrf_token %}
 
         <div class="col s12 m12 l4 xl4 white" style="border:2px solid black; margin-left:10%; margin-right: 5%">
-            <h5>Your Information</h5>
+            <h5 class="center-align">Your Information</h5>
                 <div class="input-field col s12 l12">
                     <i class="material-icons prefix">phone</i>
                     <input id="phone_number" type="tel" class="validate" name="phone_number">
@@ -51,11 +51,12 @@ body{
                     <label for="zoom_link">Link to your Zoom Account</label>
                 </div>
 
+            <b>Birthday:</b> <div class="input-field"><input class="input-field inline" type="date" name="birthday"></div>
 
         </div>
 
         <div class="col s12 m12 l4 xl4 white" style="border:2px solid black; margin-left:5%; margin-right: 10%">
-            <h5>Parent Information</h5>
+            <h5 class="center-align">Parent Information</h5>
             <div class="input-field col s12">
                     <input id="parent1_name" type="text" class="validate" name="parent1_name">
                     <label for="parent1_name">Name of First Parent</label>
@@ -87,16 +88,17 @@ body{
                 <input id="parent2_phone" type="tel" class="validate" name="parent2_phone">
                 <label for="parent2_phone">Phone # for Second Parent</label>
              </div>
-
-        </div>
-        <div class="col s12" style="margin-top:2%">
+            <div class="col s12 l12">
+                <br>
             <button class="btn waves-effect waves-light blue lighten-2" type="submit" name="action">Submit!
                 <i class="material-icons right">send</i>
             </button>
+                <br><br>
+            </div>
         </div>
             </form>
     </div>
-    </div>
+
 
 
     <script>

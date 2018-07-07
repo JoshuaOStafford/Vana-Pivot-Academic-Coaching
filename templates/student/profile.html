@@ -1,16 +1,16 @@
 {% extends 'new_base.html' %}
 
 {% block content %}
-
+<br>
 <div class="row">
-    <div class="col s12 m6 l5 left">
-        <div class = "card" style="margin-left: 8%">
+    <div class="col s12 m6 l5" style="margin-left: 5%; margin-right: 3%">
+        <div class = "card">
                <div class = "card-content">
                   <span class = "card-title"><h4>{{ student.name }}</h4></span>
-                   <p id="info-title"><b>Parents:</b> {% for parent in student.parent_set.all %} {{ parent.name }} &nbsp;{% endfor %}</p>
+                   <p id="info-title"><b>Parents:</b> {% for parent in student.parent_set.all %} {{ parent.name }}{% if forloop.counter == 1 %} & {% endif %}{% endfor %}</p>
                    <p id="info-title"><b>Phone #:</b> {{ student.phone_number }}</p>
                    {% for parent in student.parent_set.all %}
-                   <p id="info-title"><b>{{ parent.name }}'s #</b> {{ parent.phone_number }}</p>
+                   <p id="info-title"><b>{{ parent.name }}'s #:</b> {{ parent.phone_number }}</p>
                     {% endfor %}
                    <p id="info-title"><b>Birthday:</b> {{ student.birthday }}</p>
                    <p id="info-title"><b>School Name:</b>   <a href={{ student.school.website_link }}>{{ student.school.name }}</a> &nbsp;&nbsp;&nbsp; <a href={{ student.school.calendar_link }}><i class="fa fa-calendar fa-1x" aria-hidden="true"></i></a></p>
@@ -54,10 +54,13 @@
   </div>
 
 
-    <div class="col s12 m6 l6 right">
-        <div class = "card right" style="margin-right: 8%; padding-left:3%">
+    <div class="col s12 m4 l5" style="margin-left: 3%; margin-right: 5%">
+        <div class = "card" style="padding-left:3%">
             <div class = "card-content">
                   <span class = "card-title text-center"><h4>Contact History</h4></span></div>
+            {% if no_contacts %}
+            <p id="info-title" class="text-center"><b>No contacts logged yet.</b></p>
+            {% endif %}
             {% for contact in contacts %}
             <p id="info-title"><b>{{ contact.date }}</b> {{ contact.message }}</p>
             {% endfor %}
