@@ -83,6 +83,7 @@ def create_student_account_view(request, username):
         student.grades_link = grades_link
         student.school = school
         student.save()
+        return redirect('/student/' + student.username + '/profile')
     return render(request, 'coach/create_student_account.html', {'student': student})
 
 
