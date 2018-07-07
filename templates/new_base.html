@@ -1,0 +1,65 @@
+<html>
+   <head>
+       {% load static %}
+        <link rel="icon" href="{% static "favicon.png" %}">
+
+       <title>Vana Learning</title>
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+        <link rel = "stylesheet"
+         href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel = "stylesheet"
+         href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+        <script type = "text/javascript"
+         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+        </script>
+
+           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+   </head>
+
+   <style>
+       nav {
+            background-color:white ;
+       }
+
+
+
+
+   </style>
+
+<body>
+<header>
+
+<nav>
+
+
+        <a href="https://www.vana-learning.com" class="brand-logo left"><img class="responsive-img" style="height: 64px" id="logo" src={% static "vanalogo.png" %}/></a>
+
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+        <li><a href="/marni/home" class="black-text">Home</a></li>
+        <li><a href="/student/{{ student.username }}/profile" class="black-text">Info</a></li>
+        <li><a href="/student/{{ student.username }}/schedule" class="black-text">Schedule</a></li>
+        <li><a href="/student/{{ student.username }}/pre-session" class="black-text">Pre-session</a></li>
+        <li><a href="/student/{{ student.username }}/track_grades" class="black-text">Track Grades</a></li>
+        <li><a href="/student/{{ student.username }}/track_habits" class="black-text">Track Habits</a></li>
+        <li><a href="/student/{{ student.username }}/visualize" class="black-text">Visualize</a></li>
+        <li><a href="/logout" class="black-text">Logout</a></li>
+
+    </ul>
+
+
+  </nav>
+</header>
+
+
+
+
+{% block content %}
+{% endblock %}
+
+
+</body>
+
+</html>

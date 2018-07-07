@@ -1,10 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Student</title>
-</head>
-<body>
+{% extends 'new_base.html' %}
 
-</body>
-</html>
+
+{% block content %}
+
+    <style>
+    body{
+        background: whitesmoke;
+    }
+    </style>
+
+        <h4 class="center">Add a New Student</h4>
+        <h6 class="center">All you need is the info below. They will complete the rest!</h6>
+        <br><br>
+         <form method="post" action="/marni/add_student/">
+            {% csrf_token %}
+             <div class = "row">
+                <div class="col s6 m6 l4 offset-l4 white" style="border:2px solid black;">
+                <br>
+                    <div class="input-field">
+                        <input id="name" type="text" name="name">
+                        <label for="name">Student's Name</label>
+                    </div>
+                                <br><br>
+                    <div class="input-field">
+                        <input id="username" type="text" name="username">
+                        <label for="username">Student's Username</label>
+                    </div>
+
+            <br><br>
+               <div class = "input-field">
+                  <input placeholder = "Account setup details will be sent to this email." id = "email" type = "email" name="email"
+                     class = "validate">
+                  <label for = "email">Student's Email</label>
+               </div>
+                    <br>
+                    <div align="center">
+              <button class="btn waves-effect waves-light blue lighten-2" type="submit" name="action">Get Started!
+                <i class="material-icons right">send</i>
+            </button>
+                        </div>
+            <br>
+            </div>
+             </div>
+
+
+
+
+
+
+
+
+         </form>
+
+{% endblock %}

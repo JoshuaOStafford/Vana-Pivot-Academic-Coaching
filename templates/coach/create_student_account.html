@@ -1,10 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'new_base.html' %}
+{% block content %}
 <head>
-    <meta charset="UTF-8">
+     <script type = "text/javascript"
+         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <title>Create Student Account</title>
 </head>
-<body>
 
-</body>
-</html>
+<style>
+body{
+    background-color: whitesmoke;
+}
+</style>
+    <div align="center">
+    <h5>{{ student.name }}, please finish your account!</h5>
+
+    <div class="row">
+        <form action="/marni/new_student/{{ student.username }}" method="post">
+                {% csrf_token %}
+
+        <div class="col s12 m12 l4 xl4 white" style="border:2px solid black; margin-left:10%; margin-right: 5%">
+            <h5>Your Information</h5>
+                <div class="input-field col s12 l12">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="phone_number" type="tel" class="validate" name="phone_number">
+                    <label for="phone_number">Your Phone #</label>
+                 </div>
+
+                <div class="input-field col s12">
+                    <input id="school_name" type="text" class="validate" name="school_name">
+                    <label for="school_name">School Name</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="school_website" type="text" class="validate" name="school_website">
+                    <label for="school_website">Link to School Website</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="school_calendar" type="text" class="validate" name="school_calendar">
+                    <label for="school_calendar">Link to School Calendar</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="grades_link" type="text" class="validate" name="grades_link">
+                    <label for="grades_link">Link to Online Grades Portal</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="zoom_link" type="text" class="validate" name="zoom_link">
+                    <label for="zoom_link">Link to your Zoom Account</label>
+                </div>
+
+
+        </div>
+
+        <div class="col s12 m12 l4 xl4 white" style="border:2px solid black; margin-left:5%; margin-right: 10%">
+            <h5>Parent Information</h5>
+            <div class="input-field col s12">
+                    <input id="parent1_name" type="text" class="validate" name="parent1_name">
+                    <label for="parent1_name">Name of First Parent</label>
+            </div>
+
+            <div class="input-field col s12">
+                    <input id="parent1_email" type="email" class="validate" name="parent1_email">
+                    <label for="parent1_email">Email of First Parent</label>
+            </div>
+
+            <div class="input-field col s12 l12">
+                <i class="material-icons prefix">phone</i>
+                <input id="parent1_phone" type="tel" class="validate" name="parent1_phone">
+                <label for="parent1_phone">Phone # for First Parent</label>
+             </div>
+
+            <div class="input-field col s12">
+                    <input id="parent2_name" type="text" class="validate" name="parent2_name">
+                    <label for="parent2_name">Name of Second Parent (if Applicable)</label>
+            </div>
+
+            <div class="input-field col s12">
+                    <input id="parent2_email" type="email" class="validate" name="parent2_email">
+                    <label for="parent2_email">Email of Second Parent</label>
+            </div>
+
+            <div class="input-field col s12 l12">
+                <i class="material-icons prefix">phone</i>
+                <input id="parent2_phone" type="tel" class="validate" name="parent2_phone">
+                <label for="parent2_phone">Phone # for Second Parent</label>
+             </div>
+
+        </div>
+        <div class="col s12" style="margin-top:2%">
+            <button class="btn waves-effect waves-light blue lighten-2" type="submit" name="action">Submit!
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+            </form>
+    </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function(){
+        $('.datepicker').datepicker();
+        });
+    </script>
+{% endblock %}
+
+{% comment %}
+<div class="row">
+                <div class="col s12 l12">
+                    Birthday:
+                <div class="input-field inline">
+                <input type="date" class="datepicker" id="birthday" name="birthday">
+                </div>
+                </div>
+                </div>
+
+{% endcomment %}

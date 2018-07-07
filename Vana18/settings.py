@@ -75,6 +75,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Vana18.wsgi.application'
 
+LOGIN_REDIRECT_URL = '/marni/home'
+
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases

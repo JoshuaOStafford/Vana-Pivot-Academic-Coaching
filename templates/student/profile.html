@@ -1,29 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'new_base.html' %}
 
-{% block body %}
+{% block content %}
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Student Profile</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-</head>
-<style>
-
-#info-title{
-    font-size: 125%;
-    margin-bottom: 1px;
-}
-
-</style>
-
-
-<body>
-<div class="row" style="margin-top: 7%">
+<div class="row">
     <div class="col s12 m6 l5 left">
         <div class = "card" style="margin-left: 8%">
                <div class = "card-content">
@@ -40,7 +19,7 @@
                </div>
 
                <div class = "card-action">
-                    <a class="waves-effect waves-light btn view blue" onclick="$('#modal1').modal('open');">Email<i class="material-icons right">mail</i></a>
+                    <a class="waves-effect waves-light btn view blue white-text" onclick="$('#modal1').modal('open');">Email<i class="material-icons right">mail</i></a>
 
                   <a class = "right blue-grey-text" href = "/student/pre_session">
                      Pre-session</a>
@@ -97,7 +76,5 @@
     $('#modal1').modal();
 });
 </script>
-</body>
 
-
-</html>{% endblock %}
+{% endblock %}
