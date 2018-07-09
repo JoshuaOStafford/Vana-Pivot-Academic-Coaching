@@ -56,12 +56,18 @@ def create_student_account_view(request, username):
         phone_number = request.POST['phone_number']
         birthday = request.POST['birthday']
         grades_link = request.POST['grades_link']
+        if grades_link[0:7] != 'https//' and grades_link[0:6] != 'http//':
+            grades_link = 'https://' + grades_link
         zoom_link = request.POST['zoom_link']
-
+        if zoom_link[0:7] != 'https//' and zoom_link[0:6] != 'http//':
+            zoom_link = 'https://' + zoom_link
         school_name = request.POST['school_name']
         school_website = request.POST['school_website']
+        if school_website[0:7] != 'https//' and school_website[0:6] != 'http//':
+            school_website = 'https://' + school_website
         school_calendar = request.POST['school_calendar']
-
+        if school_calendar[0:7] != 'https//' and school_calendar[0:6] != 'http//':
+            school_calendar = 'https://' + school_calendar
         school = School(name=school_name, website_link=school_website, calendar_link=school_calendar)
         school.save()
 
