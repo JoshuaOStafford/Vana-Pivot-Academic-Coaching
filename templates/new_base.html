@@ -40,7 +40,9 @@
 
         <li><a href="/marni/home" class="black-text">Home</a></li>
         <li><a href="/student/{{ student.username }}/profile" class="black-text">Info</a></li>
-        <li><a href="/student/{{ student.username }}/schedule" class="black-text">Schedule</a></li>
+        <li><a href="/student/{{ student.username }}/schedule" class="black-text">Schedule
+        {% if no_classes %}<span class="badge red white-text circle" data-badge-caption="">!</span> {% endif %}
+        </a></li>
         <li><a href="/student/{{ student.username }}/pre-session" class="black-text">Pre-session</a></li>
         <li><a href="/student/{{ student.username }}/track_grades" class="black-text">Track Grades</a></li>
         <li><a href="/student/{{ student.username }}/track_habits" class="black-text">Track Habits</a></li>

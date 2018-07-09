@@ -31,10 +31,10 @@
       <span class="card-title grey-text text-darken-4">{{ student.0 }}<i class="material-icons right">close</i></span>
         <br>
         <a class="waves-effect waves-light btn blue left" href="/student/{{ student.1 }}/profile" style="width: 49%; padding:0">Profile</a>
-          <a class="waves-effect waves-light btn red right" href="/student/schedule" style="width: 49%; padding:0">Schedule</a>
+          <a class="waves-effect waves-light btn red right" href="/student/{{ student.1 }}/schedule" style="width: 49%; padding:0">Schedule</a>
             <div style="clear: both; margin-bottom: 4%"></div>
             <a class="waves-effect waves-light btn green left" href="/student/pre_session" style="width: 49%; padding:0">Pre-session</a>
-          <a class="waves-effect waves-light btn  amber lighten-2 right" href="/student/track_grades" style="width: 49%; padding:0">Track Grades</a>
+          <a class="waves-effect waves-light btn  amber lighten-2 right" href="/student/{{ student.1 }}/track_grades" style="width: 49%; padding:0">Track Grades</a>
             <div style="clear: both; margin-bottom: 4%"></div>
           <a class="waves-effect waves-light btn purple lighten-3 left" href="/student/track_habits" style="width: 49%; padding:0">Track Habits</a>
           <a class="waves-effect waves-light btn grey right" href="/student/visualize" style="width: 49%; padding:0">Visualize</a>

@@ -1,16 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'new_base.html' %}
 
-{% block body %}
-<!DOCTYPE html>
-<html lang="en">
+{% block content %}
+
 <head>
     <meta charset="UTF-8">
     <title>Class Schedule</title>
 </head>
-<body>
 
 <div class="row" style="margin-top: 7%; width:90%">
-<table class="striped">
+{% if has_classes %}
+<table class="striped" style="border: 2px solid black;">
         <thead>
           <tr>
               <th>Subject</th>
@@ -21,58 +20,66 @@
         </thead>
 
         <tbody>
+        {% for class in student.class_set.all %}
           <tr>
-            <td>American History</td>
-            <td>Mr. Jones</td>
-            <td>Loves this class but tends to have missing work. Sits in the back..maybe move to the front row?</td>
-            <td></td>
+            <td>{{ class.name }}</td>
+            <td>{{ class.teacher }}</td>
+            <td>{{ class.notes }}</td>
+            <td>{{ class.late_work_policy }}</td>
           </tr>
-          <tr>
-            <td>Chemistry </td>
-            <td>Ms. Nguyen</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>English 10 </td>
-            <td>Mr. Smith</td>
-            <td></td>
-            <td></td>
-          </tr>
-            <tr>
-            <td>French I</td>
-            <td>Mrs. Duboi</td>
-            <td></td>
-            <td></td>
-          </tr>
-        <tr>
-            <td>Hope </td>
-            <td>Coach Latter</td>
-            <td></td>
-            <td></td>
-          </tr>
-        <tr>
-            <td>Calc </td>
-            <td>Dr. Jones</td>
-            <td></td>
-            <td></td>
-          </tr>
-        <tr>
-            <td>Dram II </td>
-            <td>Ms. Chase</td>
-            <td></td>
-            <td></td>
-          </tr>
-        <tr>
-            <td>Intensive Reading </td>
-            <td>Ms. Fink</td>
-            <td></td>
-            <td></td>
-          </tr>
+        {% endfor %}
+
         </tbody>
       </table>
+
+{% else %}
+    <h5 align="center">Please add your classes</h5>
+{% endif %}
+
+
+<div class="col s12 m12 l4 xl4 offset-l4 center-align">
+    <a class="waves-effect waves-light btn view red white-text modal-trigger" href="#class-modal"  style="margin-top: 5%;">Add Class<i class="material-icons right">add</i></a>
 </div>
-</body>
-</html>
+
+
+<div id="class-modal" class="modal">
+        <div class="modal-content">
+            <h4 class="center-align">Add a Class</h4>
+                <form method="post" action="/student/{{ student.username }}/schedule">
+                    {% csrf_token %}
+                    <div class="input-field col s12">
+                    <input id="class_name" type="text" class="validate" name="class_name">
+                    <label for="class_name">Subject</label>
+                    </div><div class="input-field col s12">
+                    <input id="class_teacher" type="text" class="validate" name="class_teacher">
+                    <label for="class_teacher">Teacher</label>
+                    </div><div class="input-field col s12">
+                    <input id="class_notes" type="text" class="validate" name="class_notes">
+                    <label for="class_notes">Notes About Class</label>
+                    </div><div class="input-field col s12">
+                    <input id="class_policy" type="text" class="validate" name="class_policy">
+                    <label for="class_policy">Late Work Policy for Class</label>
+                </div>
+                    <button class="btn waves-effect waves-light red" type="submit" name="action">Add
+                        <i class="material-icons right">add</i>
+                    </button>
+                    <a href="#" class="modal-close waves-effect waves-green btn-flat black white-text right">Close</a>
+                </form>
+
+        </div>
+
+
+  </div>
+
+
+</div>
+
+    <script>
+    $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+    </script>
+
 
 {% endblock %}
