@@ -97,7 +97,13 @@
         $('#follow_up').val('{{ session.coach_follow_up }}');
         $('#commitments').val('{{ session.student_commitments }}');
         $('#notes').val('{{ session.notes }}');
-
+        M.textareaAutoResize($('#celebrations'));
+        M.textareaAutoResize($('#missing_work'));
+        M.textareaAutoResize($('#questions'));
+        M.textareaAutoResize($('#due_dates'));
+        M.textareaAutoResize($('#follow_up'));
+        M.textareaAutoResize($('#commitments'));
+        M.textareaAutoResize($('#notes'));
 
 
     </script>
