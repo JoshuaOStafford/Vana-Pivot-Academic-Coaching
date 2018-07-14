@@ -11,18 +11,18 @@
 <h5 align="center">{{ student.name }}'s Grades</h5>
 
     <table class="responsive-table striped" style="width: 90%; margin: 5% 5% 5% 5%">
-        <tr style="border: 2px solid black">
-            <th style="border: 2px solid black; font-size: 150%;">Subject</th>
+        <tr>
+            <th>Subject</th>
             {% for score in student.class_set.first.classgrade_set.all %}
-                <th style="border: 2px solid black; font-size: 150%;">{{ score.date }}</th>
+                <th>{{ score.date }}</th>
             {% endfor %}
         </tr>
         {% for class in student.class_set.all %}
-        <tr style="border: 2px solid black">
+        <tr>
 
-            <td style="border: 2px solid black">{{ class.name }}</td>
+            <td>{{ class.name }}</td>
             {% for grade in class.classgrade_set.all %}
-                <td style="border: 2px solid black">{{ grade.score }}</td>
+                <td>{{ grade.score }}</td>
             {% endfor %}
         </tr>
         {% endfor %}
