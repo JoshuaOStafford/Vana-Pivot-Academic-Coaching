@@ -10,9 +10,10 @@ from django.core.mail import send_mail
 def setup_view(request):
     ready = True
     if ready:
-        school = School(name='No School Entered', website_link='https://www.vana-learning.com', calendar_link='https://www.vana-learning.com',
-                        state='NA')
-        school.save()
+        stevie = Student.objects.get(username='steviespens')
+        stevie.delete()
+        tom = Student.objects.get(username='tomsawyer')
+        tom.delete()
         return redirect('/marni/home')
     else:
         return redirect('/marni/home')

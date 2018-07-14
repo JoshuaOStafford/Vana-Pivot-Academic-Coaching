@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e8858b7-20ff-4605-b818-24cdab845f71" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/student/analyze_all_sessions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Coach/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Coach/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/coach/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coach/homepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/new_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/new_base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/student/pre_session.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/pre_session.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/schedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/schedule.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/track_grades.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/track_grades.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/track_habits.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/track_habits.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,7 +20,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/student/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
+            <state relative-caret-position="2175">
               <caret line="145" column="87" selection-start-line="145" selection-start-column="66" selection-end-line="145" selection-end-column="87" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
@@ -40,14 +29,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="analyze_all_sessions.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Coach/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="analyze_all_sessions.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/student/analyze_all_sessions.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
+            <state relative-caret-position="1302">
               <caret line="127" column="54" selection-start-line="127" selection-start-column="54" selection-end-line="127" selection-end-column="54" />
               <folding>
                 <element signature="e#322#356#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pre_session.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/student/pre_session.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -143,12 +153,12 @@
         <option value="$PROJECT_DIR$/templates/student/schedule.html" />
         <option value="$PROJECT_DIR$/templates/student/track_habits.html" />
         <option value="$PROJECT_DIR$/templates/new_base.html" />
-        <option value="$PROJECT_DIR$/templates/student/pre_session.html" />
-        <option value="$PROJECT_DIR$/Coach/views.py" />
         <option value="$PROJECT_DIR$/student/urls.py" />
         <option value="$PROJECT_DIR$/templates/coach/homepage.html" />
         <option value="$PROJECT_DIR$/student/views.py" />
         <option value="$PROJECT_DIR$/templates/student/analyze_all_sessions.html" />
+        <option value="$PROJECT_DIR$/templates/student/pre_session.html" />
+        <option value="$PROJECT_DIR$/Coach/views.py" />
       </list>
     </option>
   </component>
@@ -624,23 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Coach/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-980">
-          <caret line="22" column="73" selection-start-line="22" selection-start-column="73" selection-end-line="22" selection-end-column="73" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/student/pre_session.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/student/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -679,9 +672,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/student/analyze_all_sessions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1302">
+          <caret line="127" column="54" selection-start-line="127" selection-start-column="54" selection-end-line="127" selection-end-column="54" />
+          <folding>
+            <element signature="e#322#356#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/student/pre_session.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/student/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
+        <state relative-caret-position="2175">
           <caret line="145" column="87" selection-start-line="145" selection-start-column="66" selection-end-line="145" selection-end-column="87" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
@@ -689,12 +699,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/student/analyze_all_sessions.html">
+    <entry file="file://$PROJECT_DIR$/Coach/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="127" column="54" selection-start-line="127" selection-start-column="54" selection-end-line="127" selection-end-column="54" />
+        <state relative-caret-position="225">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
           <folding>
-            <element signature="e#322#356#0#HTML" expanded="true" />
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
