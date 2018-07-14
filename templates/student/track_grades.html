@@ -10,7 +10,7 @@
 <br>
 <h5 align="center">{{ student.name }}'s Grades</h5>
 
-    <table class="striped" style="width: 90%; margin: 5% 5% 5% 5%">
+    <table class="responsive-table striped" style="width: 90%; margin: 5% 5% 5% 5%">
         <tr style="border: 2px solid black">
             <th style="border: 2px solid black; font-size: 150%;">Subject</th>
             {% for score in student.class_set.first.classgrade_set.all %}
