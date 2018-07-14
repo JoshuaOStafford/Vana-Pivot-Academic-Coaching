@@ -10,10 +10,6 @@ from django.core.mail import send_mail
 def setup_view(request):
     ready = True
     if ready:
-        stevie = Student.objects.get(username='steviespens')
-        stevie.delete()
-        tom = Student.objects.get(username='tomsawyer')
-        tom.delete()
         return redirect('/marni/home')
     else:
         return redirect('/marni/home')
