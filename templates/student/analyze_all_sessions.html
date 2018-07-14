@@ -1,0 +1,175 @@
+{% extends 'new_base.html' %}
+
+{% block content %}
+
+<br>
+<div align="center">
+    <a class="waves-effect waves-light btn view orange white-text modal-trigger" href="#selection-modal">Change View
+        <i class="material-icons right">menu</i></a>
+</div>
+<br><br>
+{% if selected %}
+<table class="responsive-table striped" style="width: 90%; margin-left:5%">
+
+<thead>
+<tr>
+    <th>Session Date</th>
+    {% if all_categories_selected %}
+        <th>Celebrations</th>
+        <th>Missing Work</th>
+        <th>Questions</th>
+        <th>Upcoming Due Dates</th>
+        <th>Coach's Follow Up</th>
+        <th>Student's Commitments</th>
+        <th>Notes</th>
+
+    {% else %}
+    {% if celebrations_selected %}  <th>Celebrations</th> {% endif %}
+    {% if missing_work_selected %} <th>Missing Work</th>    {% endif %}
+    {% if questions_selected %}     <th>Questions</th>  {% endif %}
+    {% if due_dates_selected %} <th>Upcoming Due Dates</th>   {% endif %}
+    {% if follow_up_selected %} <th>Coach's Follow Up</th>   {% endif %}
+    {% if commitments_selected %}   <th>Student's Commitments</th> {% endif %}
+    {% if notes_selected %}     <th>Notes</th> {% endif %}
+
+    {% endif %}
+</tr>
+</thead>
+<tbody>
+{% for ss in selected_sessions %}
+    <tr>
+    {% if all_categories_selected %}
+        <td>{{ ss.date }}</td>
+        <td>{{ ss.celebrations }}</td>
+        <td>{{ ss.missing_work }}</td>
+        <td>{{ ss.questions_about_session }}</td>
+        <td>{{ ss.upcoming_due_dates }}</td>
+        <td>{{ ss.coach_follow_up }}</td>
+        <td>{{ ss.student_commitments }}</td>
+        <td>{{ ss.notes }}</td>
+    {% else %}
+        <td>{{ ss.date }}</td>
+        {% if celebrations_selected %}  <td>{{ ss.celebrations }}</td> {% endif %}
+        {% if missing_work_selected %} <td>{{ ss.missing_work }}</td>    {% endif %}
+        {% if questions_selected %}     <td>{{ ss.questions_about_session }}</td>  {% endif %}
+        {% if due_dates_selected %} <td>{{ ss.upcoming_due_dates }}</td>   {% endif %}
+        {% if follow_up_selected %} <td>{{ ss.coach_follow_up }}</td>   {% endif %}
+        {% if commitments_selected %}   <td>{{ ss.student_commitments }}</td> {% endif %}
+        {% if notes_selected %}     <td>{{ ss.notes }}</td> {% endif %}
+    {% endif %}
+    </tr>
+
+{% endfor %}
+</tbody>
+</table>
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {# code for modal form to select view for table #}
+
+<div id="selection-modal" class="modal">
+        <div class="modal-content">
+    <h5 align="center">Select categories to view</h5>
+
+    <form action="/student/{{ student.username }}/all_sessions" method="post">
+    {% csrf_token %}
+        <div class="row">
+        <div class="col s4">
+            <input type="checkbox" name="all_categories" id="all_categories" checked={{ all_categories_selected }}/>
+            <label for="all_categories">
+                <span>Select All</span>
+            </label>
+        </div>
+        <div class="col s4">
+            <input type="checkbox" name="celebrations" id="celebrations"/>
+            <label for="celebrations">
+                <span>Celebrations</span>
+            </label>
+        </div>
+        <div class="col s4">
+        <input type="checkbox" name="missing_work" id="missing_work"/>
+    <label for="missing_work">
+        <span>Missing Work</span>
+    </label></div>
+        <div class="col s4">
+        <input type="checkbox" name="questions" id="questions"/>
+    <label for="questions">
+        <span>?'s About Session</span>
+    </label></div>
+        <div class="col s4">
+        <input type="checkbox" name="due_dates" id="due_dates"/>
+    <label for="due_dates">
+        <span>Upcoming Due Dates</span>
+    </label></div>
+        <div class="col s4">
+        <input type="checkbox" name="follow_up" id="follow_up"/>
+    <label for="follow_up">
+        <span>Coach's Follow Up</span>
+    </label></div>
+        <div class="col s4">
+        <input type="checkbox" name="commitments" id="commitments"/>
+    <label for="commitments">
+        <span>Student's Commitments</span>
+    </label></div>
+        <div class="col s4">
+        <input type="checkbox" name="notes" id="notes"/>
+    <label for="notes">
+        <span>Notes</span>
+    </label></div>
+</div>
+
+
+        <h5 align="center">Select sessions to view</h5>
+    <div class="row">
+        <div class="col s6">
+        <input type="checkbox" name="all_sessions" id="all_sessions" checked="checked"/>
+    <label for="all_sessions">
+        <span>All Sessions</span>
+    </label></div>
+        {% for session in sessions %}
+        <div class="col s6">
+            <input type="checkbox" name="session-{{ session.id }}" id="session-{{ session.id }}"/>
+            <label for="session-{{ session.id }}">
+                <span>Session on {{ session.date }}</span>
+            </label>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div align="center">
+        <button class="btn waves-effect waves-light blue" type="submit" name="action">View
+            <i class="material-icons right">search</i>
+        </button>
+    </div>
+    </form>
+    </div>
+             </div>
+
+
+
+
+
+
+<script>
+$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+</script>
+
+
+
+{% endblock %}

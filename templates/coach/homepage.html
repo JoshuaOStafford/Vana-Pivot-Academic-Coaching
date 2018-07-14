@@ -1,21 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'new_base.html' %}
 {% load staticfiles %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
+
+{% block content %}
 
 
-{% block body %}
-<body>
-
-<br><br><br><br>
+<br><br>
 <div class="row">
 
-{% for student in students %}
+{% for member in students %}
 
 
     <div class="col s12 m6 l3 xl3">
@@ -24,19 +17,19 @@
       <img class="activator" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEX///+nxBvIAAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8GxYgAAb0jQ/cAAAAASUVORK5CYII=" height="120">
     </div>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">{{ student.0 }}<i class="material-icons right">more_vert</i></span>
+      <span class="card-title activator grey-text text-darken-4">{{ member.0 }}<i class="material-icons right">more_vert</i></span>
       <p><a href="#">Profile</a></p>
     </div>
     <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">{{ student.0 }}<i class="material-icons right">close</i></span>
+      <span class="card-title grey-text text-darken-4">{{ member.0 }}<i class="material-icons right">close</i></span>
         <br>
-        <a class="waves-effect waves-light btn blue left" href="/student/{{ student.1 }}/profile" style="width: 49%; padding:0">Profile</a>
-          <a class="waves-effect waves-light btn red right" href="/student/{{ student.1 }}/schedule" style="width: 49%; padding:0">Schedule</a>
+        <a class="waves-effect waves-light btn blue left" href="/student/{{ member.1 }}/profile" style="width: 49%; padding:0">Profile</a>
+          <a class="waves-effect waves-light btn red right" href="/student/{{ member.1 }}/schedule" style="width: 49%; padding:0">Schedule</a>
             <div style="clear: both; margin-bottom: 4%"></div>
-            <a class="waves-effect waves-light btn green left" href="/student/pre_session" style="width: 49%; padding:0">Pre-session</a>
-          <a class="waves-effect waves-light btn  amber lighten-2 right" href="/student/{{ student.1 }}/track_grades" style="width: 49%; padding:0">Track Grades</a>
+            <a class="waves-effect waves-light btn green left" href="/student/{{ member.1 }}/pre_session" style="width: 49%; padding:0">Pre-session</a>
+          <a class="waves-effect waves-light btn  amber lighten-2 right" href="/student/{{ member.1 }}/track_grades" style="width: 49%; padding:0">Track Grades</a>
             <div style="clear: both; margin-bottom: 4%"></div>
-          <a class="waves-effect waves-light btn purple lighten-3 left" href="/student/track_habits" style="width: 49%; padding:0">Track Habits</a>
+          <a class="waves-effect waves-light btn purple lighten-3 left" href="/student/{{ member.1 }}/track_habits" style="width: 49%; padding:0">Track Habits</a>
           <a class="waves-effect waves-light btn grey right" href="/student/visualize" style="width: 49%; padding:0">Visualize</a>
             <div style="clear: both; margin-bottom: 4%"></div>
     </div>
@@ -51,6 +44,4 @@
 
 
 </div>
-</body>
 {% endblock %}
-</html>

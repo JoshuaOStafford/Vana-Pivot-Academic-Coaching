@@ -7,7 +7,7 @@
     <title>Class Schedule</title>
 </head>
 
-<div class="row" style="margin-top: 7%; width:90%">
+<div class="row" style="margin-top: 5%; width:90%">
 {% if has_classes %}
 <table class="striped" style="border: 2px solid black;">
         <thead>
@@ -16,6 +16,7 @@
               <th>Teacher</th>
               <th>Notes About Class</th>
               <th>Late Work Policy</th>
+              <th>Edit</th>
           </tr>
         </thead>
 
@@ -26,6 +27,9 @@
             <td>{{ class.teacher }}</td>
             <td>{{ class.notes }}</td>
             <td>{{ class.late_work_policy }}</td>
+            <td>
+                <a class="btn-floating btn-large waves-effect waves-light black modal-trigger" href="#{{ class.id }}-edit-modal"><i class="material-icons">edit</i></a>
+            </td>
           </tr>
         {% endfor %}
 
@@ -69,7 +73,38 @@
         </div>
 
 
-  </div>
+</div>
+
+{% for class in student.class_set.all %}
+<div id="{{ class.id }}-edit-modal" class="modal">
+        <div class="modal-content">
+            <h4 class="center-align">Edit {{ class.name }}</h4>
+                <form method="post" action="/student/{{ student.username }}/edit-class/{{ class.id }}">
+                    {% csrf_token %}
+                    <div class="input-field col s12">
+                    <input id="disabled" type="text" class="validate" name="class_name" value="{{ class.name }}">
+                    <label for="class_name">Subject</label>
+                    </div><div class="input-field col s12">
+                    <input id="class_teacher" type="text" class="validate" name="new_teacher" value="{{ class.teacher }}">
+                    <label for="class_teacher">Teacher</label>
+                    </div><div class="input-field col s12">
+                    <input id="class_notes" type="text" class="validate" name="new_notes" value="{{ class.notes }}">
+                    <label for="class_notes">Notes About Class</label>
+                    </div><div class="input-field col s12">
+                    <input id="class_policy" type="text" class="validate" name="new_policy" value="{{ class.late_work_policy }}">
+                    <label for="class_policy">Late Work Policy for Class</label>
+                </div>
+                    <button class="btn waves-effect waves-light red" type="submit" name="action">Change
+                        <i class="material-icons right">edit</i>
+                    </button>
+                    <a href="#" class="modal-close waves-effect waves-green btn-flat black white-text right">Close</a>
+                </form>
+
+        </div>
+
+
+</div>
+{% endfor %}
 
 
 </div>

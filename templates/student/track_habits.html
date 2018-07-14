@@ -1,183 +1,125 @@
-{% extends 'base.html' %}
-
-{% block body %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'new_base.html' %}
+{% block content %}
 <head>
-    <meta charset="UTF-8">
     <title>Track Habits</title>
 </head>
-<style>
+
+    <style>
+    body{
+        background-color: white;
+    }
+    .habit-row {
+        margin-top: 3%;
+        margin-left: 8%;
+        margin-right: 8%;
+        background-color: white;
+    }
+    </style>
+
+    {% for habit in student.habit_set.all %}
+    <div class="row valign-wrapper habit-row">
+
+    <div class="col s12 m4 l6 xl4">
+        <div class="card">
+
+        <div class="card-content grey-text text-darken-4 activator">
+            <h4 class="activator">{{ habit.title }}</h4>
+        </div>
+        <div class="card-action activator">
+            {% if habit.habitscore_set.last is None %}
+            No scores to report
+            <a class="modal-trigger right black-text" href="#view-habit-{{ habit.id }}"><b>Expand</b></a>
+            {% else %}
+            Most Recent Score: <b>{{ habit.habitscore_set.last.score }}</b> on {{ habit.habitscore_set.last.date }}
+            {% endif %}
+        </div>
+        <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{ habit.title }}<i class="material-icons right">close</i></span>
+            <b class="center-align">{{ habit.rubric_question }}</b>
+            <p class="center-align">{{ habit.rubric_answer }}</p>
+
+        </div>
+        </div>
+        </div>
 
 
-.range {
-  display: inline-block;
-  margin: 36px 20px 20px
-}
 
-input[type=range] {
-  -webkit-appearance: none;
-  position: relative
-}
+    <div class="col s12 m4 l6 xl6">
+    <form action="/student/{{ student.username }}/track_habits/{{ habit.id }}" method="post">
+                {% csrf_token %}
 
-input[type=range]::-webkit-slider-runnable-track {
-  width: 3000px;
-  height: 2px;
-  border: none;
-  border-radius: 3px
-}
+                <p class="range-field" style="width: 100%">
+                 <input type="range" id="score" min="0" max="10" step="1" value="0" name="score" />
+                </p>
 
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 12px;
-  width: 12px;
-  border-radius: 510%;
-  background: #141414;
-  border: 2px solid #515151;
-  margin-top: -5px;
-  cursor: pointer
-}
 
-.focused::-webkit-slider-thumb {
-  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.15)
-}
+            <button class="btn waves-effect waves-light blue" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+            </button>
+    </form>
 
-.clicked::-webkit-slider-thumb {
-  -webkit-transform: scale(1.5)
-}
-
-.disabled::-webkit-slider-thumb {
-  -webkit-transform: scale(0.9);
-  box-shadow: 0 0 0 3px #141414;
-  background: #515151 !important;
-  border-color: #515151 !important
-}
-
-input[type=range]:focus {
-  outline: none
-}
-
-.rangeM input[type=range].disabled::-webkit-slider-runnable-track {
-  background: #515151!important
-}
-
-.rangeM input[type=range]::-webkit-slider-thumb {
-  background: #3f51b5;
-  border-color: #3f51b5
-}
-
-.range:hover input[type=range]:before {
-  color: white;
-  content: '50';
-  position: absolute;
-  top: -49px;
-  background: #3f51b5;
-  padding: 8px 0 3px;
-  font-size: 14px;
-  width: 30px;
-  text-align: center;
-  border-radius: 100% 100% 0 0
-}
-
-.range:hover input[type=range]:after {
-  content: '';
-  position: absolute;
-  top: -19px;
-  left: 50px;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 8px solid #3f51b5;
-}
-</style>
-<body>
-
-<div id="page-title">Track Habits</div>
-<div class="row">
-
-    <div class="col s2 margin-changer"><div class="card-panel white center-align flow-text less-padding">Late Work</div></div>
-
-    <div class="col s6 margin-changer"><div class="card-panel white" style="padding: 15px">
-       <b>Is Leo turning in all of his hw on time?</b>
-            <br>
-        10=turned everything in on time,
-        7=turned one minor assignment in only a few days late,
-        5=turned in multiple assignments late,
-        3=turned most assignments in late and/or there is one assignment that is more than a week late
-    </div></div>
-
-    <div class="col s2 margin-changer">
-      <input type="range" max="10" value="0" style="width:100%!important;" class="clicked">
     </div>
 
-    <div class="col s2 margin-changer">
-        <br>
-        <a class="waves-effect waves-light btn-large blue lighten-2"><i class="material-icons right">send</i>Submit</a>
-    </div></div>
-
-<div class="row">
-
-    <div class="col s2 margin-changer"><div class="card-panel white  flow-text center-align less-padding">Stress</div></div>
-
-    <div class="col s6 margin-changer"><div class="card-panel white" style="padding: 15px">
-        <b>How much stress did Leo feel last week?</b><br>
-        10= low stress 7=average  5=higher stress 3=very high 1=meltdown!
-    </div></div>
-
-    <div class="col s2 margin-changer">
-      <input type="range" max="10" value="0" style="width:100%!important;" class="clicked">
     </div>
 
-    <div class="col s2 margin-changer">
-        <br>
-        <a class="waves-effect waves-light btn-large blue lighten-2"><i class="material-icons right">send</i>Submit</a>
-    </div></div>
-
-
-
-    <div class="row">
-        <div class="col s12 m12 l12 center-align">
-            <a class="waves-effect waves-light btn red"><i class="material-icons right">add</i>Add New Habit</a>
-
+    <div class="modal" id="view-habit-{{ habit.id }}">
+        <div class="modal-content">
+            <h4 class="center-align">{{ habit.title }}</h4><br>
+            <b class="center-align">{{ habit.rubric_question }}</b>
+            <p class="center-align">{{ habit.rubric_answer }}</p>
         </div>
     </div>
 
 
 
+    {% endfor %}
+
+    <div class="col s12 m12 l4 xl4 offset-l4 center-align">
+        <a class="waves-effect waves-light btn view red white-text modal-trigger" href="#new-habit"  style="margin-top: 5%;">New Habit<i class="material-icons right">add</i></a>
+    </div>
+
+    <div id="new-habit" class="modal">
+        <div class="modal-content">
+            <h4 class="center-align">New Habit</h4>
+                <form method="post" action="/student/{{ student.username }}/track_habits">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="input-field">
+                                <input id="habit_title" type="text" class="validate" name="habit_title">
+                                <label for="habit_title">Habit Title</label>
+                             </div>
+                            <div class="input-field">
+                                <input id="rubric_question" type="text" class="validate" name="rubric_question">
+                                <label for="rubric_question">Rubric Question</label>
+                             </div>
+                            <div class="input-field">
+                                <input id="rubric_answer" type="text" class="validate" name="rubric_answer">
+                                <label for="rubric_answer">Rubric Answer</label>
+                             </div>
+                         </div>
+
+
+                    </div>
+                    <button class="btn waves-effect waves-light red" type="submit" name="action">Submit
+                        <i class="material-icons right">add</i>
+                    </button>
+                    <a href="#" class="modal-close waves-effect waves-green btn-flat black white-text right">Close</a>
+                </form>
+        </div>
+    </div>
 
 
 
+    <script>
+    $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
 
-
-<script>
-    $('input[type=range]').wrap("<div class='range'></div>");
-var i = 1;
-
-$('.range').each(function() {
-  var n = this.getElementsByTagName('input')[0].value;
-  var x = (n / 100) * (this.getElementsByTagName('input')[0].offsetWidth - 8) - 12;
-  this.id = 'range' + i;
-  if (this.getElementsByTagName('input')[0].value == 0) {
-    this.className = "range"
-  } else {
-    this.className = "range rangeM"
-  }
-  this.innerHTML += "<style>#" + this.id + " input[type=range]::-webkit-slider-runnable-track {background:linear-gradient(to right, #3f51b5 0%, #3f51b5 " + n + "%, #515151 " + n + "%)} #" + this.id + ":hover input[type=range]:before{content:'" + n + "'!important;left: " + x + "px;} #" + this.id + ":hover input[type=range]:after{left: " + x + "px}</style>";
-  i++
-});
-
-$('input[type=range]').on("input", function() {
-  var a = this.value;
-  var p = (a / 10) * (this.offsetWidth - 8) - 12;
-  if (a == 0) {
-    this.parentNode.className = "range"
-  } else {
-    this.parentNode.className = "range rangeM"
-  }
-  this.parentNode.getElementsByTagName('style')[0].innerHTML += "#" + this.parentNode.id + " input[type=range]::-webkit-slider-runnable-track {background:linear-gradient(to right, #3f51b5 0%, #3f51b5 " + a + "%, #515151 " + a + "%)} #" + this.parentNode.id + ":hover input[type=range]:before{content:'" + a + "'!important;left: " + p + "px;} #" + this.parentNode.id + ":hover input[type=range]:after{left: " + p + "px}";
-})
-</script>
-
-</body>
-</html>
+    $(document).ready(function(){
+    $('select').formSelect();
+  });
+    </script>
 
 {% endblock %}

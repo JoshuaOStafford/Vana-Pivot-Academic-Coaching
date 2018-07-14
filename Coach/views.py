@@ -19,12 +19,13 @@ def setup_view(request):
 
 
 def all_student_view(request):
-    nav_bar_hidden = True
+    if request.user.username != 'marni':
+        return redirect('/student/' + request.user.username + '/profile')
     academic_coach = AcademicCoach.objects.get(username='marni')
     names = []
     for student in Student.objects.filter(academic_coach=academic_coach):
         names.append((student.name, student.username))
-    return render(request, 'coach/homepage.html', {'students': names, 'nav_bar_hidden': nav_bar_hidden})
+    return render(request, 'coach/homepage.html', {'students': names, 'student': None})
 
 
 def add_student_view(request):

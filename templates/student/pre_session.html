@@ -1,59 +1,110 @@
-{% extends 'base.html' %}
+{% extends 'new_base.html' %}
 
-{% block body %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Pre Session</title>
-</head>
-<body>
-<div id="page-title"><li class="waves-effect"><a href="#"><i class="material-icons">chevron_left</i></a></li>   June 25th, 2018   <li class="waves-effect"><a href="#"><i class="material-icons">chevron_right</i></a></li></div>
-<br>
+{% block content %}
+
+    {% if active_session %}
+    <div align="center"><h5>{{ student.name }}'s Session on {{ session.date }}</h5></div>
+        <br>
 <div class="row">
-    <form>
-      <div class="row">
+    <form action="/student/{{ student.username }}/save_session/{{ session.id }}" method="post">
+        {% csrf_token %}
         <div class="input-field col s12 m6 l6">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Celebrations</label>
+          <textarea id="celebrations" class="materialize-textarea" name="celebrations" value="hi"></textarea>
+          <label for="celebrations">Celebrations</label>
         </div>
           <div class="input-field col s12 m6 l6">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Missing Work</label>
+          <textarea id="missing_work" class="materialize-textarea" name="missing_work"></textarea>
+          <label for="missing_work">Missing Work</label>
         </div>
-      </div>
-        <br>
-        <div class="row">
+
         <div class="input-field col s12 m6 l6">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Questions About Session</label>
+          <textarea id="questions" class="materialize-textarea" name="questions"></textarea>
+          <label for="questions">Questions About Session</label>
+         </div>
+            <div class="input-field col s12 m6 l6">
+          <textarea id="due_dates" class="materialize-textarea" name="due_dates"></textarea>
+          <label for="due_dates">Upcoming Due Dates</label>
+        </div>
+
+
+
+        <div class="input-field col s12 m6 l6">
+          <textarea id="follow_up" class="materialize-textarea" name="follow_up"></textarea>
+          <label for="follow_up">Coach's Follow Up</label>
         </div>
             <div class="input-field col s12 m6 l6">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Upcoming Due Dates</label>
+          <textarea id="commitments" class="materialize-textarea" name="commitments"></textarea>
+          <label for="commitments">Student's Commitments</label>
         </div>
-      </div>
-        <br>
-        <div class="row">
-        <div class="input-field col s12 m6 l6">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Coach's Follow Up</label>
-        </div>
-            <div class="input-field col s12 m6 l6">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Student's Commitments</label>
-        </div>
-      </div>
-        <br>
-        <div class="row">
+
+
+
         <div class="input-field col s12 m12 l12">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
-          <label for="textarea1">Notes</label>
+          <textarea id="notes" class="materialize-textarea" name="notes"></textarea>
+          <label for="notes">Notes</label>
         </div>
+        {% if request.user.username == 'marni' %}
+        <div align="center">
+        <button class="btn waves-effect waves-light green lighten-1" type="submit" name="action">Save all
+                        <i class="material-icons right">save</i>
+        </button>
+        <a class="btn waves-effect waves-light black modal-trigger" href="#new-session-modal">New Session<i class="material-icons right">add</i></a>
+        <a class="btn waves-effect waves-light black modal-trigger yellow darken-1" href="/student/{{ student.username }}/all_sessions">Analyze All Sessions<i class="material-icons right">bubble_chart</i></a>
         </div>
+        {% endif %}
     </form>
   </div>
+        {% else %}
+        <div align="center">
+            <a class="btn waves-effect waves-light black modal-trigger" href="#new-session-modal">New Session<i class="material-icons right">add</i></a>
+        </div>
+    {% endif %}
 
-</body>
-</html>
+
+
+
+    <div id="new-session-modal" class="modal">
+        <div class="modal-content">
+            <h4 class="center-align">Create a New Session</h4>
+                <form method="post" action="/student/{{ student.username }}/pre_session">
+                    {% csrf_token %}
+                     <div class="col s4 offset-s4">
+                        <b>Date of Session:</b><input class="input-field" type="date" name="new_session_date">
+                     </div>
+
+                    <button class="btn waves-effect waves-light red" type="submit" name="action">Create
+                        <i class="material-icons right">add</i>
+                    </button>
+                    <a href="#" class="modal-close waves-effect waves-green btn-flat black white-text right">Close</a>
+                </form>
+
+        </div>
+
+
+    </div>
+
+    <script>
+    $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+
+        $('#celebrations').val('{{ session.celebrations }}');
+        $('#missing_work').val('{{ session.missing_work }}');
+        $('#questions').val('{{ session.questions_about_session }}');
+        $('#due_dates').val('{{ session.upcoming_due_dates }}');
+        $('#follow_up').val('{{ session.coach_follow_up }}');
+        $('#commitments').val('{{ session.student_commitments }}');
+        $('#notes').val('{{ session.notes }}');
+        M.textareaAutoResize($('#celebrations'));
+        M.textareaAutoResize($('#missing_work'));
+        M.textareaAutoResize($('#questions'));
+        M.textareaAutoResize($('#due_dates'));
+        M.textareaAutoResize($('#follow_up'));
+        M.textareaAutoResize($('#commitments'));
+        M.textareaAutoResize($('#notes'));
+
+
+    </script>
+
 {% endblock %}

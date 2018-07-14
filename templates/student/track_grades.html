@@ -11,21 +11,18 @@
 <h5 align="center">{{ student.name }}'s Grades</h5>
 
     <table class="striped" style="width: 90%; margin: 5% 5% 5% 5%">
-        <tr>
-            <th>Subject</th>
-            <th>Week 1</th>
-            <th>Week 2</th>
-            <th>Week 3</th>
-            <th>Week 4</th>
-            <th>Week 5</th>
-            <th>Week 6</th>
+        <tr style="border: 2px solid black">
+            <th style="border: 2px solid black; font-size: 150%;">Subject</th>
+            {% for score in student.class_set.first.classgrade_set.all %}
+                <th style="border: 2px solid black; font-size: 150%;">{{ score.date }}</th>
+            {% endfor %}
         </tr>
         {% for class in student.class_set.all %}
-        <tr>
+        <tr style="border: 2px solid black">
 
-            <td>{{ class.name }}</td>
+            <td style="border: 2px solid black">{{ class.name }}</td>
             {% for grade in class.classgrade_set.all %}
-                <td>{{ grade.score }}</td>
+                <td style="border: 2px solid black">{{ grade.score }}</td>
             {% endfor %}
         </tr>
         {% endfor %}
@@ -33,5 +30,47 @@
     </table>
 
 
+
+
+
+    <div class="col s12 m12 l4 xl4 offset-l4 center-align">
+        <a class="waves-effect waves-light btn view red white-text modal-trigger" href="#grade-modal"  style="margin-top: 5%;">Input Grades<i class="material-icons right">add</i></a>
+    </div>
+
+    <div id="grade-modal" class="modal">
+        <div class="modal-content">
+            <h4 class="center-align">Input Grades</h4>
+                <form method="post" action="/student/{{ student.username }}/track_grades">
+                    {% csrf_token %}
+                <div class="row">
+                    <div class="col s4 offset-s4">
+                        <b>Date:</b><input class="input-field" type="date" name="entry_date"></div>
+                </div>
+                    <div class="row">
+                    {% for class in student.class_set.all %}
+
+                        <div class="col s4 offset-s4">
+                            <div class="input-field">
+                                <input id="{{ class.name }}_score" type="number" class="validate" name="{{ class.name }}_score">
+                                <label for="{{ class.name }}_score">{{ class.name }} Grade</label>
+                             </div>
+                         </div>
+
+                    {% endfor %}
+                    </div>
+                    <button class="btn waves-effect waves-light red" type="submit" name="action">Submit
+                        <i class="material-icons right">add</i>
+                    </button>
+                    <a href="#" class="modal-close waves-effect waves-green btn-flat black white-text right">Close</a>
+                </form>
+        </div>
+    </div>
+
+<script>
+    $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+    </script>
 
 {% endblock %}
