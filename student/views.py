@@ -116,7 +116,7 @@ def save_session_view(request, username, session_id):
         session.student_commitments = request.POST['commitments']
         session.notes = request.POST['notes']
         session.save()
-    return redirect('/student/' + student.username + '/pre_session')
+    return redirect('/student/' + student.username + '/session')
 
 
 def analyze_sessions_view(request, username):
@@ -146,5 +146,6 @@ def analyze_sessions_view(request, username):
                                                                  'celebrations_selected': False})
 
 
-def progress_visualization_view(request):
-    return render(request, 'student/visualizations.html', context=None)
+def progress_visualization_view(request, username):
+    student = Student.objects.get(username=username)
+    return render(request, 'student/visualizations.html', {'student': student})

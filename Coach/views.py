@@ -7,6 +7,16 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 
 
+def start_view(request):
+    if request.user.is_active:
+        if request.user.username == 'marni':
+            return redirect('/marni/home')
+        else:
+            return redirect('/student/' + request.user.username + '/profile')
+    else:
+        return redirect('/login')
+
+
 def setup_view(request):
     ready = True
     if ready:

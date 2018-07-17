@@ -14,6 +14,8 @@
         <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
         </script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
    </head>
@@ -43,7 +45,7 @@
         <li><a href="/student/{{ student.username }}/schedule" class="black-text">Schedule
         {% if no_classes %}<span class="badge red white-text circle" data-badge-caption="">!</span> {% endif %}
         </a></li>
-        <li><a href="/student/{{ student.username }}/pre_session" class="black-text">Pre-session</a></li>
+        <li><a href="/student/{{ student.username }}/session" class="black-text">Session</a></li>
         <li><a href="/student/{{ student.username }}/track_grades" class="black-text">Track Grades</a></li>
         <li><a href="/student/{{ student.username }}/track_habits" class="black-text">Track Habits</a></li>
         <li><a href="/student/{{ student.username }}/visualize" class="black-text">Visualize</a></li>
@@ -58,7 +60,7 @@
         <li><a href="/student/{{ user.username }}/schedule" class="black-text">Schedule
         {% if no_classes %}<span class="badge red white-text circle" data-badge-caption="">!</span> {% endif %}
         </a></li>
-        <li><a href="/student/{{ user.username }}/pre_session" class="black-text">Pre-session</a></li>
+        <li><a href="/student/{{ user.username }}/session" class="black-text">Session</a></li>
             <li><a href="/student/{{ user.username }}/visualize" class="black-text">Visualize</a></li>
         {% endif %}
 
