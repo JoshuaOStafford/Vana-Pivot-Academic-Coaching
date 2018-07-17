@@ -67,7 +67,7 @@
     <div id="new-session-modal" class="modal">
         <div class="modal-content">
             <h4 class="center-align">Create a New Session</h4>
-                <form method="post" action="/student/{{ student.username }}/pre_session">
+                <form method="post" action="/student/{{ student.username }}/session">
                     {% csrf_token %}
                      <div class="col s4 offset-s4">
                         <b>Date of Session:</b><input class="input-field" type="date" name="new_session_date">
