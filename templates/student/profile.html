@@ -29,7 +29,7 @@
     </div>
 
 
-
+    {% if request.user.username == 'marni' %}
 
     <div class="col s12 m4 l5" style="margin-left: 3%; margin-right: 5%">
         <div class = "card" style="padding-left:3%">
@@ -68,6 +68,8 @@
         </div>
 
   </div>
+
+            {% endif %}
 
     <div id="email-modal" class="modal">
         <div class="modal-content">
