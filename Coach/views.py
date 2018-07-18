@@ -23,9 +23,9 @@ def setup_view(request):
         student = Student(academic_coach=AcademicCoach.objects.get(username='Test'), name='Test1', username='Test1', birthday=date.today(), school=School.objects.get(name='No School Entered'), email='rtrone@vanalearning.com')
         student.save()
         1/0
-        return redirect('/coach/home')
+        return redirect('/error')
     else:
-        return redirect('/coach/home')
+        return redirect('/error')
 
 
 def all_student_view(request):
