@@ -51,7 +51,7 @@ def add_student_view(request):
                                                                                                                'by following this link: https://vana18.herokuapp.com/signup/' + new_student.username + '\n\nBest,\nThe Vana Learning Team'
         sender_email = 'jstafford@vanalearning.com'
         recipient_email = new_student.email
-        send_mail(subject, message, sender_email, [recipient_email])
+        #send_mail(subject, message, sender_email, [recipient_email])
     return render(request, 'coach/add_student.html', context=None)
 
 
