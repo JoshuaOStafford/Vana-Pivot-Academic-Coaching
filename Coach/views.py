@@ -34,6 +34,8 @@ def all_student_view(request):
     names = []
     for student in Student.objects.filter(academic_coach=academic_coach):
         names.append((student.name, student.username))
+    if academic_coach is AcademicCoach.objects.get(username='Test'):
+        names.append(('Test','Test'))
     return render(request, 'coach/homepage.html', {'students': names, 'student': None})
 
 
