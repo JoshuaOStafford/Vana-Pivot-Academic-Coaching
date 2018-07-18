@@ -82,7 +82,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Vana18.wsgi.application'
 
-LOGIN_REDIRECT_URL = '/marni/home'
+LOGIN_REDIRECT_URL = '/coach/home'
 
 
 # Database

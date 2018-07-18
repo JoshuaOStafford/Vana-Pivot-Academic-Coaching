@@ -9,7 +9,7 @@ from django.core.mail import send_mail
 
 def start_view(request):
     if request.user.is_active:
-        if request.user.username == 'marni':
+        if request.user.username == 'marni' or request.user.username == 'Test':
             return redirect('/coach/home')
         else:
             return redirect('/student/' + request.user.username + '/profile')
