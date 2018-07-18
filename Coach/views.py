@@ -30,7 +30,7 @@ def setup_view(request):
 def all_student_view(request):
     if request.user.username != 'marni' and request.user.username != 'Test':
         return redirect('/student/' + request.user.username + '/profile')
-    academic_coach = AcademicCoach.objects.get(username='marni')
+    academic_coach = AcademicCoach.objects.get(username=request.user.username)
     names = []
     for student in Student.objects.filter(academic_coach=academic_coach):
         names.append((student.name, student.username))
