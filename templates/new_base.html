@@ -39,7 +39,7 @@
         <a href="https://www.vana-learning.com" class="brand-logo left"><img class="responsive-img" style="height: 64px" id="logo" src={% static "vanalogo.png" %}/></a>
 
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-        {% if user.username == 'marni' and student is not None%}
+        {% if user.username == 'marni' or user.username == 'Test' and student is not None%}
         <li><a href="/coach/home" class="black-text">Home</a></li>
         <li><a href="/student/{{ student.username }}/profile" class="black-text">Info</a></li>
         <li><a href="/student/{{ student.username }}/schedule" class="black-text">Schedule
@@ -51,7 +51,7 @@
         <li><a href="/student/{{ student.username }}/visualize" class="black-text">Visualize</a></li>
         <li><a href="/coach/home" class="black-text">Current Student: {{ student.name }}</a></li>
 
-        {% elif user.username == 'marni' %}
+        {% elif user.username == 'marni' or user.username == 'Test' %}
         <li><a href="/coach/home" class="black-text">Home</a></li>
         <li><a href="/coach/home" class="black-text">Current Student: None</a></li>
 
