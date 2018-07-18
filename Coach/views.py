@@ -20,8 +20,6 @@ def start_view(request):
 def setup_view(request):
     ready = True
     if ready:
-        coach = AcademicCoach(name='Test', username='Test', email='asdg@fake.asd', phone_number='1')
-        coach.save()
         return redirect('/coach/home')
     else:
         return redirect('/coach/home')
@@ -38,7 +36,7 @@ def all_student_view(request):
 
 
 def add_student_view(request):
-    academic_coach = AcademicCoach.objects.get(username='marni')
+    academic_coach = AcademicCoach.objects.get(username=request.user.username)
     if request.method == 'POST':
         student_name = request.POST['name']
         student_username = request.POST['username']
