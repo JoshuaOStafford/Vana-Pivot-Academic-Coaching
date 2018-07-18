@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^login$', auth_views.login, {'template_name': 'registration/login.html', 'authentication_form': LoginForm}),
     url(r'^logout$', auth_views.logout, {'template_name': 'registration/login.html'}),
     url(r'^$', coach_views.start_view, name='Start View'),
-    url(r'^marni', include('Coach.urls')),
+    url(r'^coach', include('Coach.urls')),
     url(r'^student', include('student.urls')),
     url(r'^admin', admin.site.urls),
     url(r'^signup/([a-zA-z0-9_-]{3,16})', coach_views.signup_view, name='signup'),

@@ -10,7 +10,7 @@ from django.core.mail import send_mail
 def start_view(request):
     if request.user.is_active:
         if request.user.username == 'marni':
-            return redirect('/marni/home')
+            return redirect('/coach/home')
         else:
             return redirect('/student/' + request.user.username + '/profile')
     else:
@@ -20,9 +20,11 @@ def start_view(request):
 def setup_view(request):
     ready = True
     if ready:
-        return redirect('/marni/home')
+        coach = AcademicCoach(name='Test', username='Test', email='asdg@fake.asd', phone_number='1')
+        coach.save()
+        return redirect('/coach/home')
     else:
-        return redirect('/marni/home')
+        return redirect('/coach/home')
 
 
 def all_student_view(request):
