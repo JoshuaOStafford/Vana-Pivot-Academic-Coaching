@@ -20,6 +20,8 @@ def start_view(request):
 def setup_view(request):
     ready = True
     if ready:
+        student = Student(name='Test1', username='Test1', academic_coach=AcademicCoach.objects.get(username='Test'), birthday=date.today(), school=School.objects.get(name='No School Entered'), email='blank@gdfs.eig')
+        student.save()
         return redirect('/coach/home')
     else:
         return redirect('/coach/home')
