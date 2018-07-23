@@ -5,9 +5,11 @@ from Vana18.forms import SignUpForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
+from student.helpers import is_coach
 
 
 def start_view(request):
+    coach = is_coach(request)
     if request.user.is_active:
         if request.user.username == 'marni' or request.user.username == 'Test':
             return redirect('/coach/home')
@@ -18,6 +20,7 @@ def start_view(request):
 
 
 def setup_view(request):
+    coach = is_coach(request)
     ready = False
     if ready:
         coach = AcademicCoach(name='Test', username='Test', phone_number='0', email='asd@asgd.com')
@@ -30,6 +33,7 @@ def setup_view(request):
 
 
 def all_student_view(request):
+    coach = is_coach(request)
     if request.user.username != 'marni' and request.user.username != 'Test':
         return redirect('/student/' + request.user.username + '/profile')
     academic_coach = AcademicCoach.objects.get(username=request.user.username)
@@ -38,10 +42,11 @@ def all_student_view(request):
         names.append((student.name, student.username))
     if academic_coach is AcademicCoach.objects.get(username='Test'):
         names.append(('Test','Test'))
-    return render(request, 'coach/homepage.html', {'students': names, 'student': None})
+    return render(request, 'coach/homepage.html', {'students': names, 'student': None, 'coach': coach})
 
 
 def add_student_view(request):
+    coach = is_coach(request)
     academic_coach = AcademicCoach.objects.get(username=request.user.username)
     if request.method == 'POST':
         student_name = request.POST['name']
@@ -58,10 +63,11 @@ def add_student_view(request):
         sender_email = 'jstafford@vanalearning.com'
         recipient_email = new_student.email
         send_mail(subject, message, sender_email, [recipient_email])
-    return render(request, 'coach/add_student.html', context=None)
+    return render(request, 'coach/add_student.html', {'coach': coach})
 
 
 def create_student_account_view(request, username):
+    coach = is_coach(request)
     if Student.objects.filter(username=username).exists():
         student = Student.objects.get(username=username)
     else:
@@ -104,10 +110,11 @@ def create_student_account_view(request, username):
         student.school = school
         student.save()
         return redirect('/student/' + student.username + '/profile')
-    return render(request, 'coach/create_student_account.html', {'student': student})
+    return render(request, 'coach/create_student_account.html', {'student': student, 'coach': coach})
 
 
 def signup_view(request, username):
+    coach = is_coach(request)
     if Student.objects.filter(username=username).exists():
         student = Student.objects.get(username=username)
         if User.objects.filter(username=username).exists():
@@ -124,4 +131,4 @@ def signup_view(request, username):
             return redirect('/' + student.academic_coach.username + '/new_student/' + student.username)
         else:
             form = SignUpForm()
-    return render(request, 'registration/signup.html', {'form': form, 'student': student})
+    return render(request, 'registration/signup.html', {'form': form, 'student': student, 'coach': coach})
