@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from student.models import Student, AcademicCoach, School, Parent, Contact, Class, ClassGrade, Habit, HabitScore, Session
-from student.helpers import student_has_no_classes
+from student.helpers import student_has_no_classes, is_coach
 from datetime import date
 
 
 def profile_view(request, username):
+    coach = is_coach(request)
     no_classes = student_has_no_classes(request)
     student = Student.objects.get(username=username)
     parents = []
@@ -20,10 +21,11 @@ def profile_view(request, username):
     contacts = Contact.objects.filter(student=student)
     no_contacts = (len(contacts) == 0)
     return render(request, 'student/profile.html', {'student': student, 'contacts': contacts, 'parents': parents,
-                                                    'no_contacts': no_contacts, 'no_classes': no_classes})
+                                                    'no_contacts': no_contacts, 'no_classes': no_classes, 'coach': coach})
 
 
 def track_grades_view(request, username):
+    coach = is_coach(request)
     student = Student.objects.get(username=username)
     if request.method == 'POST':
         date = request.POST['entry_date']
@@ -31,10 +33,11 @@ def track_grades_view(request, username):
             score = request.POST[subject.name + '_score']
             grade_submission = ClassGrade(subject=subject, date=date, score=score)
             grade_submission.save()
-    return render(request, 'student/track_grades.html', {'student': student})
+    return render(request, 'student/track_grades.html', {'student': student, 'coach': coach})
 
 
 def schedule_view(request, username):
+    coach = is_coach(request)
     student = Student.objects.get(username=username)
     if request.method == 'POST':
         name = request.POST['class_name']
@@ -51,10 +54,11 @@ def schedule_view(request, username):
             new_class = Class(student=student, name=name, teacher=teacher, notes=notes, late_work_policy=late_work_policy)
             new_class.save()
     has_classes = len(student.class_set.all()) > 0
-    return render(request, 'student/schedule.html', {'student': student, 'has_classes': has_classes})
+    return render(request, 'student/schedule.html', {'student': student, 'has_classes': has_classes, 'coach': coach})
 
 
 def edit_class_view(request, username, class_id):
+    coach = is_coach(request)
     class_object = Class.objects.get(id=class_id)
     class_object.name = request.POST['class_name']
     class_object.teacher = request.POST['new_teacher']
@@ -65,6 +69,7 @@ def edit_class_view(request, username, class_id):
 
 
 def track_habits_view(request, username):
+    coach = is_coach(request)
     student = Student.objects.get(username=username)
     if request.method == 'POST':
         habit_title = request.POST['habit_title']
@@ -72,7 +77,7 @@ def track_habits_view(request, username):
         answer = request.POST['rubric_answer']
         habit = Habit(student=student, title=habit_title, rubric_question=question, rubric_answer=answer)
         habit.save()
-    return render(request, 'student/track_habits.html', {'student': student})
+    return render(request, 'student/track_habits.html', {'student': student, 'coach': coach})
 
 
 def add_habit_score_view(request, username, habit_id):
@@ -90,6 +95,7 @@ def add_habit_score_view(request, username, habit_id):
 
 
 def pre_session_view(request, username):
+    coach = is_coach(request)
     student = Student.objects.get(username=username)
     if request.method == 'POST':
         date = request.POST['new_session_date']
@@ -101,7 +107,7 @@ def pre_session_view(request, username):
         session = Session.objects.filter(student=student).order_by('date').last()
         active_session = True
     return render(request, 'student/pre_session.html', {'student': student, 'session': session, 'active_session':
-                                                        active_session})
+                                                        active_session, 'coach': coach})
 
 
 def save_session_view(request, username, session_id):
@@ -120,6 +126,7 @@ def save_session_view(request, username, session_id):
 
 
 def analyze_sessions_view(request, username):
+    coach = is_coach(request)
     student = Student.objects.get(username=username)
     sessions = Session.objects.filter(student=student).order_by('date')
     if request.method == 'POST':
@@ -139,13 +146,14 @@ def analyze_sessions_view(request, username):
                                                                      'due_dates_selected': request.POST.get('due_dates', False),
                                                                      'follow_up_selected': request.POST.get('follow_up', False),
                                                                      'commitments_selected': request.POST.get('commitments', False),
-                                                                     'notes_selected': request.POST.get('notes', False) })
+                                                                     'notes_selected': request.POST.get('notes', False) , 'coach': coach})
 
     return render(request, 'student/analyze_all_sessions.html', {'student': student, 'sessions': sessions, 'selected': True,
                                                                  'all_categories_selected': True, 'selected_sessions': sessions,
-                                                                 'celebrations_selected': False})
+                                                                 'celebrations_selected': False, 'coach': coach})
 
 
 def progress_visualization_view(request, username):
+    coach = is_coach(request)
     student = Student.objects.get(username=username)
-    return render(request, 'student/visualizations.html', {'student': student})
+    return render(request, 'student/visualizations.html', {'student': student, 'coach': coach})

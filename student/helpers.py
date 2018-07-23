@@ -10,3 +10,10 @@ def student_has_no_classes(request):
     else:
         return False
 
+
+def is_coach(request):
+    if request.user.is_active:
+        if AcademicCoach.objects.filter(username=request.user.username).exists():
+            return True
+    else:
+        return False
