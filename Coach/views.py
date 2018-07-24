@@ -11,7 +11,7 @@ from student.helpers import is_coach
 def start_view(request):
     coach = is_coach(request)
     if request.user.is_active:
-        if request.user.username == 'marni' or request.user.username == 'Test':
+        if coach:
             return redirect('/coach/home')
         else:
             return redirect('/student/' + request.user.username + '/profile')
@@ -34,14 +34,12 @@ def setup_view(request):
 
 def all_student_view(request):
     coach = is_coach(request)
-    if request.user.username != 'marni' and request.user.username != 'Test':
+    if not coach:
         return redirect('/student/' + request.user.username + '/profile')
     academic_coach = AcademicCoach.objects.get(username=request.user.username)
     names = []
     for student in Student.objects.filter(academic_coach=academic_coach):
         names.append((student.name, student.username))
-    if academic_coach is AcademicCoach.objects.get(username='Test'):
-        names.append(('Test','Test'))
     return render(request, 'coach/homepage.html', {'students': names, 'student': None, 'coach': coach})
 
 

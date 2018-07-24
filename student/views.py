@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from student.models import Student, AcademicCoach, School, Parent, Contact, Class, ClassGrade, Habit, HabitScore, Session
 from student.helpers import student_has_no_classes, is_coach
-from datetime import date
+from datetime import date, timedelta
 
 
 def profile_view(request, username):
@@ -156,4 +156,27 @@ def analyze_sessions_view(request, username):
 def progress_visualization_view(request, username):
     coach = is_coach(request)
     student = Student.objects.get(username=username)
-    return render(request, 'student/visualizations.html', {'student': student, 'coach': coach})
+    last_date = date(year=2017, day=1, month=1)
+    first_date = date(year=2020, day=31, month=12)
+    metric_list = []
+    for subject in student.class_set.all():
+        current_set = subject.classgrade_set.all().order_by('date')
+        if current_set.first().date < first_date:
+            first_date = current_set.first().date
+        if current_set.last().date > last_date:
+            last_date = current_set.last().date
+    date_range = []
+    while first_date <= last_date:
+        date_range.append(first_date)
+        first_date = first_date + timedelta(days=1)
+
+    for subject in student.class_set.all():
+        data = []
+        for possible_score_date in date_range:
+            if subject.classgrade_set.filter(date=possible_score_date).exists():
+                data.append(subject.classgrade_set.get(date=possible_score_date).score)
+            else:
+                data.append(None)
+        metric_list.append({'subject': subject, 'data': data})
+    return render(request, 'student/visualizations.html', {'student': student, 'coach': coach, 'metric_list': metric_list,
+                                                           'date_range': date_range})

@@ -177,3 +177,93 @@
 
 
 {% endcomment %}
+
+
+
+
+
+{% comment %}
+{% extends 'new_base.html' %}
+
+{% block content %}
+
+
+  <div align="center" style="height: 100%; margin-top: 1%;">
+    <canvas id="myChart" style="background-color: white; max-height: 85%!important;%"></canvas>
+
+  </div>
+
+
+
+    <script type="text/javascript">
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+      labels: [
+          'Week1', 'Week2', 'Week3', 'Week4', 'Week5'
+     ],
+
+  datasets: [
+      {% for metric in metric_list %}
+      {
+
+      label: '{{ metric.name }}',
+      data: [1, 2, 3, 4, 5],
+      fill: false,
+        {% if forloop counter == 1 %}
+      borderColor: "#f48fb1",
+        {% elif forloop counter == 2 %}
+        borderColor: "#0000FF",
+        {% elif forloop counter == 3 %}
+        borderColor: "#9c27b0",
+        {% elif forloop counter == 4 %}
+        borderColor: "#FFD700",
+        {% elif forloop counter == 5 %}
+        borderColor: "#d32f2f",
+        {% elif forloop counter == 6 %}
+         borderColor: "#90caf9",
+        {% elif forloop counter == 7 %}
+        borderColor: "#4db6ac",
+         {% elif forloop counter == 8 %}
+         borderColor: "#ff8f00",
+         {% else  %}
+         borderColor: "#000000",
+        {% endif %}
+
+        borderWidth: 4,
+        tension: 0,
+        borderJoinStyle:"bevel"
+
+    },
+      {% endfor %}
+    ]
+  }, options:{
+        responsive: true,
+        events: [''],
+        legend: {
+            position: 'top'
+        },
+        scales:{
+             yAxes: [{
+                    display: true,
+                    ticks: {
+                        beginAtZero: true,
+                        steps: 5,
+                        stepValue: 1,
+                        max: 100
+                    }
+                }]
+            }
+        }
+
+
+});
+
+    </script>
+
+
+{% endblock %}
+
+
+{% endcomment %}
