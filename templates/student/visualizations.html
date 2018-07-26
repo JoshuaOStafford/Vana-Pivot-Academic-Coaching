@@ -16,7 +16,7 @@
   type: 'line',
   data: {
       labels: [
-          {% for date in date_range %} '{{ date }}', {% endfor %}
+          {% for session in session_range %} '{{ session }}', {% endfor %}
      ],
 
   datasets: [

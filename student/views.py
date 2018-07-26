@@ -31,7 +31,8 @@ def track_grades_view(request, username):
         date = request.POST['entry_date']
         for subject in student.class_set.all():
             score = request.POST[subject.name + '_score']
-            grade_submission = ClassGrade(subject=subject, date=date, score=score)
+            session_number = request.POST['session_number']
+            grade_submission = ClassGrade(subject=subject, date=date, score=score, session_number=session_number)
             grade_submission.save()
     return render(request, 'student/track_grades.html', {'student': student, 'coach': coach})
 
@@ -165,18 +166,23 @@ def progress_visualization_view(request, username):
             first_date = current_set.first().date
         if current_set.last().date > last_date:
             last_date = current_set.last().date
-    date_range = []
-    while first_date <= last_date:
-        date_range.append(first_date)
-        first_date = first_date + timedelta(days=1)
-
+    session_range = []
+    session_count = len(student.session_set.all())
+    current_session = 1
+    while current_session <= session_count:
+        session_string = 'Session ' + str(current_session)
+        session_range.append(session_string)
+        current_session = current_session + 1
     for subject in student.class_set.all():
         data = []
-        for possible_score_date in date_range:
-            if subject.classgrade_set.filter(date=possible_score_date).exists():
-                data.append(subject.classgrade_set.get(date=possible_score_date).score)
+        current_session_number = 1
+        while current_session_number <= session_count:
+            if subject.classgrade_set.filter(session_number=current_session_number).exists():
+                most_recent = subject.classgrade_set.filter(session_number=current_session_number).order_by('date').last()
+                data.append(most_recent.score)
             else:
                 data.append(None)
+            current_session_number = current_session_number + 1
         metric_list.append({'subject': subject, 'data': data})
     return render(request, 'student/visualizations.html', {'student': student, 'coach': coach, 'metric_list': metric_list,
-                                                           'date_range': date_range})
+                                                           'session_range': session_range})

@@ -71,6 +71,7 @@ class HabitScore(TimeStampedModel):
     habit = models.ForeignKey(Habit, on_delete=models.CASCADE)
     date = models.DateField(default=timezone.now)
     score = models.PositiveIntegerField()
+    session_number = models.PositiveIntegerField(default=0)
 
 
 class Class(TimeStampedModel):
@@ -86,6 +87,7 @@ class ClassGrade(TimeStampedModel):
     subject = models.ForeignKey(Class, on_delete=models.CASCADE)  # had to call it subject since class is keyword
     date = models.DateField(default=timezone.now)
     score = models.PositiveIntegerField()
+    session_number = models.PositiveIntegerField(default=0)
 
 
 
