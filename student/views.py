@@ -157,15 +157,7 @@ def analyze_sessions_view(request, username):
 def progress_visualization_view(request, username):
     coach = is_coach(request)
     student = Student.objects.get(username=username)
-    last_date = date(year=2017, day=1, month=1)
-    first_date = date(year=2020, day=31, month=12)
     metric_list = []
-    for subject in student.class_set.all():
-        current_set = subject.classgrade_set.all().order_by('date')
-        if current_set.first().date < first_date:
-            first_date = current_set.first().date
-        if current_set.last().date > last_date:
-            last_date = current_set.last().date
     session_range = []
     session_count = len(student.session_set.all())
     current_session = 1
