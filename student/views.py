@@ -86,11 +86,8 @@ def add_habit_score_view(request, username, habit_id):
     habit = Habit.objects.get(student=student, id=habit_id)
     if request.method == 'POST':
         score = request.POST['score']
-        if HabitScore.objects.filter(habit=habit, date=date.today()).exists():  # only possible to have one score daily
-            habit_score = HabitScore.objects.get(habit=habit, date=date.today())
-            habit_score.score = score
-        else:
-            habit_score = HabitScore(habit=habit, date=date.today(), score=score)
+        session_number = request.POST['session_number']
+        habit_score = HabitScore(habit=habit, date=date.today(), score=score, session_number=session_number)
         habit_score.save()
     return redirect('/student/' + username + '/track_habits')
 
