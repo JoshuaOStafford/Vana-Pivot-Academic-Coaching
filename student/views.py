@@ -175,6 +175,17 @@ def progress_visualization_view(request, username):
             else:
                 data.append(None)
             current_session_number = current_session_number + 1
-        metric_list.append({'subject': subject, 'data': data})
+        metric_list.append({'metric_name': subject.name, 'data': data})
+    for habit in student.habit_set.all():
+        data = []
+        current_session_number = 1
+        while current_session_number <= session_count:
+            if habit.habitscore_set.filter(session_number=current_session_number).exists():
+                most_recent = habit.habitscore_set.filter(session_number=current_session_number).order_by('date').last()
+                data.append(most_recent.score*10)
+            else:
+                data.append(None)
+            current_session_number = current_session_number + 1
+        metric_list.append({'metric_name': habit.title, 'data': data})
     return render(request, 'student/visualizations.html', {'student': student, 'coach': coach, 'metric_list': metric_list,
                                                            'session_range': session_range})

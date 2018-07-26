@@ -23,7 +23,7 @@
       {% for metric in metric_list %}
       {
 
-      label: '{{ metric.subject.name }}',
+      label: '{{ metric.metric_name }}',
       data: [
           {% for entry in metric.data %} {% if entry is None %} , {% else %} {{ entry }}, {% endif %}{% endfor %}
       ],
