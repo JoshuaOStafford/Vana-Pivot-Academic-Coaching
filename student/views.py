@@ -159,7 +159,7 @@ def progress_visualization_view(request, username):
     student = Student.objects.get(username=username)
     metric_list = []
     session_range = []
-    session_count = len(student.session_set.all())
+    session_count = len(student.session_set.all()) + 1
     current_session = 1
     while current_session <= session_count:
         session_string = 'Session ' + str(current_session)
