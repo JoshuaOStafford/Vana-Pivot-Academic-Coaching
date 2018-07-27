@@ -26,6 +26,7 @@ SECRET_KEY = '-552+yf4#3c!f0o!c$6yz0oaq#knyxp&ss_tvavr4!0amt1-m='
 DEBUG = True
 
 ALLOWED_HOSTS = ['vana18.herokuapp.com',
+                 'www.vanalearning.com',
                  '127.0.0.1']
 
 

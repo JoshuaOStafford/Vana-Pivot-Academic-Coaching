@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e8858b7-20ff-4605-b818-24cdab845f71" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/pre_session.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/pre_session.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vana18/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Vana18/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,11 +28,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pre_session.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pre_session.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/student/pre_session.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="334">
               <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Vana18/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -103,7 +111,6 @@
         <option value="$PROJECT_DIR$/templates/student/schedule.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/Vana18/urls.py" />
-        <option value="$PROJECT_DIR$/Vana18/settings.py" />
         <option value="$PROJECT_DIR$/student/helpers.py" />
         <option value="$PROJECT_DIR$/student/models.py" />
         <option value="$PROJECT_DIR$/templates/student/visualizations.html" />
@@ -121,6 +128,7 @@
         <option value="$PROJECT_DIR$/Coach/views.py" />
         <option value="$PROJECT_DIR$/templates/new_base.html" />
         <option value="$PROJECT_DIR$/templates/student/pre_session.html" />
+        <option value="$PROJECT_DIR$/Vana18/settings.py" />
       </list>
     </option>
   </component>
@@ -507,13 +515,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Vana18/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Coach/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -673,6 +674,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
           <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vana18/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
         </state>
       </provider>
     </entry>
