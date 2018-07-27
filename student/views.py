@@ -5,6 +5,7 @@ from datetime import date, timedelta
 
 
 def profile_view(request, username):
+    page = 'profile'
     coach = is_coach(request)
     no_classes = student_has_no_classes(request)
     student = Student.objects.get(username=username)
@@ -20,11 +21,12 @@ def profile_view(request, username):
         # have to update the contacts
     contacts = Contact.objects.filter(student=student)
     no_contacts = (len(contacts) == 0)
-    return render(request, 'student/profile.html', {'student': student, 'contacts': contacts, 'parents': parents,
+    return render(request, 'student/profile.html', {'student': student, 'contacts': contacts, 'parents': parents,  'page': page,
                                                     'no_contacts': no_contacts, 'no_classes': no_classes, 'coach': coach})
 
 
 def track_grades_view(request, username):
+    page = 'grades'
     coach = is_coach(request)
     student = Student.objects.get(username=username)
     sessions = Session.objects.filter(student=student).order_by('date')
@@ -36,10 +38,11 @@ def track_grades_view(request, username):
 
             grade_submission = ClassGrade(subject=subject, date=date, score=score, session_number=session_number)
             grade_submission.save()
-    return render(request, 'student/track_grades.html', {'student': student, 'coach': coach, 'sessions': sessions})
+    return render(request, 'student/track_grades.html', {'student': student, 'coach': coach, 'sessions': sessions, 'page': page})
 
 
 def schedule_view(request, username):
+    page = 'schedule'
     coach = is_coach(request)
     student = Student.objects.get(username=username)
     if request.method == 'POST':
@@ -57,7 +60,7 @@ def schedule_view(request, username):
             new_class = Class(student=student, name=name, teacher=teacher, notes=notes, late_work_policy=late_work_policy)
             new_class.save()
     has_classes = len(student.class_set.all()) > 0
-    return render(request, 'student/schedule.html', {'student': student, 'has_classes': has_classes, 'coach': coach})
+    return render(request, 'student/schedule.html', {'student': student, 'has_classes': has_classes, 'coach': coach, 'page': page})
 
 
 def edit_class_view(request, username, class_id):
@@ -79,6 +82,7 @@ def track_habits_redirect_view(request, username):
 
 
 def track_habits_view(request, username, session_number):
+    page = 'habits'
     coach = is_coach(request)
     student = Student.objects.get(username=username)
     sessions = Session.objects.filter(student=student).order_by('date')
@@ -95,7 +99,7 @@ def track_habits_view(request, username, session_number):
         habit = Habit(student=student, title=habit_title, rubric_question=question, rubric_answer=answer)
         habit.save()
     return render(request, 'student/track_habits.html', {'student': student, 'coach': coach, 'sessions': sessions, 'session_number':
-                                                         session_number, 'session': session})
+                                                         session_number, 'session': session,  'page': page})
 
 
 def add_habit_score_view(request, username, session_number, habit_id):
@@ -118,6 +122,7 @@ def session_redirect_view(request, username):
 
 
 def pre_session_view(request, username, session_number):
+    page = 'session'
     coach = is_coach(request)
     student = Student.objects.get(username=username)
     if request.method == 'POST':
@@ -140,7 +145,7 @@ def pre_session_view(request, username, session_number):
     sessions = Session.objects.filter(student=student)
     return render(request, 'student/pre_session.html', {'student': student, 'session': session, 'active_session':
                                                         active_session, 'coach': coach, 'sessions': sessions, 'session_number':
-                                                        session_number})
+                                                        session_number,  'page': page})
 
 
 def save_session_view(request, username, session_id):
@@ -166,6 +171,7 @@ def save_session_view(request, username, session_id):
 
 
 def analyze_sessions_view(request, username):
+    page = 'session'
     coach = is_coach(request)
     student = Student.objects.get(username=username)
     sessions = Session.objects.filter(student=student).order_by('date')
@@ -186,14 +192,16 @@ def analyze_sessions_view(request, username):
                                                                      'due_dates_selected': request.POST.get('due_dates', False),
                                                                      'follow_up_selected': request.POST.get('follow_up', False),
                                                                      'commitments_selected': request.POST.get('commitments', False),
-                                                                     'notes_selected': request.POST.get('notes', False) , 'coach': coach})
+                                                                     'notes_selected': request.POST.get('notes', False) , 'coach': coach,
+                                                                     'page': page})
 
     return render(request, 'student/analyze_all_sessions.html', {'student': student, 'sessions': sessions, 'selected': True,
                                                                  'all_categories_selected': True, 'selected_sessions': sessions,
-                                                                 'celebrations_selected': False, 'coach': coach})
+                                                                 'celebrations_selected': False, 'coach': coach,  'page': page})
 
 
 def progress_visualization_view(request, username):
+    page = 'visualize'
     coach = is_coach(request)
     student = Student.objects.get(username=username)
     metric_list = []
@@ -228,7 +236,7 @@ def progress_visualization_view(request, username):
             current_session_number = current_session_number + 1
         metric_list.append({'metric_name': habit.title, 'data': data})
     return render(request, 'student/visualizations.html', {'student': student, 'coach': coach, 'metric_list': metric_list,
-                                                           'session_range': session_range})
+                                                           'session_range': session_range, 'page': page})
 
 
 def delete_student_view(request, username):

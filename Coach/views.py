@@ -33,6 +33,7 @@ def setup_view(request):
 
 
 def all_student_view(request):
+    page = 'home'
     coach = is_coach(request)
     if not coach:
         return redirect('/student/' + request.user.username + '/profile')
@@ -40,10 +41,11 @@ def all_student_view(request):
     names = []
     for student in Student.objects.filter(academic_coach=academic_coach):
         names.append((student.name, student.username))
-    return render(request, 'coach/homepage.html', {'students': names, 'student': None, 'coach': coach})
+    return render(request, 'coach/homepage.html', {'students': names, 'student': None, 'coach': coach,  'page': page})
 
 
 def add_student_view(request):
+    page = 'add_student'
     coach = is_coach(request)
     success_message = ""
     error_message = ""
@@ -54,10 +56,10 @@ def add_student_view(request):
         if len(student_username) < 3 or len(student_username) > 16:
             error_message = "Username is not the right length"
             return render(request, 'coach/add_student.html',
-                          {'coach': coach, 'success_message': success_message, 'error_message': error_message})
+                          {'coach': coach, 'success_message': success_message, 'error_message': error_message,  'page': page})
         if Student.objects.filter(username=student_username).exists():
             error_message = "That username is already taken."
-            return render(request, 'coach/add_student.html', {'coach': coach, 'success_message': success_message, 'error_message': error_message})
+            return render(request, 'coach/add_student.html', {'coach': coach, 'success_message': success_message, 'error_message': error_message,  'page': page})
         student_email = request.POST['email']
         new_student = Student(name=student_name, username=student_username, academic_coach=academic_coach,
                               birthday=date.today(), school=School.objects.get(name='No School Entered'),
@@ -71,7 +73,7 @@ def add_student_view(request):
         recipient_email = new_student.email
         send_mail(subject, message, sender_email, [recipient_email])
         success_message = "Email invite has successfully been sent to " + student_name + "."
-    return render(request, 'coach/add_student.html', {'coach': coach, 'success_message': success_message, 'error_message': error_message})
+    return render(request, 'coach/add_student.html', {'coach': coach, 'success_message': success_message, 'error_message': error_message,  'page': page})
 
 
 def create_student_account_view(request, username):
