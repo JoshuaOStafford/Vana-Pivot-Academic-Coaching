@@ -27,14 +27,16 @@ def profile_view(request, username):
 def track_grades_view(request, username):
     coach = is_coach(request)
     student = Student.objects.get(username=username)
+    sessions = Session.objects.filter(student=student)
     if request.method == 'POST':
         date = request.POST['entry_date']
         for subject in student.class_set.all():
             score = request.POST[subject.name + '_score']
-            session_number = request.POST['session_number']
+            session_number = str(int(request.POST['session_number']) + 1)
+
             grade_submission = ClassGrade(subject=subject, date=date, score=score, session_number=session_number)
             grade_submission.save()
-    return render(request, 'student/track_grades.html', {'student': student, 'coach': coach})
+    return render(request, 'student/track_grades.html', {'student': student, 'coach': coach, 'sessions': sessions})
 
 
 def schedule_view(request, username):
@@ -92,20 +94,36 @@ def add_habit_score_view(request, username, habit_id):
     return redirect('/student/' + username + '/track_habits')
 
 
-def pre_session_view(request, username):
+def session_redirect_view(request, username):
+    student = Student.objects.get(username=username)
+    if Session.objects.filter(student=student).exists():
+        number = len(Session.objects.filter(student=student))
+        return redirect('/student/' + username + '/session/' + str(number))
+    else:
+        return redirect('/student/' + username + '/session/0')
+
+
+def pre_session_view(request, username, session_number):
     coach = is_coach(request)
     student = Student.objects.get(username=username)
     if request.method == 'POST':
         date = request.POST['new_session_date']
         new_session = Session(student=student, date=date)
         new_session.save()
-    active_session = False
+    active_session = True
     session = None
-    if Session.objects.filter(student=student).order_by('date').exists():
-        session = Session.objects.filter(student=student).order_by('date').last()
-        active_session = True
+    if session_number == 0:
+        active_session = False
+    else:
+        sessions = Session.objects.filter(student=student).order_by('date')
+        index = 1
+        for current_session in sessions:
+            if index == int(session_number):
+                session = current_session
+            index = index + 1
+    sessions = Session.objects.filter(student=student)
     return render(request, 'student/pre_session.html', {'student': student, 'session': session, 'active_session':
-                                                        active_session, 'coach': coach})
+                                                        active_session, 'coach': coach, 'sessions': sessions})
 
 
 def save_session_view(request, username, session_id):
@@ -120,7 +138,14 @@ def save_session_view(request, username, session_id):
         session.student_commitments = request.POST['commitments']
         session.notes = request.POST['notes']
         session.save()
-    return redirect('/student/' + student.username + '/session')
+    index = 1
+    number = 0
+    for comparison in Session.objects.filter(student=student).order_by('date'):
+        if session.date == comparison.date:
+            number = index
+        else:
+            index = index + 1
+    return redirect('/student/' + student.username + '/session/' + str(number))
 
 
 def analyze_sessions_view(request, username):
@@ -129,11 +154,11 @@ def analyze_sessions_view(request, username):
     sessions = Session.objects.filter(student=student).order_by('date')
     if request.method == 'POST':
         selected_sessions = []
-        if request.POST['all_sessions']:
+        if request.POST.get('all_sessions', False):
             selected_sessions = sessions
         else:
             for session in sessions:
-                if request.POST['session-' + session.id]:
+                if request.POST.get('session-' + str(session.id), False):
                     selected_sessions.append(session)
         return render(request, 'student/analyze_all_sessions.html', {'student': student, 'sessions': sessions,
                                                                      'selected': True, 'selected_sessions': selected_sessions,

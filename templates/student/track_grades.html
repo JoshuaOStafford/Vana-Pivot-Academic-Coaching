@@ -34,42 +34,48 @@
 
 
     <div class="col s12 m12 l4 xl4 offset-l4 center-align">
-        <a class="waves-effect waves-light btn view red white-text modal-trigger" href="#grade-modal"  style="margin-top: 5%;">Input Grades<i class="material-icons right">add</i></a>
+        <a class="waves-effect waves-light btn view green white-text modal-trigger" href="#grade-modal"  style="margin-top: 5%;">Input Grades<i class="material-icons right">add</i></a>
     </div>
+
+
+
 
     <div id="grade-modal" class="modal">
         <div class="modal-content">
             <h4 class="center-align">Input Grades</h4>
                 <form method="post" action="/student/{{ student.username }}/track_grades" id="input-grades">
                     {% csrf_token %}
-                <div class="row">
-                    <div class="col s4 offset-s4">
+
+                    <div class="row" align="center">
+                    <div class="col s4" align="center">
                         <b>Date:</b><input class="input-field" type="date" name="entry_date"></div>
-                         <div class = "row">
-                             <div class="col s4 offset-s4">
+
+                             <div class="col s4">
                             <label>Select a Session</label>
                                <select form="input-grades" id="session_number" name="session_number">
                                   <option value = "" disabled selected>Select Session</option>
-                                  <option value = "1">Session 1</option>
-                                  <option value = "2">Session 2</option>
-                                  <option value = "3">Session 3</option>
+                                   {% for session in sessions %}
+                                   <option value = "{{ forloop.counter0 }}">Session {{ forloop.counter }}: {{ session.date }}</option>
+                                   {% if session == sessions.last %}
+                                   <option value = "{{ forloop.counter }}">New Session</option>
+                                   {% endif %}
+                                   {% endfor %}
                                </select>
                              </div>
-            </div>
-                </div>
-                    <div class="row">
+                    </div>
                     {% for class in student.class_set.all %}
-
-                        <div class="col s4 offset-s4">
+                    <div class="row">
+                        <div class="col s4">
                             <div class="input-field">
                                 <input id="{{ class.name }}_score" type="number" class="validate" name="{{ class.name }}_score">
                                 <label for="{{ class.name }}_score">{{ class.name }} Grade</label>
                              </div>
-                         </div>
 
-                    {% endfor %}
                     </div>
-                    <button class="btn waves-effect waves-light red" type="submit" name="action">Submit
+                    {% endfor %}
+
+                    </div>
+                    <button class="btn waves-effect waves-light green lighten-2" type="submit" name="action">Submit
                         <i class="material-icons right">add</i>
                     </button>
                     <a href="#" class="modal-close waves-effect waves-green btn-flat black white-text right">Close</a>

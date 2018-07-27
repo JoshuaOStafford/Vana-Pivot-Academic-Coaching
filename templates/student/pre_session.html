@@ -2,8 +2,39 @@
 
 {% block content %}
 
+    <style>
+    #small-button {
+        margin-top: 2%;
+        width: 45%;
+        height: 5%;
+        font-size: 75%;
+        padding: 0;
+    }
+    #long-button {
+        margin-top: 2%;
+    }
+    #save-button {
+        font-size: 150%;
+        width: 30%;
+    }
+    </style>
+
     {% if active_session %}
-    <div align="center"><h5>{{ student.name }}'s Session on {{ session.date }}</h5></div>
+        <div class="row">
+        <div class="col s4" align="center">
+        <a class="btn waves-effect waves-light black modal-trigger yellow darken-2 btn-small"  id="small-button" href="/student/{{ student.username }}/all_sessions">View All Sessions<i class="material-icons right">bubble_chart</i></a>
+        <a class="btn waves-effect waves-light black modal-trigger" id="small-button" href="#new-session-modal">Add a Session<i class="material-icons right">add</i></a>
+
+        </div>
+            <div class="col s4">
+    <div align="center"><h5>{{ session.date }} Session</h5></div>
+            </div>
+         <div class="col s4" align="center">
+
+             <a class="btn waves-effect waves-light blue modal-trigger" id="small-button" href="#change-session-modal">View Other Session<i class="material-icons right">view</i></a>
+         </div>
+        </div>
+
         <br>
 <div class="row">
     <form action="/student/{{ student.username }}/save_session/{{ session.id }}" method="post">
@@ -43,21 +74,19 @@
           <textarea id="notes" class="materialize-textarea" name="notes"></textarea>
           <label for="notes">Notes</label>
         </div>
-        {% if request.user.username == 'marni' %}
+        {% if coach %}
         <div align="center">
-        <button class="btn waves-effect waves-light green lighten-1" type="submit" name="action">Save all
+        <button class="btn waves-effect waves-light green lighten-1" id="save-button" type="submit" name="action">SAVE
                         <i class="material-icons right">save</i>
         </button>
-        <a class="btn waves-effect waves-light black modal-trigger" href="#new-session-modal">New Session<i class="material-icons right">add</i></a>
-        <a class="btn waves-effect waves-light black modal-trigger yellow darken-2" href="/student/{{ student.username }}/all_sessions">Analyze All Sessions<i class="material-icons right">bubble_chart</i></a>
-        </div>
+       </div>
         {% endif %}
     </form>
   </div>
         {% else %}
         <br><br><br>
         <div align="center">
-            <a class="btn waves-effect waves-light black modal-trigger" href="#new-session-modal">New Session<i class="material-icons right">add</i></a>
+            <a class="btn waves-effect waves-light black modal-trigger " href="#new-session-modal">Add Session<i class="material-icons right">add</i></a>
         </div>
     {% endif %}
 
@@ -84,9 +113,23 @@
 
     </div>
 
+    <div id="change-session-modal" class="modal">
+        <div class="modal-content">
+            <h5 class="center-align">View or Edit a Previous Session</h5>
+            {% for option in sessions %}
+                <div align="center">
+            <a class="btn waves-effect waves-light white black-text modal-trigger" id="long-button" href="/student/{{ student.username }}/session/{{ forloop.counter }}">Session {{ forloop.counter }} - {{ option.date }}</a>
+            </div>
+            {% endfor %}
+        <br>
+        </div>
+
+
+    </div>
+
     <script>
 
-        {% comment %}
+
         $('#celebrations').val('{{ session.celebrations }}');
         $('#missing_work').val('{{ session.missing_work }}');
         $('#questions').val('{{ session.questions_about_session }}');
@@ -94,7 +137,8 @@
         $('#follow_up').val('{{ session.coach_follow_up }}');
         $('#commitments').val('{{ session.student_commitments }}');
         $('#notes').val('{{ session.notes }}');
-        {% endcomment %}
+
+
         $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
