@@ -115,6 +115,7 @@ def create_student_account_view(request, username):
 
 def signup_view(request, username):
     coach = is_coach(request)
+    error_message = ""
     if Student.objects.filter(username=username).exists():
         student = Student.objects.get(username=username)
         if User.objects.filter(username=username).exists():
@@ -123,6 +124,11 @@ def signup_view(request, username):
         return redirect('https://www.vana-learning.com')
     form = SignUpForm()
     if request.method == 'POST':
+        if request.POST['username'] != username:
+            error_message = "Please enter the username given to you in the email."
+            return render(request, 'registration/signup.html', {'form': form, 'student': student, 'coach': coach, 'error_message':
+                                                         error_message})
+        1/0
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
@@ -131,4 +137,5 @@ def signup_view(request, username):
             return redirect('/coach' + '/new_student/' + student.username)
         else:
             form = SignUpForm()
-    return render(request, 'registration/signup.html', {'form': form, 'student': student, 'coach': coach})
+    return render(request, 'registration/signup.html', {'form': form, 'student': student, 'coach': coach, 'error_message':
+                                                         error_message})
