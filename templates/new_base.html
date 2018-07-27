@@ -65,7 +65,7 @@
             {% if page == 'add_student' %}<li class="active"> {% else %}<li> {% endif %}
                 <a href="/coach/add_student" class="black-text">Add Student<i class="material-icons right" style="padding-top:16%;">add</i></a></li>
 
-        {% else %}
+        {% elif request.user.is_active %}
             {% if page == 'profile' %}<li class="active"> {% else %}<li> {% endif %}
                 <a href="/student/{{ user.username }}/profile" class="black-text">Profile</a></li>
         {% if page == 'schedule' %}<li class="active"> {% else %}<li> {% endif %}
