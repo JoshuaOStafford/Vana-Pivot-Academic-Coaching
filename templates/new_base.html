@@ -41,7 +41,7 @@
     <ul id="nav-mobile" class="right hide-on-med-and-down">
         {% if coach and student is not None%}
         <li><a href="/coach/home" class="black-text">Home</a></li>
-        <li><a href="/student/{{ student.username }}/profile" class="black-text">Info</a></li>
+        <li><a href="/student/{{ student.username }}/profile" class="black-text">Profile</a></li>
         <li><a href="/student/{{ student.username }}/schedule" class="black-text">Schedule
         {% if no_classes %}<span class="badge red white-text circle" data-badge-caption="">!</span> {% endif %}
         </a></li>
