@@ -51,6 +51,10 @@ def add_student_view(request):
     if request.method == 'POST':
         student_name = request.POST['name']
         student_username = request.POST['username']
+        if len(student_username) < 3 or len(student_username) > 16:
+            error_message = "Username is not the right length"
+            return render(request, 'coach/add_student.html',
+                          {'coach': coach, 'success_message': success_message, 'error_message': error_message})
         if Student.objects.filter(username=student_username).exists():
             error_message = "That username is already taken."
             return render(request, 'coach/add_student.html', {'coach': coach, 'success_message': success_message, 'error_message': error_message})
