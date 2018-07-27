@@ -5,10 +5,13 @@
     <style>
     #small-button {
         margin-top: 2%;
+        margin-right: 2%;
         width: 45%;
         height: 5%;
-        font-size: 75%;
+        font-size: 100%;
         padding: 0;
+        padding-left: 1%;
+        padding-right: 3%;
     }
     #long-button {
         margin-top: 2%;
@@ -22,7 +25,6 @@
     {% if active_session %}
         <div class="row">
         <div class="col s4" align="center">
-        <a class="btn waves-effect waves-light black modal-trigger yellow darken-2 btn-small"  id="small-button" href="/student/{{ student.username }}/all_sessions">View All Sessions<i class="material-icons right">bubble_chart</i></a>
         <a class="btn waves-effect waves-light black modal-trigger" id="small-button" href="#new-session-modal">Add a Session<i class="material-icons right">add</i></a>
 
         </div>
@@ -30,8 +32,9 @@
     <div align="center"><h5>{{ session.date }} Session</h5></div>
             </div>
          <div class="col s4" align="center">
-
              <a class="btn waves-effect waves-light blue modal-trigger" id="small-button" href="#change-session-modal">View Other Session<i class="material-icons right">view</i></a>
+             <a class="btn waves-effect waves-light black modal-trigger yellow darken-2 btn-small"  id="small-button" href="/student/{{ student.username }}/all_sessions">View All Sessions<i class="material-icons right">bubble_chart</i></a>
+
          </div>
         </div>
 

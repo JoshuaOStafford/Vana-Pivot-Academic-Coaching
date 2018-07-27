@@ -57,7 +57,7 @@
         <li><a href="/coach/add_student" class="black-text">Add Student</a></li>
 
         {% else %}
-        <li><a href="/student/{{ user.username }}/profile" class="black-text">Info</a></li>
+        <li><a href="/student/{{ user.username }}/profile" class="black-text">Profile</a></li>
         <li><a href="/student/{{ user.username }}/schedule" class="black-text">Schedule
         {% if no_classes %}<span class="badge red white-text circle" data-badge-caption="">!</span> {% endif %}
         </a></li>
