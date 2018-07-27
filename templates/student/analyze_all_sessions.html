@@ -3,12 +3,21 @@
 {% block content %}
 
 <br>
-<div align="center">
-    <a class="waves-effect waves-light btn view blue white-text modal-trigger" href="#selection-modal">Change View
+    <div class="row">
+    <div class="col s4" style="padding-left:5%;">
+    <a class="waves-effect waves-light btn view red white-text modal-trigger" href="/student/{{ student.username }}/session">Back
+        <i class="material-icons right">arrow_back</i></a>
+    </div>
+    <div align="center" class="col s4">
+    <a class="waves-effect waves-light btn view blue white-text modal-trigger" href="#selection-modal">Advanced Settings
         <i class="material-icons right">menu</i></a>
+    </div>
+
+
 </div>
 <br><br>
 {% if selected %}
+    <div class="row">
 <table class="responsive-table striped" style="width: 90%; margin-left:5%">
 
 <thead>
@@ -62,6 +71,7 @@
 {% endfor %}
 </tbody>
 </table>
+    </div>
 
 {% endif %}
 
