@@ -27,7 +27,7 @@ def profile_view(request, username):
 def track_grades_view(request, username):
     coach = is_coach(request)
     student = Student.objects.get(username=username)
-    sessions = Session.objects.filter(student=student)
+    sessions = Session.objects.filter(student=student).order_by('date')
     if request.method == 'POST':
         date = request.POST['entry_date']
         for subject in student.class_set.all():
@@ -74,7 +74,7 @@ def edit_class_view(request, username, class_id):
 def track_habits_view(request, username):
     coach = is_coach(request)
     student = Student.objects.get(username=username)
-    sessions = Session.objects.filter(student=student)
+    sessions = Session.objects.filter(student=student).order_by('date')
     if request.method == 'POST':
         habit_title = request.POST['habit_title']
         question = request.POST['rubric_question']
