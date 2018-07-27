@@ -128,7 +128,6 @@ def signup_view(request, username):
             error_message = "Please enter the username given to you in the email."
             return render(request, 'registration/signup.html', {'form': form, 'student': student, 'coach': coach, 'error_message':
                                                          error_message})
-        1/0
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
