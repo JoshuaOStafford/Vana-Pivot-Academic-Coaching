@@ -136,10 +136,40 @@
 
             </div>
             </div>
+
+
     </div>
     </div>
 
+
+
     <div style="clear: both"></div>
+
+    <br><br><br><br><br><br>
+    {% if coach %}
+        <div style="margin-left: 5%">
+     <a class="waves-effect waves-light btn view red white-text modal-trigger" href="#delete-student">Delete<i class="material-icons right">delete</i></a>
+    </div>
+    {% endif %}
+
+
+    <div id="delete-student" class="modal">
+        <div class="modal-content">
+            <h4 class="center-align">Delete {{ student.name }}</h4>
+                <form method="post" action="/student/delete/{{ student.username }}">
+                    {% csrf_token %}
+                    <p>Are you sure you want to do this? Deletion is permenant, and all data will be lost. If you wish to hide the student instead, please contact our Head of Product at 225.304.2611.</p>
+                    <button class="btn waves-effect waves-light red" type="submit" name="action">Delete
+                        <i class="material-icons right">delete</i>
+                    </button>
+                        <a href="#" class="modal-close waves-effect waves-green btn-flat black white-text right">Close</a>
+                        <br><br>
+
+                </form>
+            </div>
+        </div>
+
+
 <script>
       $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

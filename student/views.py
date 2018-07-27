@@ -228,3 +228,14 @@ def progress_visualization_view(request, username):
         metric_list.append({'metric_name': habit.title, 'data': data})
     return render(request, 'student/visualizations.html', {'student': student, 'coach': coach, 'metric_list': metric_list,
                                                            'session_range': session_range})
+
+
+def delete_student_view(request, username):
+    if request.method == 'POST':
+        coach = is_coach(request)
+        if coach:
+            academic_coach = AcademicCoach.objects.get(username=request.user.username)
+            student = Student.objects.get(username=username)
+            if student.academic_coach.id == academic_coach.id:
+                student.delete()
+    return redirect('/coach/home')
