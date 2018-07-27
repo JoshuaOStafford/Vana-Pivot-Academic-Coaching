@@ -204,6 +204,9 @@ def progress_visualization_view(request, username):
     page = 'visualize'
     coach = is_coach(request)
     student = Student.objects.get(username=username)
+    subject_count = len(student.class_set.all())
+    habit_count = len(student.habit_set.all())
+    all_count = subject_count + habit_count
     metric_list = []
     session_range = []
     session_count = len(student.session_set.all()) + 1
@@ -236,7 +239,8 @@ def progress_visualization_view(request, username):
             current_session_number = current_session_number + 1
         metric_list.append({'metric_name': habit.title, 'data': data})
     return render(request, 'student/visualizations.html', {'student': student, 'coach': coach, 'metric_list': metric_list,
-                                                           'session_range': session_range, 'page': page})
+                                                           'session_range': session_range, 'page': page, 'subject_count': subject_count,
+                                                           'all_count': all_count})
 
 
 def delete_student_view(request, username):

@@ -1,10 +1,10 @@
 {% extends 'new_base.html' %}
 
 {% block content %}
-
-
+    <a class="waves-effect waves-light btn-small purple white-text" style="margin-top: 1%; margin-left: 2%;  padding:4px;" id="subject-button" onclick="handleSubjectClick()">Hide Classes</a>
+    <a class="waves-effect waves-light btn-small yellow darken-2 white-text" style="margin-top: 1%; margin-left: 1%;  padding:4px;" id="habit-button" onclick="handleHabitClick()">Hide Habits</a>
   <div align="center" style="height: 100%; margin-top: 1%;">
-    <canvas id="myChart" style="background-color: white; max-height: 85%!important;%"></canvas>
+    <canvas id="myChart" style="background-color: white; max-height: 83%!important;%"></canvas>
 
   </div>
 
@@ -77,7 +77,38 @@
 
 });
 
+    function handleSubjectClick() {
+        for(index=0; index<{{ subject_count }}; index++){
+            myChart.data.datasets[index].hidden = !myChart.data.datasets[index].hidden;
+            myChart.update();
+        }
+        if (myChart.data.datasets[0].hidden) {
+            document.getElementById("subject-button").innerText = "Show Subjects";
+        } else {
+            document.getElementById("subject-button").innerText = "Hide Subjects";
+        }
+
+}
+function handleHabitClick() {
+        for(index={{ subject_count }}; index<{{ all_count }}; index++){
+            myChart.data.datasets[index].hidden = !myChart.data.datasets[index].hidden;
+            myChart.update();
+        }
+        if (myChart.data.datasets[{{ subject_count }}].hidden) {
+            document.getElementById("habit-button").innerText = "Show Habits";
+        } else {
+            document.getElementById("habit-button").innerText = "Hide Habits";
+        }
+
+}
     </script>
 
 
 {% endblock %}
+
+
+{% comment %}
+myChart.data.datasets.forEach(function(ds) {
+    ds.hidden = !ds.hidden;
+  });
+{% endcomment %}
