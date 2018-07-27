@@ -93,9 +93,12 @@
   </div>
         {% else %}
         <br><br><br>
+        <div align="center"><div class="flow-text grey-text">There are currently no sessions for {{ student.name }}.</div></div>
+        {% if coach %}
         <div align="center">
             <a class="btn waves-effect waves-light black modal-trigger " href="#new-session-modal">Add Session<i class="material-icons right">add</i></a>
         </div>
+            {% endif %}
     {% endif %}
 
 
