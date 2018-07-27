@@ -155,6 +155,14 @@
     $('.modal-trigger').leanModal();
   });
 
+        window.addEventListener("beforeunload", function (e) {
+    var confirmationMessage = 'Did you save your changes?'
+                            + 'You must hit the save button to save any session notes';
+
+    (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+    return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+});
+
     </script>
 
 {% endblock %}
