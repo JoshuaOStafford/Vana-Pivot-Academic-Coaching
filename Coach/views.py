@@ -46,10 +46,14 @@ def all_student_view(request):
 def add_student_view(request):
     coach = is_coach(request)
     success_message = ""
+    error_message = ""
     academic_coach = AcademicCoach.objects.get(username=request.user.username)
     if request.method == 'POST':
         student_name = request.POST['name']
         student_username = request.POST['username']
+        if Student.objects.filter(username=student_username).exists():
+            error_message = "That username is already taken."
+            return render(request, 'coach/add_student.html', {'coach': coach, 'success_message': success_message, 'error_message': error_message})
         student_email = request.POST['email']
         new_student = Student(name=student_name, username=student_username, academic_coach=academic_coach,
                               birthday=date.today(), school=School.objects.get(name='No School Entered'),
@@ -63,7 +67,7 @@ def add_student_view(request):
         recipient_email = new_student.email
         send_mail(subject, message, sender_email, [recipient_email])
         success_message = "Email invite has successfully been sent to " + student_name + "."
-    return render(request, 'coach/add_student.html', {'coach': coach, 'success_message': success_message})
+    return render(request, 'coach/add_student.html', {'coach': coach, 'success_message': success_message, 'error_message': error_message})
 
 
 def create_student_account_view(request, username):

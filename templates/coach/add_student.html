@@ -12,7 +12,8 @@
         <h6 class="center">All you need is the info below. They will complete the rest!</h6>
         <br><br>
             <div align="center"><div class="flow-text grey-text">Usernames must be 3 to 16 characters and cannot contain spaces or symbols!</div></div>
-        <div class="flow-text green-text darken-2" align="center">{{ success_message }}</div>
+    <div class="flow-text red-text darken-2" align="center">{{ error_message }}</div>
+    <div class="flow-text green-text darken-2" align="center">{{ success_message }}</div>
          <form method="post" action="/coach/add_student/">
             {% csrf_token %}
              <div class = "row">
