@@ -135,6 +135,11 @@ def signup_view(request, username):
             login(request, user)
             return redirect('/coach' + '/new_student/' + student.username)
         else:
+            password = request.POST['password1']
+            if len(password) < 8:
+                error_message = "Password must be 8 or more characters."
+            else:
+                error_message = "Passwords must match."
             form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form, 'student': student, 'coach': coach, 'error_message':
                                                          error_message})
