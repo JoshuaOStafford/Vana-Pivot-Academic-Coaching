@@ -24,22 +24,22 @@
 <tr>
     <th>Session Date</th>
     {% if all_categories_selected %}
-        <th>Celebrations</th>
+        <th>Successes</th>
         <th>Missing Work</th>
-        <th>Questions</th>
+        <th>Topics</th>
         <th>Upcoming Due Dates</th>
-        <th>Coach's Follow Up</th>
-        <th>Student's Commitments</th>
-        <th>Notes</th>
+        <th>Coach's Next Steps</th>
+        <th>Student's Next Steps</th>
+        <th>Additional Notes</th>
 
     {% else %}
-    {% if celebrations_selected %}  <th>Celebrations</th> {% endif %}
+    {% if celebrations_selected %}  <th>Successes</th> {% endif %}
     {% if missing_work_selected %} <th>Missing Work</th>    {% endif %}
-    {% if questions_selected %}     <th>Questions</th>  {% endif %}
+    {% if questions_selected %}     <th>Topics</th>  {% endif %}
     {% if due_dates_selected %} <th>Upcoming Due Dates</th>   {% endif %}
-    {% if follow_up_selected %} <th>Coach's Follow Up</th>   {% endif %}
-    {% if commitments_selected %}   <th>Student's Commitments</th> {% endif %}
-    {% if notes_selected %}     <th>Notes</th> {% endif %}
+    {% if follow_up_selected %} <th>Coach's Next Steps</th>   {% endif %}
+    {% if commitments_selected %}   <th>Student's  Next Steps</th> {% endif %}
+    {% if notes_selected %}     <th>Additional Notes</th> {% endif %}
 
     {% endif %}
 </tr>
@@ -106,7 +106,7 @@
         <div class="col s4">
             <input type="checkbox" name="celebrations" id="celebrations"/>
             <label for="celebrations">
-                <span>Celebrations</span>
+                <span>Successes</span>
             </label>
         </div>
         <div class="col s4">
@@ -117,7 +117,7 @@
         <div class="col s4">
         <input type="checkbox" name="questions" id="questions"/>
     <label for="questions">
-        <span>?'s About Session</span>
+        <span>Topics to Discuss</span>
     </label></div>
         <div class="col s4">
         <input type="checkbox" name="due_dates" id="due_dates"/>
@@ -127,12 +127,12 @@
         <div class="col s4">
         <input type="checkbox" name="follow_up" id="follow_up"/>
     <label for="follow_up">
-        <span>Coach's Follow Up</span>
+        <span>Coach's Next Steps</span>
     </label></div>
         <div class="col s4">
         <input type="checkbox" name="commitments" id="commitments"/>
     <label for="commitments">
-        <span>Student's Commitments</span>
+        <span>Student's Next Steps</span>
     </label></div>
         <div class="col s4">
         <input type="checkbox" name="notes" id="notes"/>
