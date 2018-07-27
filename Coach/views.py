@@ -16,7 +16,7 @@ def start_view(request):
         else:
             return redirect('/student/' + request.user.username + '/profile')
     else:
-        return redirect('/login')
+        return redirect('https://www.vana-learning.com')
 
 
 def setup_view(request):
