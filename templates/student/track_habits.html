@@ -55,11 +55,16 @@
         <div class="col s4">
         <label>Select a Session</label>
                                <select form="input-habits" id="session_number" name="session_number">
-                                  <option value = "" disabled selected>Select Session</option>
-                                  <option value = "1">Session 1</option>
-                                  <option value = "2">Session 2</option>
-                                  <option value = "3">Session 3</option>
+                                 <option value = "" disabled selected>Select Session</option>
+                                   {% for session in sessions %}
+                                   <option value = "{{ forloop.counter0 }}">Session {{ forloop.counter }}: {{ session.date }}</option>
+                                   {% if session == sessions.last %}
+                                   <option value = "{{ forloop.counter }}">New Session</option>
+                                   {% endif %}
+                                   {% endfor %}
                                </select>
+
+
 </div>
 
             <button class="btn waves-effect waves-light blue" type="submit" name="action">Submit

@@ -74,13 +74,14 @@ def edit_class_view(request, username, class_id):
 def track_habits_view(request, username):
     coach = is_coach(request)
     student = Student.objects.get(username=username)
+    sessions = Session.objects.filter(student=student)
     if request.method == 'POST':
         habit_title = request.POST['habit_title']
         question = request.POST['rubric_question']
         answer = request.POST['rubric_answer']
         habit = Habit(student=student, title=habit_title, rubric_question=question, rubric_answer=answer)
         habit.save()
-    return render(request, 'student/track_habits.html', {'student': student, 'coach': coach})
+    return render(request, 'student/track_habits.html', {'student': student, 'coach': coach, 'sessions': sessions})
 
 
 def add_habit_score_view(request, username, habit_id):
@@ -88,7 +89,7 @@ def add_habit_score_view(request, username, habit_id):
     habit = Habit.objects.get(student=student, id=habit_id)
     if request.method == 'POST':
         score = request.POST['score']
-        session_number = request.POST['session_number']
+        session_number = str(int(request.POST['session_number']) + 1)
         habit_score = HabitScore(habit=habit, date=date.today(), score=score, session_number=session_number)
         habit_score.save()
     return redirect('/student/' + username + '/track_habits')
