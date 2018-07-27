@@ -19,8 +19,12 @@
                </div>
 
                <div class = "card-action">
+                   {% if coach %}
                 <a class="waves-effect waves-light btn view blue white-text modal-trigger" href="#email-modal">Email<i class="material-icons right">mail</i></a>
+                    {% else %}
+               <a class="waves-effect waves-light btn view blue white-text" href="/coach/new_student/{{ student.username }}">Finish Account</a>
 
+                   {% endif %}
                   <a class = "right blue-grey-text" href = "/student/{{ student.username }}/session">
                      Session Notes</a>
                </div>
@@ -29,7 +33,7 @@
     </div>
 
 
-    {% if request.user.username == 'marni' %}
+    {% if coach %}
 
     <div class="col s12 m4 l5" style="margin-left: 3%; margin-right: 5%">
         <div class = "card" style="padding-left:3%">

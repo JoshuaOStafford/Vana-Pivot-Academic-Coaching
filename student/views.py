@@ -71,28 +71,41 @@ def edit_class_view(request, username, class_id):
     return redirect('student/' + username + '/schedule')
 
 
-def track_habits_view(request, username):
+def track_habits_redirect_view(request, username):
+    student = Student.objects.get(username=username)
+    sessions = Session.objects.filter(student=student).order_by('date')
+    session_number = str(len(sessions))
+    return redirect('student/' + username + '/track_habits/' + session_number)
+
+
+def track_habits_view(request, username, session_number):
     coach = is_coach(request)
     student = Student.objects.get(username=username)
     sessions = Session.objects.filter(student=student).order_by('date')
+    index = 1
+    session = None
+    for option in sessions:
+        if index == int(session_number):
+            session = option
+        index = index + 1
     if request.method == 'POST':
         habit_title = request.POST['habit_title']
         question = request.POST['rubric_question']
         answer = request.POST['rubric_answer']
         habit = Habit(student=student, title=habit_title, rubric_question=question, rubric_answer=answer)
         habit.save()
-    return render(request, 'student/track_habits.html', {'student': student, 'coach': coach, 'sessions': sessions})
+    return render(request, 'student/track_habits.html', {'student': student, 'coach': coach, 'sessions': sessions, 'session_number':
+                                                         session_number, 'session': session})
 
 
-def add_habit_score_view(request, username, habit_id):
+def add_habit_score_view(request, username, session_number, habit_id):
     student = Student.objects.get(username=username)
     habit = Habit.objects.get(student=student, id=habit_id)
     if request.method == 'POST':
         score = request.POST['score']
-        session_number = str(int(request.POST['session_number']) + 1)
         habit_score = HabitScore(habit=habit, date=date.today(), score=score, session_number=session_number)
         habit_score.save()
-    return redirect('/student/' + username + '/track_habits')
+    return redirect('/student/' + username + '/track_habits/' + session_number)
 
 
 def session_redirect_view(request, username):
@@ -111,9 +124,11 @@ def pre_session_view(request, username, session_number):
         date = request.POST['new_session_date']
         new_session = Session(student=student, date=date)
         new_session.save()
+        new_session_number = str(len(Session.objects.filter(student=student)))
+        return redirect('/student/' + username + '/session/' + new_session_number)
     active_session = True
     session = None
-    if session_number == 0:
+    if session_number == '0':
         active_session = False
     else:
         sessions = Session.objects.filter(student=student).order_by('date')
@@ -124,7 +139,8 @@ def pre_session_view(request, username, session_number):
             index = index + 1
     sessions = Session.objects.filter(student=student)
     return render(request, 'student/pre_session.html', {'student': student, 'session': session, 'active_session':
-                                                        active_session, 'coach': coach, 'sessions': sessions})
+                                                        active_session, 'coach': coach, 'sessions': sessions, 'session_number':
+                                                        session_number})
 
 
 def save_session_view(request, username, session_id):

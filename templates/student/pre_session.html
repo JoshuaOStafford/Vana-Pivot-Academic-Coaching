@@ -24,9 +24,14 @@
 
     {% if active_session %}
         <div class="row">
+        {% if coach %}
         <div class="col s4" align="center">
         <a class="btn waves-effect waves-light black modal-trigger" id="small-button" href="#new-session-modal">Add a Session<i class="material-icons right">add</i></a>
 
+        </div>
+            {% else %}
+        {% endif %}
+        <div class="col s4" align="center">&nbsp;
         </div>
             <div class="col s4">
     <div align="center"><h5>{{ session.date }} Session</h5></div>
@@ -99,7 +104,7 @@
     <div id="new-session-modal" class="modal">
         <div class="modal-content">
             <h4 class="center-align">Create a New Session</h4>
-                <form method="post" action="/student/{{ student.username }}/session">
+                <form method="post" action="/student/{{ student.username }}/session/{{ session_number }}">
                     {% csrf_token %}
                      <div class="col s4 offset-s4">
                         <b>Date of Session:</b><input class="input-field" type="date" name="new_session_date">

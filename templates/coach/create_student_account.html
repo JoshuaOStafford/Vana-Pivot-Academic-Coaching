@@ -15,7 +15,7 @@ body{
     <h5 class="center-align">{{ student.name }}, please finish your account!</h5>
 
     <div class="row">
-        <form action="/marni/new_student/{{ student.username }}" method="post">
+        <form action="/coach/new_student/{{ student.username }}" method="post">
                 {% csrf_token %}
 
         <div class="col s12 m12 l4 xl4 white" style="border:2px solid black; margin-left:10%; margin-right: 5%">

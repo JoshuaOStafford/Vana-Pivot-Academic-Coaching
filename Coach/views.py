@@ -45,6 +45,7 @@ def all_student_view(request):
 
 def add_student_view(request):
     coach = is_coach(request)
+    success_message = ""
     academic_coach = AcademicCoach.objects.get(username=request.user.username)
     if request.method == 'POST':
         student_name = request.POST['name']
@@ -61,7 +62,8 @@ def add_student_view(request):
         sender_email = 'jstafford@vanalearning.com'
         recipient_email = new_student.email
         send_mail(subject, message, sender_email, [recipient_email])
-    return render(request, 'coach/add_student.html', {'coach': coach})
+        success_message = "Email invite has successfully been sent to " + student_name + "."
+    return render(request, 'coach/add_student.html', {'coach': coach, 'success_message': success_message})
 
 
 def create_student_account_view(request, username):
@@ -126,7 +128,7 @@ def signup_view(request, username):
             form.save()
             user = authenticate(username=request.POST['username'], password=request.POST['password1'])
             login(request, user)
-            return redirect('/' + student.academic_coach.username + '/new_student/' + student.username)
+            return redirect('/coach' + '/new_student/' + student.username)
         else:
             form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form, 'student': student, 'coach': coach})

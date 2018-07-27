@@ -62,7 +62,7 @@
         {% if no_classes %}<span class="badge red white-text circle" data-badge-caption="">!</span> {% endif %}
         </a></li>
         <li><a href="/student/{{ user.username }}/session" class="black-text">Session</a></li>
-            <li><a href="/student/{{ user.username }}/visualize" class="black-text">Visualize</a></li>
+        <li><a href="/student/{{ user.username }}/visualize" class="black-text">Visualize</a></li>
         {% endif %}
 
         {% if request.user.is_active %}

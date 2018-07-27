@@ -5,97 +5,98 @@
 </head>
 
     <style>
-    body{
-        background-color: white;
-    }
     .habit-row {
         margin-top: 3%;
-        margin-left: 8%;
-        margin-right: 8%;
         background-color: white;
+    }
+    #small-button {
+        margin-top: 2%;
+        margin-right: 2%;
+        width: 45%;
+        height: 5%;
+        font-size: 100%;
+        padding: 0;
+        padding-left: 1%;
+        padding-right: 3%;
+    }
+    #long-button {
+        margin-top: 2%;
     }
     </style>
 
-    {% for habit in student.habit_set.all %}
+    {% if session_number != '0' %}
+    <div align="center"><h5>Enter Habits for {{ session.date }}</h5></div>
+    {% else %}
+    <div align="center"><h5>Create a Session before Tracking Habits</h5></div>
+    {% endif %}
+            <div class="row">
+        <div class="col s4" align="center">
+        <a class="btn waves-effect waves-light blue modal-trigger" id="small-button" href="#change-session-modal">Change Session<i class="material-icons right">more_vert</i></a>
+        <a class="waves-effect waves-light btn view red white-text modal-trigger" href="#new-habit"  id="small-button">New Habit<i class="material-icons right">add</i></a>
+    </div>
+
+        </div>
     <div class="row valign-wrapper habit-row">
 
-    <div class="col s12 m4 l6 xl4">
+    {% for habit in student.habit_set.all %}
+
+
+    <div class="col s12 m6 l4">
         <div class="card">
 
         <div class="card-content grey-text text-darken-4 activator">
-            <h4 class="activator">{{ habit.title }}</h4>
+            <h5 class="activator">{{ habit.title }}<i class="material-icons right">more_vert</i></h5>
         </div>
-        <div class="card-action activator">
-            {% if habit.habitscore_set.last is None %}
-            No scores to report
-            <a class="modal-trigger right black-text" href="#view-habit-{{ habit.id }}"><b>Expand</b></a>
-            {% else %}
-            Most Recent Score: <b>{{ habit.habitscore_set.last.score }}</b> on {{ habit.habitscore_set.last.date }}
-            {% endif %}
-        </div>
+
         <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">{{ habit.title }}<i class="material-icons right">close</i></span>
-            <b class="center-align">{{ habit.rubric_question }}</b>
+            <span class="card-title grey-text text-darken-4" style="font-size:100%;">{{ habit.rubric_question }}<i class="material-icons right">close</i></span>
             <p class="center-align">{{ habit.rubric_answer }}</p>
 
+
         </div>
         </div>
         </div>
 
 
 
-    <div class="col s12 m4 l6 xl6">
-    <form action="/student/{{ student.username }}/track_habits/{{ habit.id }}" method="post" id="input-habits">
+
+    <div class="col s12 m6 l2">
+    <form action="/student/{{ student.username }}/track_habits/{{ session_number }}/add/{{ habit.id }}" method="post" id="input-habits">
                 {% csrf_token %}
 
                 <p class="range-field" style="width: 100%">
                  <input type="range" id="score" min="0" max="10" step="1" value="0" name="score" />
                 </p>
 
-        <div class="col s4">
-        <label>Select a Session</label>
-                               <select form="input-habits" id="session_number" name="session_number">
-                                 <option value = "" disabled selected>Select Session</option>
-                                   {% for session in sessions %}
-                                   <option value = "{{ forloop.counter0 }}">Session {{ forloop.counter }}: {{ session.date }}</option>
-                                   {% if session == sessions.last %}
-                                   <option value = "{{ forloop.counter }}">New Session</option>
-                                   {% endif %}
-                                   {% endfor %}
-                               </select>
 
 
-</div>
-
-            <button class="btn waves-effect waves-light blue" type="submit" name="action">Submit
+            <button class="btn waves-effect waves-light green" type="submit" name="action" style="margin-left:12%;">Submit
                             <i class="material-icons right">send</i>
             </button>
     </form>
 
     </div>
 
-    </div>
-
-    <div class="modal" id="view-habit-{{ habit.id }}">
-        <div class="modal-content">
-            <h4 class="center-align">{{ habit.title }}</h4><br>
-            <b class="center-align">{{ habit.rubric_question }}</b>
-            <p class="center-align">{{ habit.rubric_answer }}</p>
-        </div>
-    </div>
 
 
+
+
+    {% if forloop.counter == 2 %} </div><div class="row valign-wrapper habit-row"> {% elif forloop.counter == 4 %}</div><div class="row valign-wrapper habit-row">
+        {% elif forloop.counter == 6 %} </div><div class="row valign-wrapper habit-row">{% elif forloop.counter == 8 %} </div><div class="row valign-wrapper habit-row">
+        {% elif forloop.counter == 10 %}</div><div class="row valign-wrapper habit-row"> {% elif forloop.counter == 12 %} </div><div class="row valign-wrapper habit-row">
+        {% elif forloop.counter == 14 %}</div><div class="row valign-wrapper habit-row"> {% elif forloop.counter == 16 %}</div><div class="row valign-wrapper habit-row">
+        {% endif %}
 
     {% endfor %}
 
-    <div class="col s12 m12 l4 xl4 offset-l4 center-align">
-        <a class="waves-effect waves-light btn view red white-text modal-trigger" href="#new-habit"  style="margin-top: 5%;">New Habit<i class="material-icons right">add</i></a>
+
     </div>
+
 
     <div id="new-habit" class="modal">
         <div class="modal-content">
             <h4 class="center-align">New Habit</h4>
-                <form method="post" action="/student/{{ student.username }}/track_habits">
+                <form method="post" action="/student/{{ student.username }}/track_habits/{{ session_number }}">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col s12">
@@ -121,6 +122,21 @@
                     <a href="#" class="modal-close waves-effect waves-green btn-flat black white-text right">Close</a>
                 </form>
         </div>
+    </div>
+
+
+    <div id="change-session-modal" class="modal">
+        <div class="modal-content">
+            <h5 class="center-align">Track Habits for a Different Session</h5>
+            {% for option in sessions %}
+                <div align="center">
+            <a class="btn waves-effect waves-light white black-text modal-trigger" id="long-button" href="/student/{{ student.username }}/track_habits/{{ forloop.counter }}">Session {{ forloop.counter }} - {{ option.date }}</a>
+            </div>
+            {% endfor %}
+        <br>
+        </div>
+
+
     </div>
 
 
