@@ -200,7 +200,8 @@ def progress_visualization_view(request, username):
     session_range = []
     session_count = len(student.session_set.all()) + 1
     current_session = 1
-    while current_session <= session_count:
+    the_sessions = Session.objects.filter(student=student).order_by('date')
+    for the_session in the_sessions:
         session_string = 'Session ' + str(current_session)
         session_range.append(session_string)
         current_session = current_session + 1
