@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e8858b7-20ff-4605-b818-24cdab845f71" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/student/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/visualizations.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/visualizations.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/student/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2936">
-              <caret line="242" column="81" selection-start-line="242" selection-start-column="81" selection-end-line="242" selection-end-column="81" />
+            <state relative-caret-position="472">
+              <caret line="144" column="69" selection-start-line="144" selection-start-column="69" selection-end-line="144" selection-end-column="69" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -29,15 +29,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="visualizations.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="visualizations.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/student/visualizations.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
               <caret line="4" column="114" selection-start-line="4" selection-start-column="114" selection-end-line="4" selection-end-column="114" />
-              <folding>
-                <element signature="e#113#205#0#HTML" expanded="true" />
-                <element signature="e#139#199#0#HTML" expanded="true" />
-              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pre_session.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/student/pre_session.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="750">
+              <caret line="50" column="109" lean-forward="true" selection-start-line="50" selection-start-column="109" selection-end-line="50" selection-end-column="109" />
             </state>
           </provider>
         </entry>
@@ -114,8 +119,8 @@
         <option value="$PROJECT_DIR$/Vana18/settings.py" />
         <option value="$PROJECT_DIR$/Coach/views.py" />
         <option value="$PROJECT_DIR$/templates/student/pre_session.html" />
-        <option value="$PROJECT_DIR$/student/views.py" />
         <option value="$PROJECT_DIR$/templates/student/visualizations.html" />
+        <option value="$PROJECT_DIR$/student/views.py" />
       </list>
     </option>
   </component>
@@ -318,10 +323,10 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32859176" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32941177" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="7" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.32941177" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.2764706" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32827586" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21728595" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22051696" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -339,29 +344,29 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.32859176" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="bottom" id="Python Console" order="9" weight="0.0013793104" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="manage.py@Vana18" order="8" weight="0.47448274" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25931033" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Data View" order="4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25931033" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32859176" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19789983" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32941177" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32859176" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19789983" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Database" order="5" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.0013793104" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,13 +642,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/student/pre_session.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1571">
-          <caret line="50" column="109" lean-forward="true" selection-start-line="50" selection-start-column="109" selection-end-line="50" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Coach/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1626">
@@ -654,23 +652,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/student/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2936">
-          <caret line="242" column="81" selection-start-line="242" selection-start-column="81" selection-end-line="242" selection-end-column="81" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/student/visualizations.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="114" selection-start-line="4" selection-start-column="114" selection-end-line="4" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/student/pre_session.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="50" column="109" lean-forward="true" selection-start-line="50" selection-start-column="109" selection-end-line="50" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/student/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="144" column="69" selection-start-line="144" selection-start-column="69" selection-end-line="144" selection-end-column="69" />
           <folding>
-            <element signature="e#113#205#0#HTML" expanded="true" />
-            <element signature="e#139#199#0#HTML" expanded="true" />
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
