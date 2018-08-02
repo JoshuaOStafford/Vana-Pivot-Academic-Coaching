@@ -13,7 +13,7 @@
     <table class="responsive-table striped" style="width: 90%; margin: 5% 5% 5% 5%">
         <tr>
             <th>Subject</th>
-            {% for date in chart_dates %}
+            {% for date in charted_dates %}
                 <th>{{ date }}</th>
             {% endfor %}
         </tr>
@@ -48,17 +48,14 @@
 
                     <div class="row" align="center">
                     <div class="col s4" align="center">
-                        <b>Date:</b><input class="input-field" type="date" name="entry_date"></div>
+                        <b>Date:</b><input class="input-field" type="date" name="entry_date" required></div>
 
                              <div class="col s4">
                             <label>Select a Session</label>
-                               <select form="input-grades" id="session_number" name="session_number">
+                               <select form="input-grades" id="session_number" name="session_number" required>
                                   <option value = "" disabled selected>Select Session</option>
                                    {% for session in sessions %}
                                    <option value = "{{ forloop.counter0 }}">Session {{ forloop.counter }}: {{ session.date }}</option>
-                                   {% if session == sessions.last %}
-                                   <option value = "{{ forloop.counter }}">New Session</option>
-                                   {% endif %}
                                    {% endfor %}
                                </select>
                              </div>
@@ -67,7 +64,7 @@
                     <div class="row">
                         <div class="col s4">
                             <div class="input-field">
-                                <input id="{{ class.name }}_score" type="number" class="validate" name="{{ class.name }}_score">
+                                <input id="{{ class.name }}_score" type="number" class="validate" name="{{ class.name }}_score" required>
                                 <label for="{{ class.name }}_score">{{ class.name }} Grade</label>
                              </div>
 

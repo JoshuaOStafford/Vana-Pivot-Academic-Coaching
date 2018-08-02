@@ -110,7 +110,7 @@
                 <form method="post" action="/student/{{ student.username }}/session/{{ session_number }}">
                     {% csrf_token %}
                      <div class="col s4 offset-s4">
-                        <b>Date of Session:</b><input class="input-field" type="date" name="new_session_date">
+                        <b>Date of Session:</b><input class="input-field" type="date" name="new_session_date" required>
                      </div>
 
                     <button class="btn waves-effect waves-light red" type="submit" name="action">Create

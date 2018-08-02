@@ -57,7 +57,7 @@
             <h4 class="center-align">Add a Contact</h4>
                 <form method="post" action="/student/{{ student.username }}/profile">
                     {% csrf_token %}
-                    <b>Date:</b> <div class="input-field"><input class="input-field inline" type="date" name="contact_date"></div>
+                    <b>Date:</b> <div class="input-field"><input class="input-field inline" type="date" name="contact_date" required></div>
                     <div class="input-field col s12">
                     <input id="contact_message" type="text" class="validate" name="contact_message">
                     <label for="contact_message">Message</label>
