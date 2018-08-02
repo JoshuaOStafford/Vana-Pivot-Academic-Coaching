@@ -33,8 +33,8 @@ def track_grades_view(request, username):
     coach = is_coach(request)
     student = Student.objects.get(username=username)
     sessions = Session.objects.filter(student=student).order_by('date')
-    
-    first_class = Class.objects.filter(student=student).order_by('created')
+
+    first_class = Class.objects.filter(student=student).order_by('created').first()
     all_first_class_grades = ClassGrade.objects.filter(subject=first_class).order_by('date')
     charted_dates = []
     for grade in all_first_class_grades:
