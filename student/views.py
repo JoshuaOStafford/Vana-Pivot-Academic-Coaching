@@ -144,7 +144,10 @@ def pre_session_view(request, username, session_number):
         save = 0
     student = Student.objects.get(username=username)
     if request.method == 'POST':
-        date = request.POST['new_session_date']
+        if request.POST.get('new_session_date', False):
+            date = request.POST['new_session_date']
+        else:
+            date = dateobject.today()
         new_session = Session(student=student, date=date)
         new_session.save()
         new_session_number = str(len(Session.objects.filter(student=student)))
