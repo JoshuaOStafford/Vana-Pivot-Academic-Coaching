@@ -45,7 +45,7 @@
 
         <br>
 <div class="row">
-    <form action="/student/{{ student.username }}/save_session/{{ session.id }}" method="post" onsubmit="setFormSubmitting()">
+    <form action="/student/{{ student.username }}/save_session/{{ session.id }}" method="post" onsubmit="setFormSubmitting()" id="sessionform">
         {% csrf_token %}
         <div class="input-field col s12 m6 l6">
           <textarea id="celebrations" class="materialize-textarea" name="celebrations" value="hi"></textarea>
@@ -156,20 +156,26 @@
   });
 
        var formSubmitting = false;
+
 var setFormSubmitting = function() { formSubmitting = true; };
 
 window.onload = function() {
     window.addEventListener("beforeunload", function (e) {
-        if (formSubmitting) {
-            return undefined;
-        }
-
+            var saving = {{ save }};
+            if (saving>0.1) {
+                document.getElementById("sessionform").submit();
+            }
+            alert(saving);
         var confirmationMessage = 'It looks like you have been editing something. '
                                 + 'If you leave before saving, your changes will be lost.';
 
         (e || window.event).returnValue = confirmationMessage; //Gecko + IE
         return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+
+
     });
+
+
 };
 
     </script>

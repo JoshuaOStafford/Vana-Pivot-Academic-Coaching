@@ -13,8 +13,8 @@
     <table class="responsive-table striped" style="width: 90%; margin: 5% 5% 5% 5%">
         <tr>
             <th>Subject</th>
-            {% for score in student.class_set.first.classgrade_set.all %}
-                <th>{{ score.date }}</th>
+            {% for date in chart_dates %}
+                <th>{{ date }}</th>
             {% endfor %}
         </tr>
         {% for class in student.class_set.all %}

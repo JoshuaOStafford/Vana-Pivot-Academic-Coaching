@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from student.models import Student, AcademicCoach, School, Parent, Contact, Class, ClassGrade, Habit, HabitScore, Session
 from student.helpers import student_has_no_classes, is_coach
-from datetime import date, timedelta
+from datetime import date as dateobject, timedelta
 
 
 def profile_view(request, username):
@@ -13,7 +13,10 @@ def profile_view(request, username):
     for parent in student.parent_set.all():
         parents.append(parent)
     if request.method == 'POST':    # academic coach adding to CRM
-        date = request.POST['contact_date']
+        if request.POST.get('entry_date', False):
+            date = request.POST['entry_date']
+        else:
+            date = dateobject.today()
         msg = request.POST['contact_message']
         contact = Contact(student=student, date=date, message=msg)
         contact.save()
@@ -30,8 +33,18 @@ def track_grades_view(request, username):
     coach = is_coach(request)
     student = Student.objects.get(username=username)
     sessions = Session.objects.filter(student=student).order_by('date')
+    
+    first_class = Class.objects.filter(student=student).order_by('created')
+    all_first_class_grades = ClassGrade.objects.filter(subject=first_class).order_by('date')
+    charted_dates = []
+    for grade in all_first_class_grades:
+        charted_dates.append(grade.date)
+
     if request.method == 'POST':
-        date = request.POST['entry_date']
+        if request.POST.get('entry_date', False):
+            date = request.POST['entry_date']
+        else:
+            date = dateobject.today()
         for subject in student.class_set.all():
             score = request.POST[subject.name + '_score']
             session_number = str(int(request.POST['session_number']) + 1)
@@ -124,6 +137,10 @@ def session_redirect_view(request, username):
 def pre_session_view(request, username, session_number):
     page = 'session'
     coach = is_coach(request)
+    if coach:
+        save = 1
+    else:
+        save = 0
     student = Student.objects.get(username=username)
     if request.method == 'POST':
         date = request.POST['new_session_date']
@@ -145,7 +162,7 @@ def pre_session_view(request, username, session_number):
     sessions = Session.objects.filter(student=student).order_by('date')
     return render(request, 'student/pre_session.html', {'student': student, 'session': session, 'active_session':
                                                         active_session, 'coach': coach, 'sessions': sessions, 'session_number':
-                                                        session_number,  'page': page})
+                                                        session_number,  'page': page, 'save': save})
 
 
 def save_session_view(request, username, session_id):
