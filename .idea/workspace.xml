@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0e8858b7-20ff-4605-b818-24cdab845f71" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/Vana18/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Vana18/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/new_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/new_base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/pre_session.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/pre_session.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/schedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/schedule.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/track_grades.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/track_grades.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/track_habits.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/track_habits.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/Vana18/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="203">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+              <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -684,7 +676,7 @@
     <entry file="file://$PROJECT_DIR$/Vana18/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
         </state>
       </provider>
     </entry>

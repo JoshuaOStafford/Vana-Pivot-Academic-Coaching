@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-552+yf4#3c!f0o!c$6yz0oaq#knyxp&ss_tvavr4!0amt1-m='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True    
 
 ALLOWED_HOSTS = ['vana18.herokuapp.com',
                  'www.vanalearning.com',
