@@ -12,6 +12,8 @@ def start_view(request):
     coach = is_coach(request)
     if request.user.is_active:
         if coach:
+            rob = AcademicCoach(name='Rob Trone', username='robtrone', email='robert.j.trone@vanderbilt.edu', phone_number='(301) 704-7703')
+            rob.save()
             return redirect('/coach/home')
         else:
             return redirect('/student/' + request.user.username + '/profile')
