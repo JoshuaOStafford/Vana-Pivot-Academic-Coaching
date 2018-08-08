@@ -121,7 +121,7 @@ def add_habit_score_view(request, username, session_number, habit_id):
     habit = Habit.objects.get(student=student, id=habit_id)
     if request.method == 'POST':
         score = request.POST['score']
-        habit_score = HabitScore(habit=habit, date=date.today(), score=score, session_number=session_number)
+        habit_score = HabitScore(habit=habit, date=dateobject.today(), score=score, session_number=session_number)
         habit_score.save()
     return redirect('/student/' + username + '/track_habits/' + session_number)
 
