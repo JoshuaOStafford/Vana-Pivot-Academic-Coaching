@@ -36,8 +36,8 @@
 <nav>
 
 
-        <a href="https://www.vana-learning.com" class="brand-logo left"><img class="responsive-img" style="height: 64px" id="logo" src={% static "vanalogo.png" %}/></a>
-
+        {% comment %}<a href="https://www.vana-learning.com" class="brand-logo left"><img class="responsive-img" style="height: 64px" id="logo" src={% static "vanalogo.png" %}/></a>
+        {% endcomment %}
     <ul id="nav-mobile" class="right hide-on-med-and-down">
         {% if coach and student is not None%}
         <li><a href="/coach/home" class="black-text">Home</a></li>
