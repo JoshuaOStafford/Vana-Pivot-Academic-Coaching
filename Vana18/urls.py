@@ -6,7 +6,7 @@ from Coach import views as coach_views
 
 urlpatterns = [
     url(r'^login$', auth_views.login, {'template_name': 'registration/login.html', 'authentication_form': LoginForm}),
-    url(r'^logout$', auth_views.logout, {'template_name': 'registration/login.html'}),
+    url(r'^logout$', auth_views.logout, {'next_page': '/login'}),
     url(r'^$', coach_views.start_view, name='Start View'),
     url(r'^coach', include('Coach.urls')),
     url(r'^student', include('student.urls')),
