@@ -126,6 +126,27 @@ def add_habit_score_view(request, username, session_number, habit_id):
     return redirect('/student/' + username + '/track_habits/' + session_number)
 
 
+def edit_habit_view(request, username, habit_id):
+    student = Student.objects.get(username=username)
+    habit = Habit.objects.get(student=student, id=habit_id)
+    if request.method == 'POST':
+        if request.POST.get('delete_habit', False):
+            habit.delete()
+        else:
+            habit.title = request.POST['habit_title']
+            habit.rubric_question = request.POST['rubric_question']
+            habit.rubric_answer = request.POST['rubric_answer']
+            habit.save()
+    return redirect('/student/' + username + '/track_habits')
+
+
+def delete_habit_view(request, username, habit_id):
+    student = Student.objects.get(username=username)
+    habit = Habit.objects.get(student=student, id=habit_id)
+    habit.delete()
+    return redirect('/student/' + username + '/track_habits')
+
+
 def session_redirect_view(request, username):
     student = Student.objects.get(username=username)
     if Session.objects.filter(student=student).exists():
@@ -273,3 +294,64 @@ def delete_student_view(request, username):
             if student.academic_coach.id == academic_coach.id:
                 student.delete()
     return redirect('/coach/home')
+
+
+def edit_profile_view(request, username):
+    student = Student.objects.get(username=username)
+    phone_number = student.phone_number
+    parent2 = False
+    if len(student.parent_set.all()) > 0:
+        parent1 = student.parent_set.first()
+    else:
+        parent1 = {'name': '', 'email': '', 'phone_number': ''}
+    if len(student.parent_set.all()) > 1:
+        parent2 = student.parent_set.last()
+    else:
+        parent2 = {'name': '', 'email': '', 'phone_number': ''}
+    year = student.birthday.year
+    month = student.birthday.month - 1
+    day = student.birthday.day
+
+    if request.method == 'POST':
+        student.phone_number = request.POST['phone_number'] if request.POST.get('phone_number') else ''
+        student.school.name = request.POST['school_name']
+        student.school.website_link = request.POST['school_website']
+        student.school.calendar_link = request.POST['school_calendar']
+        student.grades_link = request.POST['grades_link']
+        student.zoom_link = request.POST['zoom_link']
+        student.birthday = request.POST['birthday']
+        student.save()
+        parent1_name = request.POST['parent1_name']
+        parent1_email = request.POST['parent1_email']
+        parent1_phone = request.POST['parent1_phone']
+        if parent1_name != '':
+            if len(student.parent_set.all()) == 0:
+                parent1 = Parent(name=parent1_name, email=parent1_email, phone_number=parent1_phone, student=student)
+                parent1.save()
+            else:
+                parent1 = student.parent_set.first()
+                parent1.name = parent1_name
+                parent1.email = parent1_email
+                parent1.phone_number = parent1_phone
+                parent1.save()
+
+        parent2_name = request.POST['parent2_name']
+        parent2_email = request.POST['parent2_email']
+        parent2_phone = request.POST['parent2_phone']
+        if parent2_name != '':
+            if len(student.parent_set.all()) < 2:
+                parent2 = Parent(name=parent2_name, email=parent2_email, phone_number=parent2_phone, student=student)
+                parent2.save()
+            else:
+                parent2 = student.parent_set.last()
+                parent2.name = parent2_name
+                parent2.email = parent2_email
+                parent2.phone_number = parent2_phone
+                parent2.save()
+        student.save()
+
+    return render(request, 'student/edit_profile.html', {'parent1': parent1, 'parent2': parent2, 'student': student, 'year': year, 'month': month,
+                                                         'day': day})
+
+
+

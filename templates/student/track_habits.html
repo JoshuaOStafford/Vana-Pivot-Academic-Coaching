@@ -45,12 +45,18 @@
         <div class="card">
 
         <div class="card-content grey-text text-darken-4 activator">
-            <h5 class="activator">{{ habit.title }}<i class="material-icons right">more_vert</i></h5>
+            <h5 class="activator">{{ habit.title }}<i class="material-icons right">more_vert</i>
+                        <a class="btn-floating btn-large waves-effect waves-light red darken-2 right modal-trigger" href="#delete-habit-{{ habit.id }}"><i class="material-icons">delete</i></a>
+
+                        <a class="btn-floating btn-large waves-effect waves-light black right modal-trigger" href="#edit-habit-{{ habit.id }}"><i class="material-icons">edit</i></a>
+</h5>
+
         </div>
 
         <div class="card-reveal">
             <span class="card-title grey-text text-darken-4" style="font-size:100%;">{{ habit.rubric_question }}<i class="material-icons right">close</i></span>
             <p class="center-align">{{ habit.rubric_answer }}</p>
+
 
 
         </div>
@@ -124,7 +130,6 @@
         </div>
     </div>
 
-
     <div id="change-session-modal" class="modal">
         <div class="modal-content">
             <h5 class="center-align">Track Habits for a Different Session</h5>
@@ -138,6 +143,59 @@
 
 
     </div>
+
+
+    {% for habit in student.habit_set.all %}
+       <div id="edit-habit-{{ habit.id }}" class="modal">
+        <div class="modal-content">
+            <h4 class="center-align">Edit Habit</h4>
+                <form method="post" action="/student/{{ student.username }}/edit_habit/{{ habit.id }}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="input-field">
+                                <input id="habit_title" type="text" class="validate" name="habit_title" value="{{ habit.title }}">
+                                <label for="habit_title">Habit Title</label>
+                             </div>
+                            <div class="input-field">
+                                <input id="rubric_question" type="text" class="validate" name="rubric_question" value="{{ habit.rubric_question }}">
+                                <label for="rubric_question">Rubric Question</label>
+                             </div>
+                            <div class="input-field">
+                                <input id="rubric_answer" type="text" class="validate" name="rubric_answer" value="{{ habit.rubric_answer }}">
+                                <label for="rubric_answer">Rubric Answer</label>
+                             </div>
+                        </div>
+
+
+                    </div>
+                    <a href="#" class="modal-close waves-effect waves-green btn-flat black white-text">Close</a>
+                    <button class="btn waves-effect waves-light red right" type="submit" name="action">Edit
+                        <i class="material-icons right">edit</i>
+                    </button>
+                </form>
+        </div>
+    </div>
+    {% endfor %}
+
+
+    {% for habit in student.habit_set.all %}
+    <div id="delete-habit-{{ habit.id }}" class="modal">
+        <div class="modal-content">
+        <h4 class="center-align">Delete Habit</h4>
+        <p>Are you sure you want to delete this habit? Deletion is non-reversible, and all data associated with the habit will be lost.</p>
+
+        <a href="#" class="modal-close waves-effect waves-green btn-flat black white-text" style="margin: 1%">No</a>
+                    <a class="btn waves-effect waves-light red right" href="/student/{{ student.username }}/delete_habit/{{ habit.id }}" style="margin: 1%">Delete
+                        <i class="material-icons right">delete</i>
+                    </a>
+        </div>
+    </div>
+    {% endfor %}
+
+
+
+
 
 
 

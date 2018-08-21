@@ -14,4 +14,7 @@ urlpatterns = [
     url('([a-zA-z0-9_-]{3,16})/save_session/([0-9]{1,10})', views.save_session_view, name='Pre-session'),
     url('([a-zA-z0-9_-]{3,16})/visualize', views.progress_visualization_view, name='Progress Visualization'),
     url('delete/([a-zA-z0-9_-]{3,16})', views.delete_student_view, name='Delete Student'),
+    url('edit_profile/([a-zA-z0-9_-]{3,16})', views.edit_profile_view, name='Edit Profile'),
+    url('([a-zA-z0-9_-]{3,16})/edit_habit/([0-9]{1,10})', views.edit_habit_view, name='Edit Habit'),
+    url('([a-zA-z0-9_-]{3,16})/delete_habit/([0-9]{1,10})', views.delete_habit_view, name='Edit Habit')
 ]

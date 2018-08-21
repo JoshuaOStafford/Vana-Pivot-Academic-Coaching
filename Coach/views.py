@@ -86,7 +86,7 @@ def create_student_account_view(request, username):
         return redirect("https://www.vana-learning.com")
     if request.method == 'POST':
         phone_number = request.POST['phone_number']
-        birthday = request.POST['birthday']
+        birthday = request.POST['birthday'] if request.POST['birthday'] != '' else date.today()
         grades_link = request.POST['grades_link']
         if grades_link[0:7] != 'https//' and grades_link[0:6] != 'http//':
             grades_link = 'https://' + grades_link

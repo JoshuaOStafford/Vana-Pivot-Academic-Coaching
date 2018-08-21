@@ -12,10 +12,10 @@ body{
 }
 </style>
 
-    <h5 class="center-align">{{ student.name }}, please finish your account!</h5>
+    <h5 class="center-align">{{ student.name }}, edit your account!</h5>
 
     <div class="row">
-        <form action="/coach/new_student/{{ student.username }}" method="post">
+        <form action="/student/edit_profile/{{ student.username }}" method="post">
                 {% csrf_token %}
 
         <div class="col s12 m12 l4 xl4 white" style="border:2px solid black; margin-left:10%; margin-right: 5%">
@@ -51,7 +51,7 @@ body{
                     <label for="zoom_link">Link to your Zoom Account</label>
                 </div>
 
-            <b>Birthday:</b> <div class="input-field"><input class="input-field inline" type="date" name="birthday"></div>
+            <b>Birthday:</b> <div class="input-field"><input class="input-field inline" type="date" name="birthday" id="birthday"></div>
 
         </div>
 
@@ -102,6 +102,27 @@ body{
 
 
     <script>
+
+        $('#phone_number').val('{{ student.phone_number }}');
+        $('#school_name').val('{{ student.school.name }}');
+        $('#school_website').val('{{ student.school.website_link }}');
+        $('#school_calendar').val('{{ student.school.calendar_link }}');
+        $('#grades_link').val('{{ student.grades_link }}');
+        $('#zoom_link').val('{{ student.zoom_link }}');
+        $('#parent1_name').val('{{ parent1.name }}');
+        $('#parent1_email').val('{{ parent1.email }}');
+        $('#parent1_phone').val('{{ parent1.phone_number }}');
+        document.getElementById('birthday').valueAsDate = new Date({{ year }}, {{ month }}, {{ day }});
+
+        $('#parent2_name').val('{{ parent2.name }}');
+        $('#parent2_email').val('{{ parent2.email }}');
+        $('#parent2_phone').val('{{ parent2.phone_number }}');
+
+
+
+
+
+
         $(document).ready(function(){
         $('.datepicker').datepicker();
         });

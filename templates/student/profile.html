@@ -7,7 +7,7 @@
         <div class = "card">
                <div class = "card-content">
                   <span class = "card-title"><h4>{{ student.name }}</h4></span>
-                   <p id="info-title"><b>Parents:</b> {% for parent in student.parent_set.all %} {{ parent.name }}{% if forloop.counter == 1 %} & {% endif %}{% endfor %}</p>
+                   <p id="info-title"><b>Parents:</b> {% for parent in student.parent_set.all %} {% if forloop.counter == 2 %} & {% endif %}{{ parent.name }} {% endfor %}</p>
                    <p id="info-title"><b>Phone #:</b> {{ student.phone_number }}</p>
                    {% for parent in student.parent_set.all %}
                    <p id="info-title"><b>{{ parent.name }}'s #:</b> {{ parent.phone_number }}</p>
@@ -22,7 +22,7 @@
                    {% if coach %}
                 <a class="waves-effect waves-light btn view blue white-text modal-trigger" href="#email-modal">Email<i class="material-icons right">mail</i></a>
                     {% else %}
-               <a class="waves-effect waves-light btn view blue white-text" href="/coach/new_student/{{ student.username }}">Edit</a>
+               <a class="waves-effect waves-light btn view blue white-text" href="/student/edit_profile/{{ student.username }}">Edit</a>
 
                    {% endif %}
                   <a class = "right blue-grey-text" href = "/student/{{ student.username }}/session">
