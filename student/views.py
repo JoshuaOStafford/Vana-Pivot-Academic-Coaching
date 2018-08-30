@@ -297,6 +297,7 @@ def delete_student_view(request, username):
 
 
 def edit_profile_view(request, username):
+    coach = is_coach()
     student = Student.objects.get(username=username)
     phone_number = student.phone_number
     parent2 = False
@@ -351,7 +352,7 @@ def edit_profile_view(request, username):
         student.save()
 
     return render(request, 'student/edit_profile.html', {'parent1': parent1, 'parent2': parent2, 'student': student, 'year': year, 'month': month,
-                                                         'day': day})
+                                                         'day': day, 'coach': coach})
 
 
 
