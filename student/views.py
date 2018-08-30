@@ -13,8 +13,8 @@ def profile_view(request, username):
     for parent in student.parent_set.all():
         parents.append(parent)
     if request.method == 'POST':    # academic coach adding to CRM
-        if request.POST.get('entry_date', False):
-            date = request.POST['entry_date']
+        if request.POST.get('contact_date', False):
+            date = request.POST['contact_date']
         else:
             date = dateobject.today()
         msg = request.POST['contact_message']
