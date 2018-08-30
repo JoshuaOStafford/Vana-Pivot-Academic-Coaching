@@ -297,7 +297,7 @@ def delete_student_view(request, username):
 
 
 def edit_profile_view(request, username):
-    coach = is_coach()
+    coach = is_coach(request)
     student = Student.objects.get(username=username)
     phone_number = student.phone_number
     parent2 = False
