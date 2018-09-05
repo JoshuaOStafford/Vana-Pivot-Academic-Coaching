@@ -67,7 +67,7 @@
                     {% for class in student.class_set.all %}
                         <div class="col s2">
                             <div class="input-field">
-                                <input id="{{ class.name }}_score" type="number" class="validate" name="{{ class.name }}_score" required>
+                                <input id="{{ class.name }}_score" type="number" class="validate" name="{{ class.name }}_score" >
                                 <label for="{{ class.name }}_score">{{ class.name }} Grade</label>
                              </div>
 

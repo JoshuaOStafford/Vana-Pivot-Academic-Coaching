@@ -41,13 +41,13 @@ def track_grades_view(request, username):
         else:
             date = dateobject.today()
         for subject in student.class_set.all():
-            score = request.POST[subject.name + '_score']
-            session_number = str(int(request.POST['session_number']) + 1)
-            if subject.classgrade_set.filter(date=date).exists():
-                subject.classgrade_set.get(date=date).delete()
-            grade_submission = ClassGrade(subject=subject, date=date, score=score, session_number=session_number)
-            grade_submission.save()
-
+            if request.POST.get(subject.name + '_score', False):
+                score = request.POST[subject.name + '_score']
+                session_number = str(int(request.POST['session_number']) + 1)
+                if subject.classgrade_set.filter(date=date).exists():
+                    subject.classgrade_set.get(date=date).delete()
+                grade_submission = ClassGrade(subject=subject, date=date, score=score, session_number=session_number)
+                grade_submission.save()
     all_dates = set()
     for subject in student.class_set.all():
         for grade in subject.classgrade_set.all():
