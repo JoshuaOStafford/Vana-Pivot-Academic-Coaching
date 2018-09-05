@@ -56,7 +56,7 @@
 
                              <div class="col s2">
                             <label>Select a Session</label>
-                               <select form="input-grades" id="session_number" name="session_number" required>
+                               <select class="browser-default" form="input-grades" id="session_number" name="session_number" required>
                                   <option value = "" disabled selected>Select Session</option>
                                    {% for session in sessions %}
                                    <option value = "{{ forloop.counter0 }}">Session {{ forloop.counter }}: {{ session.date }}</option>
