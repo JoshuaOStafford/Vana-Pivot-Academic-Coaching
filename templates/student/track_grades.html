@@ -2,7 +2,11 @@
 
 {% block content %}
 
-
+<style>
+.modal.bottom-sheet{
+    max-height: 35%;
+}
+</style>
 
 
 
@@ -11,7 +15,7 @@
     <title>Track Grades</title>
 </head>
 
-<table class="responsive-table striped" style="width: 90%; margin: 5% 5% 5% 5%">
+<table class="responsive-table striped" style="width: 90%; margin: 2% 5% 5% 5%">
     <tr>
         <th>Subject</th>
         {% for date in dates %}
@@ -44,15 +48,13 @@
 
     <div id="grade-modal" class="modal bottom-sheet">
         <div class="modal-content">
-            <h4 class="center-align">Input Grades</h4>
-                <form method="post" action="/student/{{ student.username }}/track_grades" id="input-grades">
+                <form method="post" action="/student/{{ student.username }}/track_grades" id="input-grades" style="margin-bottom:0">
                     {% csrf_token %}
-
-                    <div class="row" align="center">
-                    <div class="col s4" align="center">
+                    <div class="row" align="left">
+                    <div class="col s2" align="center">
                         <b>Date:</b><input class="input-field" type="date" name="entry_date" required></div>
 
-                             <div class="col s4">
+                             <div class="col s2">
                             <label>Select a Session</label>
                                <select form="input-grades" id="session_number" name="session_number" required>
                                   <option value = "" disabled selected>Select Session</option>
@@ -61,10 +63,9 @@
                                    {% endfor %}
                                </select>
                              </div>
-                    </div>
+
                     {% for class in student.class_set.all %}
-                    <div class="row">
-                        <div class="col s4">
+                        <div class="col s2">
                             <div class="input-field">
                                 <input id="{{ class.name }}_score" type="number" class="validate" name="{{ class.name }}_score" required>
                                 <label for="{{ class.name }}_score">{{ class.name }} Grade</label>
@@ -74,8 +75,8 @@
                     {% endfor %}
 
                     </div>
-                    <a href="#" class="modal-close waves-effect waves-green btn-flat black white-text">Close</a>
-                    <button class="btn waves-effect waves-light green lighten-2 right" type="submit" name="action">Submit
+                    <a href="#" class="modal-close waves-effect waves-green btn-flat black white-text" style="margin-bottom:0">Close</a>
+                    <button class="btn waves-effect waves-light green lighten-2 right" type="submit" name="action" style="margin-bottom:0">Input Grades
                         <i class="material-icons right">add</i>
                     </button>
                 </form>
