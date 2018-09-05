@@ -32,27 +32,9 @@ def track_grades_view(request, username):
     page = 'grades'
     coach = is_coach(request)
     student = Student.objects.get(username=username)
-    sessions = Session.objects.filter(student=student).order_by('date')
-    if request.method == 'POST':
-        if request.POST.get('entry_date', False):
-            date = request.POST['entry_date']
-        else:
-            date = dateobject.today()
-        for subject in student.class_set.all():
-            score = request.POST[subject.name + '_score']
-            session_number = str(int(request.POST['session_number']) + 1)
 
-            grade_submission = ClassGrade(subject=subject, date=date, score=score, session_number=session_number)
-            grade_submission.save()
 
-    first_class = Class.objects.filter(student=student).order_by('created').first()
-    all_first_class_grades = ClassGrade.objects.filter(subject=first_class).order_by('date')
-    charted_dates = []
-    for grade in all_first_class_grades:
-        charted_dates.append(grade.date)
-
-    return render(request, 'student/track_grades.html', {'student': student, 'coach': coach, 'sessions': sessions, 'page': page,
-                                                         'charted_dates': charted_dates})
+    return render(request, 'student/track_grades.html', {'student': student, 'coach': coach})
 
 
 def schedule_view(request, username):
