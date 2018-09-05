@@ -32,7 +32,7 @@ def track_grades_view(request, username):
     page = 'grades'
     coach = is_coach(request)
     student = Student.objects.get(username=username)
-    sessions = student.session_set.all()
+    sessions = student.session_set.all().order_by('date')
     subjects = student.class_set.all()
 
     if request.method == 'POST':
