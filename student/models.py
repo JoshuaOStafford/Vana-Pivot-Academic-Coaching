@@ -82,12 +82,27 @@ class Class(TimeStampedModel):
     late_work_policy = models.TextField()
     max_score = models.PositiveIntegerField(default=100)
 
+    def get_all_scores(self):
+        all_dates = set()
+        for subject in self.student.class_set.all():
+            for grade in subject.classgrade_set.all():
+                all_dates.add(grade.date)
+        all_dates = sorted(all_dates)
+        all_scores = []
+        for date in all_dates:
+            if self.classgrade_set.filter(date=date).exists():
+                all_scores.append(self.classgrade_set.filter(date=date).first().score)
+            else:
+                all_scores.append('N/A')
+        return all_scores
+
 
 class ClassGrade(TimeStampedModel):
     subject = models.ForeignKey(Class, on_delete=models.CASCADE)  # had to call it subject since class is keyword
     date = models.DateField(default=timezone.now)
     score = models.PositiveIntegerField()
     session_number = models.PositiveIntegerField(default=0)
+
 
 
 
