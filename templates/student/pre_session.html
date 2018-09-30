@@ -141,25 +141,25 @@
     <script>
 
         var celeb = '{{ session.celebrations }}';
-        celeb = celeb.replace('&#39;', '\'', 100);
+        celeb = celeb.replace(/&#39;/g, '\'');
         $('#celebrations').val(celeb);
         var missing = '{{ session.missing_work }}';
-        missing = missing.replace('&#39;', '\'');
+        missing = missing.replace(/&#39;/g, '\'');
         $('#missing_work').val(missing);
         var questions = '{{ session.questions_about_session }}';
-        questions = questions.replaceAll('&#39;', '\'');
+        questions = questions.replace(/&#39;/g, '\'');
         $('#questions').val(questions);
         var due = '{{ session.upcoming_due_dates }}';
-        due = due.replaceAll('&#39;', '\'');
+        due = due.replace(/&#39;/g, '\'');
         $('#due_dates').val(due);
         var follow = '{{ session.coach_follow_up }}';
-        follow = follow.replaceAll('&#39;', '\'');
+        follow = follow.replace(/&#39;/g, '\'');
         $('#follow_up').val(follow);
         var committ = '{{ session.student_commitments }}';
-        committ = committ.replaceAll('&#39;', '\'');
+        committ = committ.replace(/&#39;/g, '\'');
         $('#commitments').val(committ);
         var note = '{{ session.notes }}';
-        note = note.replaceAll('&#39;', '\'');
+        note = note.replace(/&#39;/g, '\'');
         $('#notes').val(note);
 
 

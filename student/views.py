@@ -356,5 +356,7 @@ def edit_profile_view(request, username):
     return render(request, 'student/edit_profile.html', {'parent1': parent1, 'parent2': parent2, 'student': student, 'year': year, 'month': month,
                                                          'day': day, 'coach': coach})
 
+def forgot_password_view(request):
 
+    return render(request, 'student/forgot_password.html', context=None)
 

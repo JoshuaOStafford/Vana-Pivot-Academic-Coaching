@@ -16,5 +16,6 @@ urlpatterns = [
     url('delete/([a-zA-z0-9_-]{3,16})', views.delete_student_view, name='Delete Student'),
     url('edit_profile/([a-zA-z0-9_-]{3,16})', views.edit_profile_view, name='Edit Profile'),
     url('([a-zA-z0-9_-]{3,16})/edit_habit/([0-9]{1,10})', views.edit_habit_view, name='Edit Habit'),
-    url('([a-zA-z0-9_-]{3,16})/delete_habit/([0-9]{1,10})', views.delete_habit_view, name='Edit Habit')
+    url('([a-zA-z0-9_-]{3,16})/delete_habit/([0-9]{1,10})', views.delete_habit_view, name='Edit Habit'),
+    url('forgot-password', views.forgot_password_view, name='Forgot Password'),
 ]
