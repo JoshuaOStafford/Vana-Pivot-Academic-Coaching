@@ -140,8 +140,9 @@
 
     <script>
 
-
-        $('#celebrations').val('{{ session.celebrations }}');
+        var celeb = '{{ session.celebrations }}';
+        celeb.replace('&#39;', '\'');
+        $('#celebrations').val(celeb);
         alert({{ sessions.celebrations }});
         $('#missing_work').val('{{ session.missing_work }}');
         $('#questions').val('{{ session.questions_about_session }}');
