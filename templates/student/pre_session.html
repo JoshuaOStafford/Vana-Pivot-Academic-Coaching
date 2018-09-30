@@ -143,13 +143,24 @@
         var celeb = '{{ session.celebrations }}';
         celeb = celeb.replaceAll('&#39;', '\'');
         $('#celebrations').val(celeb);
-        alert(celeb);
-        $('#missing_work').val('{{ session.missing_work }}');
-        $('#questions').val('{{ session.questions_about_session }}');
-        $('#due_dates').val('{{ session.upcoming_due_dates }}');
-        $('#follow_up').val('{{ session.coach_follow_up }}');
-        $('#commitments').val('{{ session.student_commitments }}');
-        $('#notes').val('{{ session.notes }}');
+        var missing = '{{ session.missing_work }}';
+        missing = missing.replaceAll('&#39;', '\'');
+        $('#missing_work').val(missing);
+        var questions = '{{ session.questions_about_session }}';
+        questions = questions.replaceAll('&#39;', '\'');
+        $('#questions').val(questions);
+        var due = '{{ session.upcoming_due_dates }}';
+        due = due.replaceAll('&#39;', '\'');
+        $('#due_dates').val(due);
+        var follow = '{{ session.coach_follow_up }}';
+        follow = follow.replaceAll('&#39;', '\'');
+        $('#follow_up').val(follow);
+        var committ = '{{ session.student_commitments }}';
+        committ = committ.replaceAll('&#39;', '\'');
+        $('#commitments').val(committ);
+        var note = '{{ session.notes }}';
+        note = note.replaceAll('&#39;', '\'');
+        $('#notes').val(note);
 
 
         $(document).ready(function(){
