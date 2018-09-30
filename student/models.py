@@ -31,6 +31,7 @@ class Student(TimeStampedModel):
     birthday = models.DateField(default=timezone.now)   # without default, would get error when making student account
     # will have parents through Foreign Key
     school = models.ForeignKey(School, on_delete=models.PROTECT, default=None)
+    code = models.PositiveIntegerField(default='917253')
 
 
 class Parent(TimeStampedModel):

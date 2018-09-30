@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from student.models import Student, AcademicCoach, School, Parent, Contact, Class, ClassGrade, Habit, HabitScore, Session
 from student.helpers import student_has_no_classes, is_coach
 from datetime import date as dateobject, timedelta
+from django.core.mail import send_mail
 
 
 def profile_view(request, username):
@@ -356,7 +357,13 @@ def edit_profile_view(request, username):
     return render(request, 'student/edit_profile.html', {'parent1': parent1, 'parent2': parent2, 'student': student, 'year': year, 'month': month,
                                                          'day': day, 'coach': coach})
 
-def forgot_password_view(request):
 
+def forgot_password_view(request, username):
+    user = Student.objects.get(username=username)
+    subject = 'Vana Learning Password Recovery'
+    message = user.name + ',\n\n' + 'Your security code is ' + user.code + '. Please reset your password at https://www.vanalearning.com/student/forgot-password/' + user.username + '\n\nBest,\nThe Vana Learning Team'
+    sender_email = 'jstafford@vanalearning.com'
+    recipient_email = user.email
+    send_mail(subject, message, sender_email, [recipient_email])
     return render(request, 'student/forgot_password.html', context=None)
 

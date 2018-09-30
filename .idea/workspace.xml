@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e8858b7-20ff-4605-b818-24cdab845f71" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/student/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/student/forgot_password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/student/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/student/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/pre_session.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/pre_session.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,12 +22,20 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/student/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="359" selection-start-line="359" selection-end-line="359" />
+            <state relative-caret-position="239">
+              <caret line="365" column="32" lean-forward="true" selection-start-line="365" selection-start-column="32" selection-end-line="365" selection-end-column="32" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
-                <marker date="1538347417547" expanded="true" signature="17207:17210" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Coach/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -35,17 +43,17 @@
       <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/registration/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="41" column="77" selection-start-line="41" selection-start-column="77" selection-end-line="41" selection-end-column="77" />
+            <state>
+              <caret selection-end-line="1" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/student/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+            <state relative-caret-position="356">
+              <caret line="33" column="56" lean-forward="true" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -56,8 +64,22 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/student/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="1" column="19" lean-forward="true" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+            <state relative-caret-position="285">
+              <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forgot_password.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/student/forgot_password.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="signup.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/registration/signup.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-143">
+              <caret line="16" column="23" lean-forward="true" selection-end-line="47" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -71,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pre_session.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pre_session.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/student/pre_session.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="143" column="44" selection-start-line="143" selection-start-column="44" selection-end-line="143" selection-end-column="44" />
+            <state relative-caret-position="231">
+              <caret line="153" column="33" lean-forward="true" selection-start-line="153" selection-start-column="33" selection-end-line="153" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -156,9 +178,10 @@
         <option value="$PROJECT_DIR$/Vana18/settings.py" />
         <option value="$PROJECT_DIR$/templates/registration/login.html" />
         <option value="$PROJECT_DIR$/student/urls.py" />
+        <option value="$PROJECT_DIR$/templates/student/pre_session.html" />
+        <option value="$PROJECT_DIR$/templates/student/forgot_password.html" />
         <option value="$PROJECT_DIR$/student/views.py" />
         <option value="$PROJECT_DIR$/student/models.py" />
-        <option value="$PROJECT_DIR$/templates/student/pre_session.html" />
       </list>
     </option>
   </component>
@@ -192,12 +215,29 @@
             <path>
               <item name="Vana18" type="b2602c69:ProjectViewProjectNode" />
               <item name="Vana18" type="462c0819:PsiDirectoryNode" />
+              <item name="Coach" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vana18" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vana18" type="462c0819:PsiDirectoryNode" />
               <item name="student" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Vana18" type="b2602c69:ProjectViewProjectNode" />
               <item name="Vana18" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vana18" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vana18" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="registration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Vana18" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Vana18" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="student" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Vana18" type="b2602c69:ProjectViewProjectNode" />
@@ -402,13 +442,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/coach/homepage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/student/track_grades.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2685">
@@ -598,13 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Coach/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="81" column="29" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/student/track_grades.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
@@ -636,13 +662,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/registration/signup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-247">
-          <caret line="10" column="112" selection-start-line="10" selection-start-column="112" selection-end-line="10" selection-end-column="112" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Vana18/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -650,45 +669,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/registration/login.html">
+    <entry file="file://$PROJECT_DIR$/templates/student/pre_session.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="41" column="77" selection-start-line="41" selection-start-column="77" selection-end-line="41" selection-end-column="77" />
+        <state relative-caret-position="231">
+          <caret line="153" column="33" lean-forward="true" selection-start-line="153" selection-start-column="33" selection-end-line="153" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/student/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/registration/signup.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="359" selection-start-line="359" selection-end-line="359" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-            <marker date="1538347417547" expanded="true" signature="17207:17210" ph="..." />
-          </folding>
+        <state relative-caret-position="-143">
+          <caret line="16" column="23" lean-forward="true" selection-end-line="47" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/student/forgot_password.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/registration/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/student/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="1" column="19" lean-forward="true" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+        <state relative-caret-position="285">
+          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Coach/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/student/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="365" column="32" lean-forward="true" selection-start-line="365" selection-start-column="32" selection-end-line="365" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/student/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+        <state relative-caret-position="356">
+          <caret line="33" column="56" lean-forward="true" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/student/pre_session.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="143" column="44" selection-start-line="143" selection-start-column="44" selection-end-line="143" selection-end-column="44" />
         </state>
       </provider>
     </entry>
