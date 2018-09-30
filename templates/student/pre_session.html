@@ -140,10 +140,10 @@
 
     <script>
 
-        var celeb = '{{ session.celebrations }}';
+        var celeb = {{ session.celebrations }};
         celeb.replace('&#39;', '\'');
         $('#celebrations').val(celeb);
-        alert({{ sessions.celebrations }});
+        alert(celeb);
         $('#missing_work').val('{{ session.missing_work }}');
         $('#questions').val('{{ session.questions_about_session }}');
         $('#due_dates').val('{{ session.upcoming_due_dates }}');
