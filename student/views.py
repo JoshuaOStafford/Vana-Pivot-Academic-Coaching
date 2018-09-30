@@ -3,6 +3,7 @@ from student.models import Student, AcademicCoach, School, Parent, Contact, Clas
 from student.helpers import student_has_no_classes, is_coach
 from datetime import date as dateobject, timedelta
 from django.core.mail import send_mail
+from django.contrib.auth.models import User
 
 
 def profile_view(request, username):
@@ -358,12 +359,39 @@ def edit_profile_view(request, username):
                                                          'day': day, 'coach': coach})
 
 
+def forgot_password_helper(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        if Student.objects.filter(username=username).exists():
+            return redirect('/student/forgot-password/' + username)
+    return redirect('/login')
+
+
 def forgot_password_view(request, username):
+    needs_email = True
+    message = ''
     user = Student.objects.get(username=username)
-    subject = 'Vana Learning Password Recovery'
-    message = user.name + ',\n\n' + 'Your security code is ' + user.code + '. Please reset your password at https://www.vanalearning.com/student/forgot-password/' + user.username + '\n\nBest,\nThe Vana Learning Team'
-    sender_email = 'jstafford@vanalearning.com'
-    recipient_email = user.email
-    send_mail(subject, message, sender_email, [recipient_email])
-    return render(request, 'student/forgot_password.html', context=None)
+    if request.method == 'POST':
+        needs_email = False
+        if user.code == request.POST['code']:
+            password1 = request.POST['password1']
+            password2 = request.POST['password2']
+            if password1 != password2:
+                message = "Passwords must match."
+            elif len(password1) < 8:
+                message = "Password must be 8 or more characters."
+            else:
+                account = User.objects.get(username=user.username)
+                account.set_password(password1)
+                account.save()
+                message = 'Password successfully changed'
+        else:
+            message = 'Wrong security code. Please check email to ensure code is correct.'
+    if needs_email:
+        subject = 'Vana Learning Password Recovery'
+        message = user.name + ',\n\n' + 'Your security code is ' + user.code + '. Please reset your password at https://www.vanalearning.com/student/forgot-password/' + user.username + '\n\nBest,\nThe Vana Learning Team'
+        sender_email = 'jstafford@vanalearning.com'
+        recipient_email = user.email
+        send_mail(subject, message, sender_email, [recipient_email])
+    return render(request, 'student/forgot_password.html', {'message': message, 'user': user})
 

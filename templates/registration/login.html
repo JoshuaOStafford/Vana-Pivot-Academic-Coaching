@@ -39,11 +39,31 @@
         <h4 class="black-text">Password:</h4><br/>
         {{ form.password }}<br/><br/>
         <button id="login-button" type="submit" class="pull-left btn">Login</button>
-        <button id="register-button" onclick="window.location.href='/student/forgot-password'" class="pull-right btn">Forgot Password</button>
+        <a class="btn-floating btn-large waves-effect waves-light blue modal-trigger" href="#password-modal"><i class="material-icons">Forgot Password</i></a>
         <button id="register-button" onclick="window.location.href='https://www.vana-learning.com'" class="pull-right btn">Back</button>
     </form>
         <br><br>
 </div>
     </div>
+
+
+
+    <div id="password-modal" class="modal">
+        <div class="modal-content">
+            <h4 class="center-align">Forgot Password</h4>
+            <h6 class="center-align">Enter your username below and we will send instructions to reset your password to the email registered to your account.</h6>
+                <form method="post" action="/student/forgot-password-helper">
+                    {% csrf_token %}
+                    <input id="username" type="text" class="validate" name="username">
+                    <label for="username">Username</label>
+                    <button class="btn waves-effect waves-light red right" type="submit" name="action">Submit
+                    </button>
+                        <br><br>
+
+                </form>
+
+        </div>
+
+  </div>
 
 {% endblock %}
