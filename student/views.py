@@ -197,7 +197,7 @@ def save_session_view(request, username, session_id):
     session = Session.objects.get(student=student, id=session_id)
     if request.method == 'POST':
         celebrations = str(request.POST['celebrations'])
-        celebrations.replace('\'', '\'\'', 100)
+        celebrations.replace('\'', '\'\'\'', 100)
         session.celebrations = celebrations
         session.missing_work = request.POST['missing_work']
         session.questions_about_session = request.POST['questions']
