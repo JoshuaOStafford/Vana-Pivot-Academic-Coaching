@@ -390,7 +390,7 @@ def forgot_password_view(request, username):
     if needs_email:
         subject = 'Vana Learning Password Recovery'
         message = user.name + ',\n\n' + 'Your security code is ' + user.code + '. Please reset your password at https://www.vanalearning.com/student/forgot-password/' + user.username + '\n\nBest,\nThe Vana Learning Team'
-        sender_email = 'jstafford@vanalearning.com'
+        sender_email = 'vanalearning@gmail.com'
         recipient_email = user.email
         send_mail(subject, message, sender_email, [recipient_email])
     return render(request, 'student/forgot_password.html', {'message': message, 'user': user})
