@@ -141,7 +141,7 @@
     <script>
 
         var celeb = '{{ session.celebrations }}';
-        celeb.replace('&#39;', '\'');
+        celeb = celeb.replace('&#39;', '\'');
         $('#celebrations').val(celeb);
         alert(celeb);
         $('#missing_work').val('{{ session.missing_work }}');
