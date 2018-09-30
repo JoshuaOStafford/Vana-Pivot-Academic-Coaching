@@ -141,10 +141,10 @@
     <script>
 
         var celeb = '{{ session.celebrations }}';
-        celeb = celeb.replaceAll('&#39;', '\'');
+        celeb = celeb.replace('&#39;', '\'', 100);
         $('#celebrations').val(celeb);
         var missing = '{{ session.missing_work }}';
-        missing = missing.replaceAll('&#39;', '\'');
+        missing = missing.replace('&#39;', '\'');
         $('#missing_work').val(missing);
         var questions = '{{ session.questions_about_session }}';
         questions = questions.replaceAll('&#39;', '\'');
