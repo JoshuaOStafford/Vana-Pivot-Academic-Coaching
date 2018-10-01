@@ -389,7 +389,7 @@ def forgot_password_view(request, username):
             message = 'Wrong security code. Please check email to ensure code is correct.'
     if needs_email:
         subject = 'Vana Learning Password Recovery'
-        message = str(user.name) + ',\n\n' + 'Your security code is ' + user.code + '. Please reset your password at https://www.vanalearning.com/student/forgot-password/' + user.username + '\n\nBest,\nThe Vana Learning Team'
+        message = str(user.name) + ',\n\n' + 'Your security code is ' + str(user.code) + '. Please reset your password at https://www.vanalearning.com/student/forgot-password/' + user.username + '\n\nBest,\nThe Vana Learning Team'
         sender_email = 'vanalearning@gmail.com'
         recipient_email = user.email
         send_mail(subject, message, sender_email, [recipient_email])
