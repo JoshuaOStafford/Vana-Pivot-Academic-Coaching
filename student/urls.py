@@ -18,6 +18,5 @@ urlpatterns = [
     url('([a-zA-z0-9_-]{3,16})/edit_habit/([0-9]{1,10})', views.edit_habit_view, name='Edit Habit'),
     url('([a-zA-z0-9_-]{3,16})/delete_habit/([0-9]{1,10})', views.delete_habit_view, name='Edit Habit'),
     url('forgot-password/([a-zA-z0-9_-]{3,16})', views.forgot_password_view, name='Forgot Password'),
-    url('forgot-password-helper', views.forgot_password_helper, name='Forgot Password Helper'),\
-
+    url('forgot-password-helper', views.forgot_password_helper, name='Forgot Password Helper'),
 ]
