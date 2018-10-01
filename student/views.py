@@ -364,13 +364,18 @@ def forgot_password_helper(request):
         username = request.POST['username']
         if Student.objects.filter(username=username).exists():
             return redirect('/student/forgot-password/' + username)
+        elif AcademicCoach.objects.filter(username=username).exists():
+            return redirect('/student/forgot-password/' + username)
     return redirect('/login')
 
 
 def forgot_password_view(request, username):
     needs_email = True
     message = ''
-    user = Student.objects.get(username=username)
+    if Student.objects.filter(username=username).exists():
+        user = Student.objects.get(username=username)
+    else:
+        user = AcademicCoach.objects.get(username=username)
     if request.method == 'POST':
         needs_email = False
         if str(user.code) == request.POST['code']:
