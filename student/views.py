@@ -373,7 +373,7 @@ def forgot_password_view(request, username):
     user = Student.objects.get(username=username)
     if request.method == 'POST':
         needs_email = False
-        if user.code == request.POST['code']:
+        if str(user.code) == request.POST['code']:
             password1 = request.POST['password1']
             password2 = request.POST['password2']
             if password1 != password2:
