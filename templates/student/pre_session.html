@@ -48,7 +48,7 @@
     <form action="/student/{{ student.username }}/save_session/{{ session.id }}" method="post" onsubmit="setFormSubmitting()" id="sessionform">
         {% csrf_token %}
         <div class="input-field col s12 m6 l6">
-          <textarea id="celebrations" class="materialize-textarea" name="celebrations" placeholder="session_info.0"></textarea>
+          <textarea id="celebrations" class="materialize-textarea" name="celebrations">{{ session_info.0 }}</textarea>
           <label for="celebrations">Successes</label>
         </div>
           <div class="input-field col s12 m6 l6">
