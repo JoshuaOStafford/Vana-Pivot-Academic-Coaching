@@ -48,7 +48,7 @@
     <form action="/student/{{ student.username }}/save_session/{{ session.id }}" method="post" onsubmit="setFormSubmitting()" id="sessionform">
         {% csrf_token %}
         <div class="input-field col s12 m6 l6">
-          <textarea id="celebrations" class="materialize-textarea" name="celebrations" value="hi"></textarea>
+          <textarea id="celebrations" class="materialize-textarea" name="celebrations" placeholder="session_info.0"></textarea>
           <label for="celebrations">Successes</label>
         </div>
           <div class="input-field col s12 m6 l6">
@@ -139,7 +139,7 @@
     </div>
 
     <script>
-
+        {% comment %}
         var celeb = '{{ session.celebrations }}';
         celeb = celeb.replace(/&#39;/g, '\'');
         $('#celebrations').val(celeb);
@@ -161,36 +161,13 @@
         var note = '{{ session.notes }}';
         note = note.replace(/&#39;/g, '\'');
         $('#notes').val(note);
+        {% endcomment %}
 
 
         $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal-trigger').leanModal();
-  });
-        {% comment %}
-       var formSubmitting = false;
-
-var setFormSubmitting = function() { formSubmitting = true; };
-
-window.onload = function() {
-    window.addEventListener("beforeunload", function (e) {
-            var saving = {{ save }};
-            if (saving>0.1) {
-                document.getElementById("sessionform").submit();
-            }
-            alert(saving);
-        var confirmationMessage = 'It looks like you have been editing something. '
-                                + 'If you leave before saving, your changes will be lost.';
-
-        (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-        return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
-
-
-    });
-
-
-};
-{% endcomment %}
+            $('.modal-trigger').leanModal();
+         });
 
     </script>
 

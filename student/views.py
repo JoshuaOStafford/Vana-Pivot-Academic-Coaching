@@ -188,23 +188,33 @@ def pre_session_view(request, username, session_number):
             if index == int(session_number):
                 session = current_session
             index = index + 1
+    session_info = [session.celebrations, session.missing_work, session.questions_about_session, session.upcoming_due_dates,
+                    session.coach_follow_up, session.student_commitments, session.notes]
     sessions = Session.objects.filter(student=student).order_by('date')
     return render(request, 'student/pre_session.html', {'student': student, 'session': session, 'active_session':
                                                         active_session, 'coach': coach, 'sessions': sessions, 'session_number':
-                                                        session_number,  'page': page, 'save': save})
+                                                        session_number,  'page': page, 'save': save,
+                                                        'session_info': session_info})
 
 
 def save_session_view(request, username, session_id):
     student = Student.objects.get(username=username)
     session = Session.objects.get(student=student, id=session_id)
     if request.method == 'POST':
-        session.celebrations = request.POST['celebrations']
-        session.missing_work = request.POST['missing_work']
-        session.questions_about_session = request.POST['questions']
-        session.upcoming_due_dates = request.POST['due_dates']
-        session.coach_follow_up = request.POST['follow_up']
-        session.student_commitments = request.POST['commitments']
-        session.notes = request.POST['notes']
+        if len(request.POST['celebrations']) > 0:
+            session.celebrations = request.POST['celebrations']
+        if len(request.POST['missing_work']) > 0:
+            session.missing_work = request.POST['missing_work']
+        if len(request.POST['questions']) > 0:
+            session.questions_about_session = request.POST['questions']
+        if len(request.POST['due_dates']) > 0:
+            session.upcoming_due_dates = request.POST['due_dates']
+        if len(request.POST['follow_up']) > 0:
+            session.coach_follow_up = request.POST['follow_up']
+        if len(request.POST['commitments']) > 0:
+            session.student_commitments = request.POST['commitments']
+        if len(request.POST['notes']) > 0:
+            session.notes = request.POST['notes']
         session.save()
     index = 1
     number = 0
