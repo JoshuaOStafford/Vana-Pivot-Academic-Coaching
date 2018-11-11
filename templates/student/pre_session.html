@@ -52,34 +52,34 @@
           <label for="celebrations">Successes</label>
         </div>
           <div class="input-field col s12 m6 l6">
-          <textarea id="missing_work" class="materialize-textarea" name="missing_work"></textarea>
+          <textarea id="missing_work" class="materialize-textarea" name="missing_work">{{ session_info.1 }}</textarea>
           <label for="missing_work">Missing Work</label>
         </div>
 
         <div class="input-field col s12 m6 l6">
-          <textarea id="questions" class="materialize-textarea" name="questions"></textarea>
+          <textarea id="questions" class="materialize-textarea" name="questions">{{ session_info.2 }}</textarea>
           <label for="questions">Topics to Discuss</label>
          </div>
             <div class="input-field col s12 m6 l6">
-          <textarea id="due_dates" class="materialize-textarea" name="due_dates"></textarea>
+          <textarea id="due_dates" class="materialize-textarea" name="due_dates">{{ session_info.3 }}</textarea>
           <label for="due_dates">Upcoming Due Dates</label>
         </div>
 
 
 
         <div class="input-field col s12 m6 l6">
-          <textarea id="follow_up" class="materialize-textarea" name="follow_up"></textarea>
+          <textarea id="follow_up" class="materialize-textarea" name="follow_up">{{ session_info.4 }}</textarea>
           <label for="follow_up">Coach's Next Steps</label>
         </div>
             <div class="input-field col s12 m6 l6">
-          <textarea id="commitments" class="materialize-textarea" name="commitments"></textarea>
+          <textarea id="commitments" class="materialize-textarea" name="commitments">{{ session_info.5 }}</textarea>
           <label for="commitments">Student's Next Steps</label>
         </div>
 
 
 
         <div class="input-field col s12 m12 l12">
-          <textarea id="notes" class="materialize-textarea" name="notes"></textarea>
+          <textarea id="notes" class="materialize-textarea" name="notes">{{ session_info.6 }}</textarea>
           <label for="notes">Additional Notes</label>
         </div>
         {% if coach %}
