@@ -4,12 +4,9 @@
 
 <style>
 .column1 {
-    width: 11%;
+    width: 40%;
 }
 .column2 {
-    width: 34%;
-}
-.column3 {
     width: 20%;
 }
 </style>
@@ -71,13 +68,13 @@
         <td>{{ ss.student_commitments }}</td>
     {% else %}
         <td><b>{{ ss.date }}</b></td>
-        {% if notes_selected %}     <td>{{ ss.notes }}</td> {% endif %}
+        {% if notes_selected %}     <td class="column1">{{ ss.notes }}</td> {% endif %}
         {% if celebrations_selected %}  <td>{{ ss.celebrations }}</td> {% endif %}
-        {% if missing_work_selected %} <td>{{ ss.missing_work }}</td>    {% endif %}
+        {% if missing_work_selected %} <td class="column2">{{ ss.missing_work }}</td>    {% endif %}
         {% if questions_selected %}     <td>{{ ss.questions_about_session }}</td>  {% endif %}
         {% if due_dates_selected %} <td>{{ ss.upcoming_due_dates }}</td>   {% endif %}
         {% if follow_up_selected %} <td>{{ ss.coach_follow_up }}</td>   {% endif %}
-        {% if commitments_selected %}   <td>{{ ss.student_commitments }}</td> {% endif %}
+        {% if commitments_selected %}   <td class="column2">{{ ss.student_commitments }}</td> {% endif %}
     {% endif %}
     </tr>
 
