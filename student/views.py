@@ -249,6 +249,44 @@ def analyze_sessions_view(request, username):
                                                                  'celebrations_selected': False, 'coach': coach,  'page': page})
 
 
+def simple_sessions_view(request, username):
+    page = 'session'
+    coach = is_coach(request)
+    student = Student.objects.get(username=username)
+    sessions = Session.objects.filter(student=student).order_by('date')
+    if request.method == 'POST':
+        selected_sessions = []
+        if request.POST.get('all_sessions', False):
+            selected_sessions = sessions
+        else:
+            for session in sessions:
+                if request.POST.get('session-' + str(session.id), False):
+                    selected_sessions.append(session)
+        return render(request, 'student/analyze_all_sessions.html', {'student': student, 'sessions': sessions,
+                                                                     'selected': True, 'selected_sessions': selected_sessions,
+                                                                     'all_categories_selected': request.POST.get('all_categories', False),
+                                                                     'celebrations_selected': request.POST.get('celebrations', False),
+                                                                     'missing_work_selected': request.POST.get('missing_work', False),
+                                                                     'questions_selected': request.POST.get('questions', False),
+                                                                     'due_dates_selected': request.POST.get('due_dates', False),
+                                                                     'follow_up_selected': request.POST.get('follow_up', False),
+                                                                     'commitments_selected': request.POST.get('commitments', False),
+                                                                     'notes_selected': request.POST.get('notes', False) , 'coach': coach,
+                                                                     'page': page})
+
+    return render(request, 'student/analyze_all_sessions.html', {'student': student, 'sessions': sessions, 'selected': True,
+                                                                 'all_categories_selected': False, 'selected_sessions': sessions,
+                                                                 'celebrations_selected': False,
+                                                                 'missing_work_selected': True,
+                                                                 'questions_selected': False,
+                                                                 'due_dates_selected': False,
+                                                                 'follow_up_selected': False,
+                                                                 'commitments_selected': True,
+                                                                 'notes_selected': True,
+                                                                 'coach': coach,  'page': page})
+
+
+
 def progress_visualization_view(request, username):
     page = 'visualize'
     coach = is_coach(request)
