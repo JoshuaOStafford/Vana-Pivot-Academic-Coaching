@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e8858b7-20ff-4605-b818-24cdab845f71" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Vana18/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Vana18/settings.py" afterDir="false" />
-    </list>
+    <list default="true" id="0e8858b7-20ff-4605-b818-24cdab845f71" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +17,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/student/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="243" column="67" selection-start-line="243" selection-start-column="67" selection-end-line="243" selection-end-column="67" />
+            <state relative-caret-position="204">
+              <caret line="227" column="30" lean-forward="true" selection-start-line="227" selection-start-column="30" selection-end-line="227" selection-end-column="30" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -28,7 +26,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Vana18/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="47">
@@ -40,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="analyze_all_sessions.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="analyze_all_sessions.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/student/analyze_all_sessions.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10">
-              <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
+            <state relative-caret-position="735">
+              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
               <folding>
                 <element signature="e#103#127#0#HTML" expanded="true" />
                 <element signature="e#652#686#0#HTML" expanded="true" />
@@ -185,8 +183,8 @@
         <option value="$PROJECT_DIR$/student/urls.py" />
         <option value="$PROJECT_DIR$/templates/student/simple_all_sessions.html" />
         <option value="$PROJECT_DIR$/templates/student/analyze_all_sessions.html" />
-        <option value="$PROJECT_DIR$/student/views.py" />
         <option value="$PROJECT_DIR$/Vana18/settings.py" />
+        <option value="$PROJECT_DIR$/student/views.py" />
       </list>
     </option>
   </component>
@@ -678,33 +676,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/student/analyze_all_sessions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="27" column="3" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
-          <folding>
-            <element signature="e#103#127#0#HTML" expanded="true" />
-            <element signature="e#652#686#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/student/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="243" column="67" selection-start-line="243" selection-start-column="67" selection-end-line="243" selection-end-column="67" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Vana18/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="47">
           <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
           <folding>
             <element signature="e#308#317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/student/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="227" column="30" lean-forward="true" selection-start-line="227" selection-start-column="30" selection-end-line="227" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/student/analyze_all_sessions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+          <folding>
+            <element signature="e#103#127#0#HTML" expanded="true" />
+            <element signature="e#652#686#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
