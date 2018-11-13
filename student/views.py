@@ -274,7 +274,7 @@ def simple_sessions_view(request, username):
                                                                      'notes_selected': request.POST.get('notes', False) , 'coach': coach,
                                                                      'page': page})
 
-    return render(request, 'student/analyze_all_sessions.html', {'student': student, 'sessions': sessions, 'selected': True,
+    return render(request, 'student/simple_all_sessions.html', {'student': student, 'sessions': sessions, 'selected': True,
                                                                  'all_categories_selected': False, 'selected_sessions': sessions,
                                                                  'celebrations_selected': False,
                                                                  'missing_work_selected': True,
@@ -284,7 +284,6 @@ def simple_sessions_view(request, username):
                                                                  'commitments_selected': True,
                                                                  'notes_selected': True,
                                                                  'coach': coach,  'page': page})
-
 
 
 def progress_visualization_view(request, username):
