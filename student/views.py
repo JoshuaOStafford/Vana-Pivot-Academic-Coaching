@@ -244,6 +244,7 @@ def analyze_sessions_view(request, username):
                                                                      'notes_selected': request.POST.get('notes', False) , 'coach': coach,
                                                                      'page': page})
 
+    1/0
     return render(request, 'student/analyze_all_sessions.html', {'student': student, 'sessions': sessions, 'selected': True,
                                                                  'all_categories_selected': True, 'selected_sessions': sessions,
                                                                  'celebrations_selected': False, 'coach': coach,  'page': page})
