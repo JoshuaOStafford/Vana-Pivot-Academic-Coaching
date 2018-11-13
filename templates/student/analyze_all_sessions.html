@@ -24,22 +24,23 @@
 <tr>
     <th>Session Date</th>
     {% if all_categories_selected %}
+        <th>Additional Notes</th>
         <th>Successes</th>
         <th>Missing Work</th>
         <th>Topics</th>
         <th>Upcoming Due Dates</th>
         <th>Coach's Next Steps</th>
         <th>Student's Next Steps</th>
-        <th>Additional Notes</th>
+
 
     {% else %}
+    {% if notes_selected %}     <th>Additional Notes</th> {% endif %}
     {% if celebrations_selected %}  <th>Successes</th> {% endif %}
     {% if missing_work_selected %} <th>Missing Work</th>    {% endif %}
     {% if questions_selected %}     <th>Topics</th>  {% endif %}
     {% if due_dates_selected %} <th>Upcoming Due Dates</th>   {% endif %}
     {% if follow_up_selected %} <th>Coach's Next Steps</th>   {% endif %}
     {% if commitments_selected %}   <th>Student's  Next Steps</th> {% endif %}
-    {% if notes_selected %}     <th>Additional Notes</th> {% endif %}
 
     {% endif %}
 </tr>
@@ -49,22 +50,22 @@
     <tr>
     {% if all_categories_selected %}
         <td>{{ ss.date }}</td>
+        <td>{{ ss.notes }}</td>
         <td>{{ ss.celebrations }}</td>
         <td>{{ ss.missing_work }}</td>
         <td>{{ ss.questions_about_session }}</td>
         <td>{{ ss.upcoming_due_dates }}</td>
         <td>{{ ss.coach_follow_up }}</td>
         <td>{{ ss.student_commitments }}</td>
-        <td>{{ ss.notes }}</td>
     {% else %}
         <td>{{ ss.date }}</td>
+        {% if notes_selected %}     <td>{{ ss.notes }}</td> {% endif %}
         {% if celebrations_selected %}  <td>{{ ss.celebrations }}</td> {% endif %}
         {% if missing_work_selected %} <td>{{ ss.missing_work }}</td>    {% endif %}
         {% if questions_selected %}     <td>{{ ss.questions_about_session }}</td>  {% endif %}
         {% if due_dates_selected %} <td>{{ ss.upcoming_due_dates }}</td>   {% endif %}
         {% if follow_up_selected %} <td>{{ ss.coach_follow_up }}</td>   {% endif %}
         {% if commitments_selected %}   <td>{{ ss.student_commitments }}</td> {% endif %}
-        {% if notes_selected %}     <td>{{ ss.notes }}</td> {% endif %}
     {% endif %}
     </tr>
 
@@ -103,6 +104,11 @@
                 <span>Select All</span>
             </label>
         </div>
+            <div class="col s4">
+        <input type="checkbox" name="notes" id="notes"/>
+    <label for="notes">
+        <span>Notes</span>
+    </label></div>
         <div class="col s4">
             <input type="checkbox" name="celebrations" id="celebrations"/>
             <label for="celebrations">
@@ -133,11 +139,6 @@
         <input type="checkbox" name="commitments" id="commitments"/>
     <label for="commitments">
         <span>Student's Next Steps</span>
-    </label></div>
-        <div class="col s4">
-        <input type="checkbox" name="notes" id="notes"/>
-    <label for="notes">
-        <span>Notes</span>
     </label></div>
 </div>
 
