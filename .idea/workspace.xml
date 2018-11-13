@@ -31,8 +31,11 @@
       <file leaf-file-name="analyze_all_sessions.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/student/analyze_all_sessions.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="277">
+              <caret line="58" column="35" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
+              <folding>
+                <element signature="e#777#799#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -684,8 +687,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/student/analyze_all_sessions.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="277">
+          <caret line="58" column="35" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
+          <folding>
+            <element signature="e#777#799#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

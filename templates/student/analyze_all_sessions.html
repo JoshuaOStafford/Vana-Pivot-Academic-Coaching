@@ -49,7 +49,7 @@
 {% for ss in selected_sessions %}
     <tr>
     {% if all_categories_selected %}
-        <td>{{ ss.date }}</td>
+        <b><td>{{ ss.date }}</td></b>
         <td>{{ ss.notes }}</td>
         <td>{{ ss.celebrations }}</td>
         <td>{{ ss.missing_work }}</td>
@@ -58,7 +58,7 @@
         <td>{{ ss.coach_follow_up }}</td>
         <td>{{ ss.student_commitments }}</td>
     {% else %}
-        <td>{{ ss.date }}</td>
+        <b><td>{{ ss.date }}</td></b>
         {% if notes_selected %}     <td>{{ ss.notes }}</td> {% endif %}
         {% if celebrations_selected %}  <td>{{ ss.celebrations }}</td> {% endif %}
         {% if missing_work_selected %} <td>{{ ss.missing_work }}</td>    {% endif %}
