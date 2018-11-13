@@ -210,7 +210,7 @@ def save_session_view(request, username, session_id):
         session.notes = request.POST['notes']
 
         while session.notes[-1:] == ' ':
-            session.notes = session.notes[-1:]
+            session.notes = session.notes[:-1]
 
         session.save()
     index = 1
