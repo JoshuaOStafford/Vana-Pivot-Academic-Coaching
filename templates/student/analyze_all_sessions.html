@@ -24,7 +24,7 @@
 <tr>
     <th>Session Date</th>
     {% if all_categories_selected %}
-        <th style="max-width: 33%">Additional Notes</th>
+        <th>Additional Notes</th>
         <th>Successes</th>
         <th>Missing Work</th>
         <th>Topics</th>
@@ -49,7 +49,7 @@
 {% for ss in selected_sessions %}
     <tr>
     {% if all_categories_selected %}
-        <b><td>{{ ss.date }}</td></b>
+        <td><b>{{ ss.date }}</b></td>
         <td>{{ ss.notes }}</td>
         <td>{{ ss.celebrations }}</td>
         <td>{{ ss.missing_work }}</td>
@@ -58,7 +58,7 @@
         <td>{{ ss.coach_follow_up }}</td>
         <td>{{ ss.student_commitments }}</td>
     {% else %}
-        <b><td>{{ ss.date }}</td></b>
+        <td><b>{{ ss.date }}</b></td>
         {% if notes_selected %}     <td>{{ ss.notes }}</td> {% endif %}
         {% if celebrations_selected %}  <td>{{ ss.celebrations }}</td> {% endif %}
         {% if missing_work_selected %} <td>{{ ss.missing_work }}</td>    {% endif %}
