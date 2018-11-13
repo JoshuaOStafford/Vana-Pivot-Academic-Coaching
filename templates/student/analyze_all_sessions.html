@@ -2,6 +2,15 @@
 
 {% block content %}
 
+<style>
+.column1 {
+    width: 10%;
+}
+.column2 {
+    width: 40%;
+}
+</style>
+
 <br>
     <div class="row">
     <div class="col s4" style="padding-left:5%;">
@@ -18,19 +27,19 @@
 <br><br>
 {% if selected %}
     <div class="row">
-<table class="responsive-table striped" style="width: 90%; margin-left:5%">
+<table class="responsive-table striped" style="width: 95%; margin-left:2.5%">
 
 <thead>
 <tr>
     <th>Session Date</th>
     {% if all_categories_selected %}
-        <th>Additional Notes</th>
-        <th>Successes</th>
-        <th>Missing Work</th>
-        <th>Topics</th>
-        <th>Upcoming Due Dates</th>
-        <th>Coach's Next Steps</th>
-        <th>Student's Next Steps</th>
+        <th class="column2">Additional Notes</th>
+        <th class="column1">Successes</th>
+        <th class="column1">Missing Work</th>
+        <th class="column1">Topics</th>
+        <th class="column1">Upcoming Due Dates</th>
+        <th class="column1">Coach's Next Steps</th>
+        <th class="column1">Student's Next Steps</th>
 
 
     {% else %}
