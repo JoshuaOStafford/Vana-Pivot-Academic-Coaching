@@ -208,6 +208,10 @@ def save_session_view(request, username, session_id):
         session.coach_follow_up = request.POST['follow_up']
         session.student_commitments = request.POST['commitments']
         session.notes = request.POST['notes']
+
+        while session.notes[-1:] == ' ':
+            session.notes = session.notes[-1:]
+
         session.save()
     index = 1
     number = 0
@@ -438,4 +442,3 @@ def forgot_password_view(request, username):
         recipient_email = user.email
         send_mail(subject, message, sender_email, [recipient_email])
     return render(request, 'student/forgot_password.html', {'message': message, 'user': user})
-
