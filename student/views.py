@@ -188,7 +188,8 @@ def pre_session_view(request, username, session_number):
             if index == int(session_number):
                 session = current_session
             index = index + 1
-    session_info = [session.celebrations, session.missing_work, session.questions_about_session, session.upcoming_due_dates,
+    if active_session:
+        session_info = [session.celebrations, session.missing_work, session.questions_about_session, session.upcoming_due_dates,
                     session.coach_follow_up, session.student_commitments, session.notes]
     sessions = Session.objects.filter(student=student).order_by('date')
     return render(request, 'student/pre_session.html', {'student': student, 'session': session, 'active_session':
