@@ -191,11 +191,16 @@ def pre_session_view(request, username, session_number):
     if active_session:
         session_info = [session.celebrations, session.missing_work, session.questions_about_session, session.upcoming_due_dates,
                     session.coach_follow_up, session.student_commitments, session.notes]
-    sessions = Session.objects.filter(student=student).order_by('date')
-    return render(request, 'student/pre_session.html', {'student': student, 'session': session, 'active_session':
+        sessions = Session.objects.filter(student=student).order_by('date')
+        return render(request, 'student/pre_session.html', {'student': student, 'session': session, 'active_session':
+            active_session, 'coach': coach, 'sessions': sessions, 'session_number':
+                                                                session_number, 'page': page, 'save': save,
+                                                            'session_info': session_info})
+    else:
+        sessions = Session.objects.filter(student=student).order_by('date')
+        return render(request, 'student/pre_session.html', {'student': student, 'session': session, 'active_session':
                                                         active_session, 'coach': coach, 'sessions': sessions, 'session_number':
-                                                        session_number,  'page': page, 'save': save,
-                                                        'session_info': session_info})
+                                                        session_number,  'page': page, 'save': save})
 
 
 def save_session_view(request, username, session_id):
