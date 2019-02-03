@@ -63,6 +63,7 @@ def schedule_view(request, username):
     page = 'schedule'
     coach = is_coach(request)
     student = Student.objects.get(username=username)
+    classes = student.class_set.all().order_by('created')
     if request.method == 'POST':
         name = request.POST['class_name']
         if Class.objects.filter(name=name, student=student).exists():
@@ -78,7 +79,8 @@ def schedule_view(request, username):
             new_class = Class(student=student, name=name, teacher=teacher, notes=notes, late_work_policy=late_work_policy)
             new_class.save()
     has_classes = len(student.class_set.all()) > 0
-    return render(request, 'student/schedule.html', {'student': student, 'has_classes': has_classes, 'coach': coach, 'page': page})
+    return render(request, 'student/schedule.html', {'student': student, 'has_classes': has_classes, 'coach': coach, 'page': page,
+                                                     'classes': classes})
 
 
 def edit_class_view(request, username, class_id):
