@@ -24,7 +24,7 @@ def profile_view(request, username):
         contact.save()
 
         # have to update the contacts
-    contacts = Contact.objects.filter(student=student)
+    contacts = Contact.objects.filter(student=student).order_by('date')
     no_contacts = (len(contacts) == 0)
     return render(request, 'student/profile.html', {'student': student, 'contacts': contacts, 'parents': parents,  'page': page,
                                                     'no_contacts': no_contacts, 'no_classes': no_classes, 'coach': coach})
