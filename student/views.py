@@ -421,8 +421,8 @@ def forgot_password_helper(request):
 
 
 def forgot_password_view(request, username):
+    screen_message = ''
     needs_email = True
-    message = ''
     if Student.objects.filter(username=username).exists():
         user = Student.objects.get(username=username)
     else:
@@ -433,20 +433,21 @@ def forgot_password_view(request, username):
             password1 = request.POST['password1']
             password2 = request.POST['password2']
             if password1 != password2:
-                message = "Passwords must match."
+                screen_message = "Passwords must match."
             elif len(password1) < 8:
-                message = "Password must be 8 or more characters."
+                screen_message = "Password must be 8 or more characters."
             else:
                 account = User.objects.get(username=user.username)
                 account.set_password(password1)
                 account.save()
-                message = 'Password successfully changed'
+                screen_message = 'Password successfully changed'
         else:
-            message = 'Wrong security code. Please check email to ensure code is correct.'
+            screen_message = 'Wrong security code. Please check email to ensure code is correct.'
     if needs_email:
         subject = 'Vana Learning Password Recovery'
         message = recover_password(user)
         sender_email = 'customerservice@vana-learning.com'
         recipient_email = user.email
         send_mail(subject, message, sender_email, [recipient_email])
-    return render(request, 'student/forgot_password.html', {'message': message, 'user': user})
+        screen_message = "Email sent."
+    return render(request, 'student/forgot_password.html', {'message': screen_message, 'user': user})
