@@ -6,7 +6,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from student.helpers import is_coach
-import smtplib
+from Coach.functions import signup_email_message
 
 
 def start_view(request):
@@ -69,38 +69,13 @@ def add_student_view(request):
                               email=student_email)
         new_student.save()
         subject = "Invitation from " + academic_coach.name + ' to join Vana Learning'
-        message = new_student.name + ',\n\n' + academic_coach.name + ' has invited you to make an account on Vana Learning. ' \
-                                                                     'Your username is ' + new_student.username + '.\n\nPlease create your account' \
-                                                                                                               'by following this link: https://vana18.herokuapp.com/signup/' + new_student.username + '\n\nBest,\nThe Vana Learning Team'
-        sender_email = 'vanalearning@gmail.com'
+        message = signup_email_message(new_student)
+        sender_email = 'customerservice@vana-learning.com'
         recipient_email = new_student.email
         send_mail(subject, message, sender_email, [recipient_email])
-        banana = 'customerservice@vana-learning.com'
-        sent_from = banana
-        to = [recipient_email]
-        subject = 'test'
-        body = 'Hey, what'
 
-        email_text = """\  
-        From: %s  
-        To: %s  
-        Subject: %s
-
-        %s
-        """ % (sent_from, ", ".join(to), subject, body)
-        try:
-            mango = 'Late2stinson'
-            server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-            server.ehlo()  # optional
-            # ...send emails
-            server.login(banana, mango)
-            server.sendmail(sender_email, [recipient_email], email_text)
-            server.close()
-            success_message = "Email invite has successfully been sent to " + student_name + "."
-
-        except:
-            error_message = 'Something went wrong...'
     return render(request, 'coach/add_student.html', {'coach': coach, 'success_message': success_message, 'error_message': error_message,  'page': page})
+
 
 
 def create_student_account_view(request, username):
