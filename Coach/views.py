@@ -6,6 +6,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from student.helpers import is_coach
+import smtplib
 
 
 def start_view(request):
@@ -47,10 +48,10 @@ def all_student_view(request):
 
 
 def add_student_view(request):
+    error_message = ""
     page = 'add_student'
     coach = is_coach(request)
     success_message = ""
-    error_message = ""
     academic_coach = AcademicCoach.objects.get(username=request.user.username)
     if request.method == 'POST':
         student_name = request.POST['name']
@@ -74,7 +75,31 @@ def add_student_view(request):
         sender_email = 'vanalearning@gmail.com'
         recipient_email = new_student.email
         send_mail(subject, message, sender_email, [recipient_email])
-        success_message = "Email invite has successfully been sent to " + student_name + "."
+        banana = 'customerservice@vana-learning.com'
+        sent_from = banana
+        to = [recipient_email]
+        subject = 'test'
+        body = 'Hey, what'
+
+        email_text = """\  
+        From: %s  
+        To: %s  
+        Subject: %s
+
+        %s
+        """ % (sent_from, ", ".join(to), subject, body)
+        try:
+            mango = 'Late2stinson'
+            server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+            server.ehlo()  # optional
+            # ...send emails
+            server.login(banana, mango)
+            server.sendmail(sent_from, to, email_text)
+            server.close()
+            success_message = "Email invite has successfully been sent to " + student_name + "."
+
+        except:
+            error_message = 'Something went wrong...'
     return render(request, 'coach/add_student.html', {'coach': coach, 'success_message': success_message, 'error_message': error_message,  'page': page})
 
 

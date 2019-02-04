@@ -60,7 +60,7 @@ ROOT_URLCONF = 'Vana18.urls'
 
 EMAIL_USE_TLS= True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'vanalearning@gmail.com'
+EMAIL_HOST_USER = 'customerservice@vana-learning.com'
 EMAIL_HOST_PASSWORD = 'Late2stinson'
 EMAIL_PORT = 587
 
