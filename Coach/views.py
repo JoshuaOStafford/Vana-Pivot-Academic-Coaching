@@ -72,7 +72,9 @@ def add_student_view(request):
         message = new_student.name + ',\n\n' + academic_coach.name + ' has invited you to make an account on Vana Learning. ' \
                                                                      'Your username is ' + new_student.username + '.\n\nPlease create your account' \
                                                                                                                'by following this link: https://vana18.herokuapp.com/signup/' + new_student.username + '\n\nBest,\nThe Vana Learning Team'
+        sender_email = 'vanalearning@gmail.com'
         recipient_email = new_student.email
+        send_mail(subject, message, sender_email, [recipient_email])
         banana = 'customerservice@vana-learning.com'
         sent_from = banana
         to = [recipient_email]
@@ -92,7 +94,7 @@ def add_student_view(request):
             server.ehlo()  # optional
             # ...send emails
             server.login(banana, mango)
-            server.sendmail(sent_from, to, email_text)
+            server.sendmail(sender_email, [recipient_email], email_text)
             server.close()
             success_message = "Email invite has successfully been sent to " + student_name + "."
 
