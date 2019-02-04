@@ -17,3 +17,14 @@ def is_coach(request):
             return True
     else:
         return False
+
+
+def recover_password(student):
+    message = '''{name}, 
+
+Your security code is {security_code}. Please reset your password at https://www.vanalearning.com/student/forgot-password/{username}
+
+Best,
+The Vana Learning Team
+'''.format(name=student.name, security_code=student.code, username=student.username)
+    return message

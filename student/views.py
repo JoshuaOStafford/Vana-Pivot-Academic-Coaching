@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from student.models import Student, AcademicCoach, School, Parent, Contact, Class, ClassGrade, Habit, HabitScore, Session
-from student.helpers import student_has_no_classes, is_coach
+from student.helpers import student_has_no_classes, is_coach, recover_password
 from datetime import date as dateobject, timedelta
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
@@ -445,8 +445,8 @@ def forgot_password_view(request, username):
             message = 'Wrong security code. Please check email to ensure code is correct.'
     if needs_email:
         subject = 'Vana Learning Password Recovery'
-        message = str(user.name) + ',\n\n' + 'Your security code is ' + str(user.code) + '. Please reset your password at https://www.vanalearning.com/student/forgot-password/' + user.username + '\n\nBest,\nThe Vana Learning Team'
-        sender_email = 'vanalearning@gmail.com'
+        message = recover_password(user)
+        sender_email = 'customerservice@vana-learning.com'
         recipient_email = user.email
         send_mail(subject, message, sender_email, [recipient_email])
     return render(request, 'student/forgot_password.html', {'message': message, 'user': user})
