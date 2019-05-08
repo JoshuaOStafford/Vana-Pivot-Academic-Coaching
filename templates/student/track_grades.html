@@ -90,14 +90,14 @@
                     {% csrf_token %}
                     <div class="row" align="left">
                     <div class="col s2" align="center">
-                        <b>Date:</b><input class="input-field" type="date" name="entry_date" required></div>
+                        <b>Date:</b><input class="input-field" type="date" name="entry_date" id="edit-date" required></div>
 
                              <div class="col s2">
                             <label>Select a Session</label>
                                <select onchange="ajaxRequest(value)" class="browser-default" form="edit-grades" id="session_number" name="session_number" required>
                                   <option value = "" disabled selected>Select Session</option>
                                    {% for session in sessions %}
-                                   <option  value = "{{ forloop.counter0 }}">Session {{ forloop.counter }}: {{ session.date }}</option>
+                                   <option  value = "{{ forloop.counter }}">Session {{ forloop.counter }}: {{ session.date }}</option>
                                    {% endfor %}
                                </select>
                              </div>
@@ -141,6 +141,7 @@
 
                 document.getElementById(string).value = data.grades[i];
             }
+            document.getElementById(edit-date).value = data.date;
             console.log("Success")
         }
       });
