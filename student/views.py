@@ -38,8 +38,8 @@ def track_grades_view(request, username):
     sessions = student.session_set.all().order_by('date')
     subjects = student.class_set.all()
     editable_sessions = []
-    added = False
     for index, session in enumerate(sessions):
+        added = False
         for subject in subjects:
             if ClassGrade.objects.filter(subject=subject, session_number=index+1).exists() and not added:
                 editable_sessions.append(session)
