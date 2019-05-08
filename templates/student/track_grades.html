@@ -1,3 +1,5 @@
+
+
 {% extends 'new_base.html' %}
 
 {% block content %}
@@ -14,7 +16,7 @@
 <head>
     <title>Track Grades</title>
 </head>
-
+<div id="wrapper">
 <table class="responsive-table striped" style="width: 90%; margin: 2% 5% 5% 5%">
     <tr>
         <th>Subject</th>
@@ -35,13 +37,12 @@
 
 </table>
 
-
-
-
     {% if coach %}
-    <div class="col s12 m12 l4 xl4 offset-l4 center-align">
+    <div class="col s12 m12 l4 xl4 offset-l2 center-align">
+        <a class="waves-effect waves-light btn view blue white-text modal-trigger" href="#edit-grade-modal"  style="margin-top: 5%;">Edit Grades<i class="material-icons right">edit</i></a>
         <a class="waves-effect waves-light btn view green white-text modal-trigger" href="#grade-modal"  style="margin-top: 5%;">Input Grades<i class="material-icons right">add</i></a>
     </div>
+
     {% endif %}
 
 
@@ -82,9 +83,75 @@
                 </form>
         </div>
     </div>
+
+    <div id="edit-grade-modal" class="modal bottom-sheet">
+        <div class="modal-content">
+                <form method="post" action="/student/{{ student.username }}/track_grades" id="edit-grades" style="margin-bottom:0">
+                    {% csrf_token %}
+                    <div class="row" align="left">
+                    <div class="col s2" align="center">
+                        <b>Date:</b><input class="input-field" type="date" name="entry_date" required></div>
+
+                             <div class="col s2">
+                            <label>Select a Session</label>
+                               <select onchange="ajaxRequest(value)" class="browser-default" form="edit-grades" id="session_number" name="session_number" required>
+                                  <option value = "" disabled selected>Select Session</option>
+                                   {% for session in sessions %}
+                                   <option  value = "{{ forloop.counter0 }}">Session {{ forloop.counter }}: {{ session.date }}</option>
+                                   {% endfor %}
+                               </select>
+                             </div>
+                    {% for subject, foo in combo_data %}
+                        <div class="col s2">
+                            <div class="input-field">
+                                <input id="{{ subject.name }}_escore" type="number" class="validate" name="{{ subject.name }}_score" value="0" >
+                                <label for="{{ subject.name }}_escore">{{ subject.name }} Grade</label>
+                             </div>
+
+                        </div>
+                    {% endfor %}
+
+                    </div>
+                    <a href="#" class="modal-close waves-effect waves-green btn-flat black white-text" style="margin-bottom:0">Close</a>
+                    <button class="btn waves-effect waves-light green lighten-2 right" type="submit" name="action" style="margin-bottom:0">Edit Grades
+                        <i class="material-icons right">edit</i>
+                    </button>
+                </form>
+        </div>
+    </div>
     <br><br><br><br><br><br><br><br><br><br><br><br>
 
+</div>
+
 <script>
+
+    var grades = [];
+    function ajaxRequest(value){
+        console.log(value);
+        $.ajax({
+        url: '/student/{{ student.username }}/track_grades',
+        data: {
+          'sessionNumber': value
+        },
+        dataType: 'json',
+        success: function (data) {
+            for (var i = 0; i<data.subjects.length; i++){
+                var string = data.subjects[i] + "_escore";
+                console.log(string);
+
+                document.getElementById(string).value = data.grades[i];
+            }
+            console.log("Success")
+        }
+      });
+    }
+
+    function getValue(
+
+    ){
+
+    }
+
     $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();

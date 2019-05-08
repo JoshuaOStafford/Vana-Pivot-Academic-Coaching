@@ -4,6 +4,7 @@ from student.helpers import student_has_no_classes, is_coach, recover_password
 from datetime import date as dateobject, timedelta
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 
 
 def profile_view(request, username):
@@ -36,7 +37,9 @@ def track_grades_view(request, username):
     student = Student.objects.get(username=username)
     sessions = student.session_set.all().order_by('date')
     subjects = student.class_set.all()
-
+    previous_grades = []
+    for subject in subjects:
+        previous_grades.append(0)
     if request.method == 'POST':
         if request.POST.get('entry_date', False):
             date = request.POST['entry_date']
@@ -47,16 +50,31 @@ def track_grades_view(request, username):
                 score = request.POST[subject.name + '_score']
                 session_number = str(int(request.POST['session_number']) + 1)
                 if subject.classgrade_set.filter(date=date).exists():
-                    subject.classgrade_set.get(date=date).delete()
+                    subject.classgrade_set.filter(date=date).delete()
                 grade_submission = ClassGrade(subject=subject, date=date, score=score, session_number=session_number)
                 grade_submission.save()
+    if request.is_ajax():
+        session_number = request.GET.get('sessionNumber', None)
+        session_num = int(session_number) + 1
+        previous_grades = []
+        subject_names = []
+        for subject in subjects:
+            if ClassGrade.objects.filter(subject=subject, session_number=session_number).exists():
+                current_grade = ClassGrade.objects.filter(subject=subject, session_number=session_number).last()
+                previous_grades.append(current_grade.score)
+            subject_names.append(subject.name)
+        data = {'grades': previous_grades, 'subjects': subject_names} # ["English", "Calculus", "World History", "Fine Arts Survey", "Human Geography"]
+        return JsonResponse(data)
     all_dates = set()
     for subject in student.class_set.all():
         for grade in subject.classgrade_set.all():
             all_dates.add(grade.date)
+    combo_data = zip(subjects, previous_grades)
     all_dates = sorted(all_dates)
+
     return render(request, 'student/track_grades.html', {'student': student, 'coach': coach, 'page': page, 'dates': all_dates,
-                                                         'subjects': subjects, 'sessions': sessions})
+                                                         'subjects': subjects, 'sessions': sessions, "combo_data": combo_data,
+                                                         "previous_grades": previous_grades})
 
 
 def schedule_view(request, username):
