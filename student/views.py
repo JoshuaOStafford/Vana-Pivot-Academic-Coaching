@@ -37,6 +37,11 @@ def track_grades_view(request, username):
     student = Student.objects.get(username=username)
     sessions = student.session_set.all().order_by('date')
     subjects = student.class_set.all()
+    editable_sessions = []
+    for index, session in sessions:
+        for subject in subjects:
+            if ClassGrade.objects.filter(subject=subject, session_number=index+1).exists():
+                editable_sessions.append(session)
     previous_grades = []
     for subject in subjects:
         previous_grades.append(0)
@@ -80,7 +85,7 @@ def track_grades_view(request, username):
 
     return render(request, 'student/track_grades.html', {'student': student, 'coach': coach, 'page': page, 'dates': all_dates,
                                                          'subjects': subjects, 'sessions': sessions, "combo_data": combo_data,
-                                                         "previous_grades": previous_grades})
+                                                         "previous_grades": previous_grades, 'editable_sessions': editable_sessions})
 
 
 def schedule_view(request, username):
