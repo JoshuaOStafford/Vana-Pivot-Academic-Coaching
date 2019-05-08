@@ -320,21 +320,19 @@ def progress_visualization_view(request, username):
             # if session has a grade, add that to chart
             if subject.classgrade_set.filter(session_number=current_session_number).exists():
                 most_recent = subject.classgrade_set.filter(session_number=current_session_number).order_by('date').last()
-                if most_recent.score >= 0:
-                    data.append(most_recent.score)
-                else:
-                    previous_session = current_session_number - 1
-                    if subject.classgrade_set.filter(session_number=previous_session).exists():
-                        most_recent = subject.classgrade_set.filter(session_number=previous_session).order_by('date').last()
-                        data.append(most_recent.score)
+                data.append(most_recent.score)
             # else, carry over the previous session's data.
             else:
                 # check for next one.
+                found = False
                 previous_session = current_session_number-1
-                if subject.classgrade_set.filter(session_number=previous_session).exists():
-                    most_recent = subject.classgrade_set.filter(session_number=previous_session).order_by('date').last()
-                    data.append(most_recent.score)
-                else:  # do previous session, make gap in data to avoid error
+                while not found and previous_session != 0:
+                    if subject.classgrade_set.filter(session_number=previous_session).exists():
+                        most_recent = subject.classgrade_set.filter(session_number=previous_session).order_by('date').last()
+                        data.append(most_recent.score)
+                        found = True
+                    previous_session -= 1
+                if not found:  # do previous session, make gap in data to avoid error
                     data.append(None)
             current_session_number = current_session_number + 1
         metric_list.append({'metric_name': subject.name, 'data': data})
