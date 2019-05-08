@@ -44,6 +44,8 @@ def track_grades_view(request, username):
         if request.POST.get('entry_date', False):
             date = request.POST['entry_date']
         else:
+            session_number = str(int(request.POST['session_number']) + 1)
+
             date = dateobject.today()
         for subject in student.class_set.all():
             if request.POST.get(subject.name + '_score', False):
@@ -58,14 +60,16 @@ def track_grades_view(request, username):
         session_number = int(session_number)+1
         previous_grades = []
         subject_names = []
+        date_for_session = None
         for subject in subjects:
             if ClassGrade.objects.filter(subject=subject, session_number=session_number).exists():
                 current_grade = ClassGrade.objects.filter(subject=subject, session_number=session_number).last()
                 previous_grades.append(current_grade.score)
+                date_for_session = current_grade.date
             else:
                 previous_grades.append(None)
             subject_names.append(subject.name)
-        data = {'grades': previous_grades, 'subjects': subject_names} # ["English", "Calculus", "World History", "Fine Arts Survey", "Human Geography"]
+        data = {'grades': previous_grades, 'subjects': subject_names, "date": date_for_session} # ["English", "Calculus", "World History", "Fine Arts Survey", "Human Geography"]
         return JsonResponse(data)
     all_dates = set()
     for subject in student.class_set.all():
