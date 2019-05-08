@@ -55,6 +55,7 @@ def track_grades_view(request, username):
                 grade_submission.save()
     if request.is_ajax():
         session_number = request.GET.get('sessionNumber', None)
+        session_number = int(session_number)+1
         previous_grades = []
         subject_names = []
         for subject in subjects:
