@@ -87,7 +87,7 @@ def track_grades_view(request, username):
 
     return render(request, 'student/track_grades.html', {'student': student, 'coach': coach, 'page': page, 'dates': all_dates,
                                                          'subjects': subjects, 'sessions': sessions, "combo_data": combo_data,
-                                                         "previous_grades": previous_grades, 'editable_sessions': editable_sessions})
+                                                         "previous_grades": previous_grades, 'editable_sessions': sessions})
 
 
 def schedule_view(request, username):
