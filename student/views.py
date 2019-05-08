@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from student.models import Student, AcademicCoach, School, Parent, Contact, Class, ClassGrade, Habit, HabitScore, Session
 from student.helpers import student_has_no_classes, is_coach, recover_password
 from datetime import date as dateobject, timedelta
+import datetime as datetime2
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -54,13 +55,21 @@ def track_grades_view(request, username):
                 grade_submission = ClassGrade(subject=subject, date=date, score=score, session_number=session_number)
                 grade_submission.save()
     if request.is_ajax():
-        session_number = request.GET.get('sessionNumber', None)
-        session_num = int(session_number)+1
+        session_date = request.GET.get('sessionDate', None)
+        components = session_date.split(" ")
+        session_date = components[0] + " "
+        components[1] = components[1][0:-1]
+        if int(components[1]) < 10:
+            session_date += "0"
+        session_date += components[1]
+        session_date += " " + components[2]
+        SessionDate = datetime2.datetime.strptime(session_date, "%B %d %Y")
+        session_date = SessionDate.strftime("%Y-%m-%d")
         previous_grades = []
         subject_names = []
         for subject in subjects:
-            if ClassGrade.objects.filter(subject=subject, session_number=session_number).exists():
-                current_grade = ClassGrade.objects.filter(subject=subject, session_number=session_number).first()
+            if ClassGrade.objects.filter(subject=subject, date=session_date).exists():
+                current_grade = ClassGrade.objects.filter(subject=subject, date=session_date).last()
                 previous_grades.append(current_grade.score)
             subject_names.append(subject.name)
         data = {'grades': previous_grades, 'subjects': subject_names} # ["English", "Calculus", "World History", "Fine Arts Survey", "Human Geography"]
