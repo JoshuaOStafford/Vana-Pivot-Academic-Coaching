@@ -55,12 +55,12 @@ def track_grades_view(request, username):
                 grade_submission.save()
     if request.is_ajax():
         session_number = request.GET.get('sessionNumber', None)
-        session_num = int(session_number) 
+        session_num = int(session_number)
         previous_grades = []
         subject_names = []
         for subject in subjects:
             if ClassGrade.objects.filter(subject=subject, session_number=session_number).exists():
-                current_grade = ClassGrade.objects.filter(subject=subject, session_number=session_number).last()
+                current_grade = ClassGrade.objects.filter(subject=subject, session_number=session_number).first()
                 previous_grades.append(current_grade.score)
             subject_names.append(subject.name)
         data = {'grades': previous_grades, 'subjects': subject_names} # ["English", "Calculus", "World History", "Fine Arts Survey", "Human Geography"]
