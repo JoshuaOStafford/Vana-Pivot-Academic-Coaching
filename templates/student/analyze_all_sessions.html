@@ -38,7 +38,8 @@
 {% if selected %}
     <div class="row">
 <table class="table striped" id='table-width'>
-
+    <col width="10%">
+    <col width="90%">
 <thead>
 <tr>
     <th class="column1">Session Date</th>
@@ -65,13 +66,13 @@
     <tr>
     {% if all_categories_selected %}
         <td><b>{{ ss.date }}</b></td>
-        <td><p>Notes: {{ ss.notes }}</p>
-            <p>Successes: {{ ss.celebrations }}</p>
-            <p>Missing Work: {{ ss.missing_work }}</p>
-            <p>Topics: {{ ss.questions_about_session }}</p>
-            <p>Upcoming Due Dates: {{ ss.upcoming_due_dates }}</p>
-            <p>Coach's Next Steps: {{ ss.coach_follow_up }}</p>
-            <p>Student's  Next Steps: {{ ss.student_commitments }}</p>
+        <td><p><b>Notes:</b> {{ ss.notes }}</p>
+            <p><b>Successes:</b> {{ ss.celebrations }}</p>
+            <p><b>Missing Work:</b> {{ ss.missing_work }}</p>
+            <p><b>Topics:</b> {{ ss.questions_about_session }}</p>
+            <p><b>Upcoming Due Dates:</b> {{ ss.upcoming_due_dates }}</p>
+            <p><b>Coach's Next Steps:</b> {{ ss.coach_follow_up }}</p>
+            <p><b>Student's Next Steps:</b> {{ ss.student_commitments }}</p>
         </td>
 
     {% else %}
