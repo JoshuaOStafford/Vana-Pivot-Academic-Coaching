@@ -43,13 +43,9 @@
 <tr>
     <th class="column1">Session Date</th>
     {% if all_categories_selected %}
-        <th class="column2">Additional Notes</th>
-        <th class="column1">Successes</th>
-        <th class="column1">Missing Work</th>
-        <th class="column1">Topics</th>
-        <th class="column1">Upcoming Due Dates</th>
-        <th class="column1">Coach's Next Steps</th>
-        <th class="column1">Student's Next Steps</th>
+        <th class="column2">Notes</th>
+
+
 
 
     {% else %}
@@ -69,13 +65,15 @@
     <tr>
     {% if all_categories_selected %}
         <td><b>{{ ss.date }}</b></td>
-        <td>{{ ss.notes }}</td>
-        <td>{{ ss.celebrations }}</td>
-        <td>{{ ss.missing_work }}</td>
-        <td>{{ ss.questions_about_session }}</td>
-        <td>{{ ss.upcoming_due_dates }}</td>
-        <td>{{ ss.coach_follow_up }}</td>
-        <td>{{ ss.student_commitments }}</td>
+        <td><p>Notes: {{ ss.notes }}</p>
+            <p>Successes: {{ ss.celebrations }}</p>
+            <p>Missing Work: {{ ss.missing_work }}</p>
+            <p>Topics: {{ ss.questions_about_session }}</p>
+            <p>Upcoming Due Dates: {{ ss.upcoming_due_dates }}</p>
+            <p>Coach's Next Steps: {{ ss.coach_follow_up }}</p>
+            <p>Student's  Next Steps: {{ ss.student_commitments }}</p>
+        </td>
+
     {% else %}
         <td><b>{{ ss.date }}</b></td>
         {% if notes_selected %}     <td>{{ ss.notes }}</td> {% endif %}
