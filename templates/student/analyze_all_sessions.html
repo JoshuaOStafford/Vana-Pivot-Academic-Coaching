@@ -63,7 +63,7 @@
 </thead>
 <tbody>
 {% for ss in selected_sessions %}
-    <tr>
+    <tr style=" border-bottom: 2px solid #ddd;">
     {% if all_categories_selected %}
         <td><b>{{ ss.date }}</b></td>
         <td><p><b>Notes:</b> {{ ss.notes }}</p>
