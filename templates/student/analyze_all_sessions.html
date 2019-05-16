@@ -67,12 +67,12 @@
     {% if all_categories_selected %}
         <td><b>{{ ss.date }}</b></td>
         <td><p><b>Notes:</b> {{ ss.notes }}</p>
-            <p><b>Successes:</b> {{ ss.celebrations }}</p>
-            <p><b>Missing Work:</b> {{ ss.missing_work }}</p>
-            <p><b>Topics:</b> {{ ss.questions_about_session }}</p>
-            <p><b>Upcoming Due Dates:</b> {{ ss.upcoming_due_dates }}</p>
-            <p><b>Coach's Next Steps:</b> {{ ss.coach_follow_up }}</p>
-            <p><b>Student's Next Steps:</b> {{ ss.student_commitments }}</p>
+            {%  if ss.celebrations != "" %}<p><b>Successes:</b> {{ ss.celebrations }}</p>{% endif %}
+            {%  if ss.missing_work != "" %}<p><b>Missing Work:</b> {{ ss.missing_work }}</p>{% endif %}
+            {%  if ss.questions_about_session != "" %}<p><b>Topics:</b> {{ ss.questions_about_session }}</p>{% endif %}
+            {%  if ss.upcoming_due_dates != "" %}<p><b>Upcoming Due Dates:</b> {{ ss.upcoming_due_dates }}</p>{% endif %}
+            {%  if ss.coach_follow_up != "" %}<p><b>Coach's Next Steps:</b> {{ ss.coach_follow_up }}</p>{% endif %}
+            {%  if ss.student_commitments != "" %}<p><b>Student's Next Steps:</b> {{ ss.student_commitments }}</p>{% endif %}
         </td>
 
     {% else %}
