@@ -23,12 +23,8 @@
         <i class="material-icons right">arrow_back</i></a>
     </div>
     <div align="center" class="col s4">
-    <a class="waves-effect waves-light btn view blue white-text modal-trigger" href="#selection-modal">Advanced Settings
-        <i class="material-icons right">menu</i></a>
-    </div>
-    <div align="center" class="col s4">
-    <a class="waves-effect waves-light btn view yellow darken-2 white-text modal-trigger" href="/student/{{ student.username }}/simple_all_sessions">
-        Simple View
+    <a class="waves-effect waves-light btn view yellow darken-2 white-text modal-trigger" href="#selection-modal">
+        Compare Sessions
         <i class="material-icons right">grade</i></a>
     </div>
 
@@ -65,7 +61,11 @@
 {% for ss in selected_sessions %}
     <tr style=" border-bottom: 2px solid #ddd;">
     {% if all_categories_selected %}
-        <td><b>{{ ss.date }}</b></td>
+        <td>
+            <b>Session {{ forloop.counter }}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <b>{{ ss.date }}</b>
+
+        </td>
         <td><p><b>Notes:</b> {{ ss.notes }}</p>
             {%  if ss.celebrations != "" %}<p><b>Successes:</b> {{ ss.celebrations }}</p>{% endif %}
             {%  if ss.missing_work != "" %}<p><b>Missing Work:</b> {{ ss.missing_work }}</p>{% endif %}
