@@ -55,13 +55,13 @@
                 <a href="/student/{{ student.username }}/track_habits" class="black-text">Habits</a></li>
         {% if page == 'visualize' %}<li class="active"> {% else %}<li> {% endif %}
                 <a href="/student/{{ student.username }}/visualize" class="black-text">Visualize</a></li>
-        <li><a href="/coach/home" class="black-text">Current Student: {{ student.name }}</a></li>
+        <li><a href="/coach/home" class="black-text">{{ student.name }}</a></li>
 
         {% elif coach  %}
             {% if page == 'home' %}<li class="active"> {% else %}<li> {% endif %}
                 <a href="/coach/home" class="black-text">Home</a></li>
 
-        <li><a href="/coach/home" class="black-text">Current Student: None</a></li>
+        <li><a href="/coach/home" class="black-text">No Student Selected</a></li>
             {% if page == 'add_student' %}<li class="active"> {% else %}<li> {% endif %}
                 <a href="/coach/add_student" class="black-text">Add Student<i class="material-icons right" style="padding-top:16%;">add</i></a></li>
 
