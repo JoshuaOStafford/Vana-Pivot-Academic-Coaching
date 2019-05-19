@@ -111,13 +111,13 @@
 
 <div id="selection-modal" class="modal">
         <div class="modal-content">
-    <h5 align="center">Select categories to view</h5>
+    <h5 align="center">Choose Categories</h5>
 
     <form action="/student/{{ student.username }}/all_sessions" method="post">
     {% csrf_token %}
         <div class="row">
         <div class="col s4">
-            <input type="checkbox" name="all_categories" id="all_categories"/>
+            <input type="checkbox" name="all_categories" id="all_categories" checked/>
             <label for="all_categories">
                 <span>Select All</span>
             </label>
@@ -161,10 +161,10 @@
 </div>
 
 
-        <h5 align="center">Select sessions to view</h5>
+        <h5 align="center">Choose Sessions</h5>
     <div class="row">
         <div class="col s6">
-        <input type="checkbox" name="all_sessions" id="all_sessions"/>
+        <input type="checkbox" name="all_sessions" id="all_sessions" checked/>
     <label for="all_sessions">
         <span>All Sessions</span>
     </label></div>

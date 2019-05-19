@@ -55,7 +55,7 @@
                 <a href="/student/{{ student.username }}/track_habits" class="black-text">Habits</a></li>
         {% if page == 'visualize' %}<li class="active"> {% else %}<li> {% endif %}
                 <a href="/student/{{ student.username }}/visualize" class="black-text">Visualize</a></li>
-        <li><a href="/coach/home" class="black-text">{{ student.name }}</a></li>
+        <li><a href="/coach/home" class="black-text">Student: {{ student.name }}</a></li>
 
         {% elif coach  %}
             {% if page == 'home' %}<li class="active"> {% else %}<li> {% endif %}

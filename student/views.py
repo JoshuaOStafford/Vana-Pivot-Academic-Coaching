@@ -341,7 +341,7 @@ def progress_visualization_view(request, username):
     current_session = 1
     the_sessions = Session.objects.filter(student=student).order_by('date')
     for the_session in the_sessions:
-        session_string = 'Session ' + str(current_session)
+        session_string = 'Session ' + str(current_session) + " - " + str(the_session.date)
         session_range.append(session_string)
         current_session = current_session + 1
     for subject in student.class_set.all():

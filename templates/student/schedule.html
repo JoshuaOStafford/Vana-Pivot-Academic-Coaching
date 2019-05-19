@@ -6,8 +6,13 @@
     <meta charset="UTF-8">
     <title>Class Schedule</title>
 </head>
-
-<div class="row" style="margin-top: 5%; width:90%">
+        <div class="row">
+<div class="col s2" align="center">
+    <a class="waves-effect waves-light btn view red white-text modal-trigger" href="#class-modal"  style="margin-top: 5%;">Add Class<i class="material-icons right">add</i></a>
+</div>
+<div class="col s8" align="center"><h5>Schedule</h5></div>
+        </div>
+<div class="row" style="margin-top: 1%; width:90%">
 {% if has_classes %}
 <table class="striped" style="border: 2px solid black;">
         <thead>
@@ -41,9 +46,6 @@
 {% endif %}
 
 
-<div class="col s12 m12 l4 xl4 offset-l4 center-align">
-    <a class="waves-effect waves-light btn view red white-text modal-trigger" href="#class-modal"  style="margin-top: 5%;">Add Class<i class="material-icons right">add</i></a>
-</div>
 
 
 <div id="class-modal" class="modal">
