@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from student.helpers import is_coach
 from Coach.functions import signup_email_message
+from docx import Document
+from django.http import HttpResponse
 
 
 def start_view(request):
@@ -157,3 +159,53 @@ def signup_view(request, username):
             form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form, 'student': student, 'coach': coach, 'error_message':
                                                          error_message})
+
+
+def download_contact_history(request, username):
+    is_coach(request)
+    if Student.objects.filter(username=username).exists():
+        student = Student.objects.get(username=username)
+    else:
+        return redirect('/coach/home')
+    document = Document()
+    title = 'Contact History for ' + student.name
+    document.add_heading(title, 0)
+    contacts = Contact.objects.filter(student=student).order_by('date')
+    for contact in contacts:
+        text = str(contact.date) + ": " + contact.message
+        document.add_paragraph(text)
+    document_name = student.username + '_Contact_History.docx'
+    document.save(document_name)
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    response['Content-Disposition'] = 'attachment; filename = "Contact_History.docx"'
+    document.save(response)
+    return response
+
+
+def download_schedule(request, username):
+    is_coach(request)
+    if Student.objects.filter(username=username).exists():
+        student = Student.objects.get(username=username)
+    else:
+        return redirect('/coach/home')
+    document = Document()
+    title = 'Schedule for ' + student.name
+    document.add_heading(title, 0)
+    classes = student.class_set.all().order_by('created')
+    for subject in classes:
+        p = document.add_paragraph(subject.name)
+        text = "Teacher: " + subject.teacher + "\n" + "Notes: " + subject.notes + "\n" + "Late Work Policy: " + subject.late_work_policy
+        for line in text.split("\n"):
+            run = p.add_run()
+            run.add_break()
+            p.add_run(line)
+
+
+
+
+    document_name = student.username + '_Contact_History.docx'
+    document.save(document_name)
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    response['Content-Disposition'] = 'attachment; filename = "Schedule.docx"'
+    document.save(response)
+    return response
