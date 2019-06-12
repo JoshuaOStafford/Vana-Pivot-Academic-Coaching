@@ -106,9 +106,9 @@
         </div>
         {% if coach %}
         <div align="center">
-            <button class="btn waves-effect waves-light green lighten-1" id="save-button" type="submit" name="action">SAVE
-                        <i class="material-icons right">save</i>
-            </button>
+                <button class="btn waves-effect waves-light green lighten-1" id="save-button" type="submit" name="action">SAVE
+                            <i class="material-icons right">save</i>
+                </button>
        </div>
         {% endif %}
     </form>
@@ -163,14 +163,15 @@
     <script>
 
         var editable = false;
+        var startSaving =  "{{ startCondition }}" ;
         function toggleEditMode() {
             editable = !editable;
             if (editable) {
                 document.getElementById("save-button").style.visibility = 'visible';
                 document.getElementById("edit-button").style.visibility = 'hidden';
             } else {
-                //document.getElementById("save-button").style.visibility = 'hidden';
-                //document.getElementById("edit-button").style.visibility = 'visible';
+               // document.getElementById("save-button").style.visibility = 'hidden';
+               // document.getElementById("edit-button").style.visibility = 'visible';
             }
         }
         {% comment %}
@@ -201,7 +202,13 @@
         $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal-trigger').leanModal();
+            if ("True" == startSaving) {
+                document.getElementById("save-button").style.visibility = 'visible';
+                document.getElementById("edit-button").style.visibility = 'hidden';
+            }
          });
+
+
 
     </script>
 

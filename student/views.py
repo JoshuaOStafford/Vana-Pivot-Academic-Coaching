@@ -194,6 +194,7 @@ def session_redirect_view(request, username):
 
 
 def pre_session_view(request, username, session_number):
+    start_condition = True
     page = 'session'
     coach = is_coach(request)
     if coach:
@@ -224,16 +225,19 @@ def pre_session_view(request, username, session_number):
     if active_session:
         session_info = [session.celebrations, session.missing_work, session.questions_about_session, session.upcoming_due_dates,
                     session.coach_follow_up, session.student_commitments, session.notes]
+        for field in session_info:
+            if field != "":
+                start_condition = False
         sessions = Session.objects.filter(student=student).order_by('date')
         return render(request, 'student/pre_session.html', {'student': student, 'session': session, 'active_session':
             active_session, 'coach': coach, 'sessions': sessions, 'session_number':
                                                                 session_number, 'page': page, 'save': save,
-                                                            'session_info': session_info})
+                                                            'session_info': session_info, "startCondition": start_condition})
     else:
         sessions = Session.objects.filter(student=student).order_by('date')
         return render(request, 'student/pre_session.html', {'student': student, 'session': session, 'active_session':
                                                         active_session, 'coach': coach, 'sessions': sessions, 'session_number':
-                                                        session_number,  'page': page, 'save': save})
+                                                        session_number,  'page': page, 'save': save, "startCondition": start_condition})
 
 
 def save_session_view(request, username, session_id):
